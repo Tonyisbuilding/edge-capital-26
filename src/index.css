@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* h1 {
+  font-weight: bolder !important;
+} */
+
+
+
+:root {
+
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #F0FAFC !important;
+}

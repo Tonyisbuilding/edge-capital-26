@@ -1,0 +1,78 @@
+/* Glassmorphism for Google Translate */
+#google_translate_element {
+  padding: 10px 6px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  z-index: 9999;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.goog-te-gadget {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+/* Hide the Google logo */
+.goog-te-gadget .goog-te-gadget-simple {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Hide the Google iframe box */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+.goog-te-gadget span {
+  display: flex !important;
+  flex-direction: row !important; /* 👈 This is the key */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.goog-te-gadget .goog-te-gadget-icon {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+#google_translate_element,
+.goog-te-gadget,
+.goog-te-gadget span,
+.goog-te-gadget span span,
+.goog-te-gadget .goog-te-gadget-icon,
+.goog-te-gadget .goog-te-combo {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  white-space: normal !important;
+}
+
+
+.goog-te-gadget span[style*="display: none"],
+.goog-te-gadget span span[style*="display: none"] {
+  display: inline-flex !important;
+}
+
+.goog-te-gadget-simple, .goog-te-gadget-simple a{
+  display: flex;
+}
+
+/* .goog-te-banner-frame.skiptranslate{
+  display: none;
+} */
+
+.skiptranslate > iframe { 
+  height: 0 !important;
+  border-style: none;
+  box-shadow: none;
+}
