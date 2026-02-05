@@ -91,7 +91,7 @@ const Target = () => {
   const currentMetrics = metrics[language] || metrics.en;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:pb-16 pb-5">
+    <div className="w-[98%] max-w-[1700px] mx-auto px-4 md:pb-16 pb-5 bg-[#F6FEFF]">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {currentMetrics.map((metric) => (
           <MetricCard

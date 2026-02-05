@@ -1,0 +1,232 @@
+/* FundCostStructure.css */
+
+.fcs-container {
+    padding: 3rem 1rem;
+    background-color: #F6FEFF;
+}
+
+.fcs-title {
+    color: #00222C;
+}
+
+.fcs-card-wrapper {
+    border-radius: 20px;
+    padding: 0.5px;
+    /* For the gradient border */
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.fcs-card-content {
+    background-color: #F1FCFF;
+    border-radius: 19.5px;
+    /* 20px - 0.5px */
+    padding: 1.5rem;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Card 1 & 3: Standard Gradient Border */
+.fcs-card-standard {
+    background: linear-gradient(to bottom, #EFFCFE, #205D6F);
+    box-shadow: 0 4px 20px rgba(0, 48, 61, 0.15);
+}
+
+/* Card 2: Highlight Gradient Border */
+.fcs-card-highlight {
+    background: linear-gradient(to bottom, #205D6F, #EFFCFE);
+    box-shadow: 0 4px 20px rgba(0, 48, 61, 0.15);
+    position: relative;
+}
+
+/* Card 2 Content with Dither Background and Overlay */
+.fcs-card-highlight .fcs-card-content {
+    background-color: #F1FCFF;
+    background-image:
+        /* Overlay: Top to Bottom Gradient */
+        linear-gradient(to bottom, rgba(241, 252, 255, 0.83) 0%, #F1FCFF 47%, #F1FCFF 100%),
+        /* Dither Image */
+        url(../../assets/images/edgefund/dither.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, top center;
+    background-size: 100% 100%, 100% auto;
+    /* Overlay fills all, Dither fills width fully */
+}
+
+/* Ensure content sits above overlay in Card 2 */
+.fcs-card-highlight .fcs-card-content>* {
+    position: relative;
+    z-index: 5;
+}
+
+.fcs-icon-outside-wrapper {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.fcs-bg-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+}
+
+.fcs-icon-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(32, 94, 112, 0.7);
+}
+
+.fcs-icon-svg {
+    position: relative;
+    z-index: 10;
+    width: 1.5rem;
+    height: 1.5rem;
+    /* color: white; assumed based on overlay, or use original svg colors */
+}
+
+.fcs-button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 5.375rem;
+    color: white;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.fcs-button-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(32, 94, 112, 0.85);
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+.fcs-button:hover .fcs-button-overlay {
+    background-color: rgba(32, 94, 112, 0.95);
+}
+
+.fcs-button-text {
+    position: relative;
+    z-index: 10;
+}
+
+.fcs-text-main {
+    color: #00222C;
+}
+
+.fcs-text-sub {
+    color: #3A494D;
+}
+
+.fcs-check-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .fcs-investment-amount {
+        font-size: 24px;
+        /* At least 22px */
+    }
+}
+
+/* FundCostStructure.css */
+
+.fcs-container {
+    padding: 3rem 1rem;
+    background-color: #F6FEFF;
+    /* Global alignment */
+    width: 98%;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+/* ... (snip) ... */
+
+/* Watermark Section with Dither Background */
+.fcs-watermark-container {
+    background-color: #F1FCFF;
+    /* Fallback and Gradient Base */
+    background-image:
+        /* Gradient Overlay: Left (100%) to Right (20%) */
+        /* Solid color up to 85%, then fade to 20% opacity */
+        linear-gradient(to right, #F1FCFF 0%, #F1FCFF 65%, rgba(241, 252, 255, 0.9) 100%),
+        /* Dither Image */
+        url(../../assets/images/edgefund/dither.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.1rem;
+    padding: 0 2rem;
+    /* Adjusted for fixed height */
+    height: 100px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    /* Forced row */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 1px 6px -1px rgba(0, 47, 61, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove old pattern class since we use dither now */
+.fcs-watermark-pattern {
+    display: none;
+}
+
+.fcs-watermark-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.fcs-watermark-title {
+    color: #00222C;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.fcs-watermark-desc {
+    color: #3A494D;
+    font-size: 0.95rem;
+}
+
+.fcs-watermark-button {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(174, 206, 215, 0.7);
+    /* Grayish teal from screenshot */
+    color: #00222C;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    /* Rounded pill shape */
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.fcs-watermark-button:hover {
+    background-color: #AABFC0;
+}

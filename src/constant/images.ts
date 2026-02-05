@@ -48,6 +48,7 @@ import Aron from "../../src/assets/images/landingPage/Aron.webp";
 import Pepijn from "../../src/assets/images/landingPage/Pepijn.webp";
 import Tom from "../../src/assets/images/landingPage/Tom.webp";
 import Bernard from "../../src/assets/images/landingPage/Bernard.webp";
+import rob from "../../src/assets/images/landingPage/robb.png";
 
 
 import money_briefcase from "../../src/assets/images/landingPage/money-briefcase.png";
@@ -57,6 +58,10 @@ import edgehorizon from "../../src/assets/images/edgefund/edgehorizon.png";
 import edgecare from "../../src/assets/images/edgefund/edgecare.png";
 import effect from "../../src/assets/images/edgefund/effect.png";
 import scaleUp from "../../src/assets/images/edgefund/scale.png";
+import edgefundHero from "../../src/assets/images/edgefund/Edgefund hero-img.jpg";
+import aboutSide from "../../src/assets/images/edgefund/About-edgefund-side.png";
+import arrowTrending from "../../src/assets/icons/arrow-trending.svg";
+import forecasting from "../../src/assets/icons/forecasting.svg";
 import ECLogo from "../../src/assets/images/ECLogo.png";
 import ECLogoSVG from "../../src/assets/images/ECLogo.svg";
 import EdgeCapitalLogo from "../../src/assets/images/EdgeCapitalLogo.png";
@@ -120,6 +125,7 @@ import beleggerFormBackground from "../../src/assets/images/Belegger-bg.jpg";
 import beleggerFormImage from "../../src/assets/images/Belegger-img.jpg";
 import beleggersfairMobileBackground from "../../src/assets/images/Bellgers-m-bg.jpg";
 import beleggersfairHeroBackground from "../../src/assets/images/Beleggers-Hero-bg.jpg";
+import grains from "../assets/images/grains.png";
 
 const CSR_VIDEO_URL =
     "https://www.youtube.com/embed/OfOY6JoL63k?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&loop=1&playlist=OfOY6JoL63k&modestbranding=1";
@@ -154,6 +160,7 @@ const images = {
         Pepijn,
         Tom,
         Bernard,
+        rob,
         // presentationVid,
         presentationPreview,
         check_circle,
@@ -194,7 +201,12 @@ const images = {
         effect,
         scaleUp,
         edgehorizon,
-        edgecare
+        edgecare,
+        edgefundHero,
+        aboutSide,
+        arrowTrending,
+        forecasting,
+        grains
     },
     edgeConnect: {
         Edge_Connect,

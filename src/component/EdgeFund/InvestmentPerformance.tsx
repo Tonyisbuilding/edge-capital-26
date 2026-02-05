@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 import images from "@/constant/images";
 import { fetchFundReturns, FundReturnsResponse, FundClassData } from "@/Api/googleSheetsClient";
+import "./InvestmentPerformance.css";
+import calendarIcon from "@/assets/icons/calendar.svg";
 
 interface PerformanceCard {
   participation: string;
@@ -182,7 +184,7 @@ const InvestmentPerformance = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="w-[98%] max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-[#F6FEFF]">
       <motion.div
         variants={cardVariants}
         className="mb-6"
@@ -214,70 +216,62 @@ const InvestmentPerformance = () => {
               initial="initial"
               animate="animate"
               whileHover="hover"
-              className="bg-white rounded-[20px] shadow-md border border-gray-100 overflow-hidden"
+              className="ip-card"
             >
-              <div className="p-7 border-b border-gray-100 bg-gradient-to-r from-[rgba(32,106,124,0.08)] to-transparent flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm border border-gray-100">
-                    <svg
-                      className="w-9 h-6"
-                      viewBox="0 0 36 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 22 L8 14 L14 16 L20 10 L26 6 L34 4"
-                        stroke="#206A7C"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        fill="none"
-                      />
-                      <path
-                        d="M2 22 L8 14 L14 16 L20 10 L26 6 L34 4 L34 22 L2 22"
-                        fill="rgba(32, 106, 124, 0.1)"
-                      />
-                    </svg>
+              <div className="ip-header-container">
+                {/* Left Half: Date with Background */}
+                <div className="ip-date-half">
+                  <div className="ip-bg-img"></div>
+                  <div className="ip-overlay"></div>
+                  <div className="ip-content-layer flex items-center gap-3">
+                    <img src={calendarIcon} alt="Calendar" className="w-5 h-5 text-white" />
+                    <span className="text-lg font-semibold text-white">
+                      {card.monthName}
+                    </span>
                   </div>
-                  <span className="text-lg font-semibold text-[#206A7C]">
-                    {card.monthName}
+                </div>
+
+                {/* Right Half: Return Percentage (Transparent) */}
+                <div className="ip-return-half">
+                  <span className="text-base font-bold text-[#2C7C7D] bg-[rgba(44,124,125,0.2)] px-3.5 py-1.5 rounded-full">
+                    {card.percentage}
                   </span>
                 </div>
-                <span className="text-base font-bold text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full">
-                  {card.percentage}
-                </span>
               </div>
-              <div className="p-7">
-                <div className="inline-block bg-gray-100 text-gray-900 font-medium text-sm px-4 py-2 rounded-full mb-7">
-                  ({t.participationFrom} {card.participation})
+
+              <div className="ip-card-content">
+                <div className="ip-participation-container">
+                  <div className="inline-block bg-[#E0E7E9] text-gray-900 font-medium text-sm px-4 py-2 rounded-full">
+                    {t.participationFrom} {card.participation}
+                  </div>
                 </div>
-                <ul className="mb-7">
+                <ul>
                   {card.metrics.map((metric, i) => (
-                    <li
-                      key={i}
-                      className={`flex justify-between items-center pb-3 ${i === card.metrics.length - 1
-                        ? ""
-                        : "border-b border-gray-100"
-                        }`}
-                    >
-                      <span className="text-gray-600 font-medium text-sm">
+                    <li key={i} className="ip-report-row">
+                      <span className="ip-col-label">
                         {metric.label}
                       </span>
-                      <span className="text-emerald-600 font-bold text-base before:content-['↑'] before:mr-1">
+                      <span className="ip-col-sep">:</span>
+                      <span className="ip-col-value before:content-['↑'] before:mr-1">
                         {metric.value}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-gray-600 mb-7">
+                <p className="text-sm text-gray-600">
                   {t.downloadFactsheet}
                 </p>
                 <Link to="/requestinfo">
                   <motion.button
                     variants={buttonVariants}
                     whileHover="hover"
-                    className="w-full bg-[#206A7C] text-white px-6 py-3.5 rounded-full font-semibold 
-                  text-sm shadow-sm hover:cursor-pointer"
+                    className="ip-button"
                   >
-                    {t.requestFactsheet}
+                    <div className="ip-bg-img"></div>
+                    <div className="ip-overlay"></div>
+                    <span className="ip-content-layer">
+                      {t.requestFactsheet}
+                    </span>
                   </motion.button>
                 </Link>
               </div>

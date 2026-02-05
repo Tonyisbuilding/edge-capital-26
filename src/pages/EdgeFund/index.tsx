@@ -9,11 +9,15 @@ import Feature from "@/component/EdgeFund/Features";
 import FundCostStructure from "@/component/EdgeFund/FundCostStructure";
 import InvestmentPerformance from "@/component/EdgeFund/InvestmentPerformance";
 import FAQSection from '@/component/EC-Campaign/FAQSection';
+import EdgeFundHero from "@/component/EdgeFund/EdgeFundHero";
+import EdgeFundStats from "@/component/EdgeFund/EdgeFundStats";
 
 const EdgeFund = () => {
   return (
-    <>
-      <NavBar />
+    <div className="bg-[#FCFFFF]">
+      <EdgeFundHero />
+      <AboutEdgeFund />
+      <EdgeFundStats />
       <div
         style={{
           maxWidth: "1550px",
@@ -21,10 +25,7 @@ const EdgeFund = () => {
           width: "100%",
         }}
       >
-        <AboutEdgeFund />
-        <Target />
         <StrategySection />
-
         <WhatSetsUsApart />
         <Feature />
         <FundCostStructure />
@@ -33,7 +34,7 @@ const EdgeFund = () => {
       <FAQSection />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -82,7 +82,7 @@ export const whyEdgeCapitalDataDutch: whyEdgeCapitalType[] = [
     desc: "Vertrouwen is onze prioriteit. We hanteren strikte afspraken en werken met externe adviseurs om onze methodes te verfijnen. Dit garandeert verantwoording, transparantie en langdurige relaties gebaseerd op betrouwbaarheid.",
     id: 4,
   },
-  
+
   {
     icon: images.landingPage.server,
     title: "Professioneel en exclusief",
@@ -164,7 +164,7 @@ export const timelineDataDutch: timelineDataType[] = [
   {
     year: "2015",
     content:
-      "Paul Lamain richt Algorithmic Services B.V. op,  een bedrijf dat gespecialiseerd is in het ontwikkelen en optimaliseren van algoritmes voor financiële ondernemingen.",
+      "Paul Lamain richt Algorithmic Services B.V. op, een bedrijf dat gespecialiseerd is in het ontwikkelen en optimaliseren van algoritmes voor financiële ondernemingen.",
   },
   {
     year: "2016",
@@ -199,17 +199,17 @@ export const timelineDataDutch: timelineDataType[] = [
 export const teamMembers: teamMemberCardstDataType[] = [
   {
     name: "Teagan de Groot",
-    position: "Partner and board of directors",
-    bio: `Teagan de Groot has been the director of Edge Capital since 2021.
-Teagan has years of experience in investing, as an active trader he has been involved in developing successful trading strategies. In addition, Teagan has held various management positions, and his typical helicopter view makes him extremely suitable to take on the daily management of the company.`,
+    position: "CEO Edge Capital",
+    bio: `Teagan de Groot is sinds 2021 bestuurder van Edge Capital. Hij beschikt over ruime ervaring in beleggen en was als actieve handelaar betrokken bij de ontwikkeling en toepassing van handelsstrategieën. Daarnaast heeft hij diverse managementfuncties bekleed binnen de financiële sector.
+Binnen Edge Capital is Teagan verantwoordelijk voor het dagelijks bestuur en de besluitvorming van de onderneming. Vanuit zijn brede overzicht stuurt hij de organisatie aan en bepaalt hij de strategische en operationele koers.`,
     linkedin: "https://www.linkedin.com/in/teagan-de-groot-9b512616a/",
     image: images.landingPage.teagan,
   },
   {
     name: "Paul Lamain",
-    position: "Founder and board of directors",
-    bio:  `Paul Lamain is the founder of Edge Capital.
-Before founding Edge Capital, he worked at several renowned companies, including a large online broker with global operations and a European institutional asset manager, where he gained valuable knowledge and experience. Alongside Teagan, Paul is responsible for Edge Capital's policies and is closely involved in all aspects of the company.`,
+    position: "Founder & Head of Institutional",
+    bio:  `Paul Lamain is de oprichter van Edge Capital. In zijn rol als Head of Institutional richt hij zich op het onderhouden en uitbouwen van relaties met institutionele partijen en het ondersteunen van strategische samenwerkingen.
+Daarnaas t Paul ontwikkelingen binnen het institutionele segment en draagt hij bij aan de positionering van Edge Capital richting professionele en institutionele relaties.`,
     linkedin: "https://www.linkedin.com/in/paul-lamain-72a079135/",
     image: images.landingPage.paul,
   },
@@ -218,15 +218,17 @@ Before founding Edge Capital, he worked at several renowned companies, including
 export const teamMembersDutch: teamMemberCardstDataType[] = [
   {
     name: "Teagan de Groot",
-    position: "Partner en raad van bestuur",
-    bio: `Teagan de Groot is sinds 2021 directeur van Edge Capital. Teagan heeft jarenlange ervaring in beleggen en was als actieve handelaar betrokken bij het ontwikkelen van succesvolle handelsstrategieën. Daarnaast bekleedde Teagan diverse managementfuncties. Dankzij zijn helikopterview is hij bij uitstek geschikt voor het dagelijks bestuur van het bedrijf.`,
+    position: "Directeur",
+    bio: `Teagan de Groot is sinds 2021 bestuurder van Edge Capital. Hij beschikt over ruime ervaring in beleggen en was als actieve handelaar betrokken bij de ontwikkeling en toepassing van handelsstrategieën. Daarnaast heeft hij diverse managementfuncties bekleed binnen de financiële sector.
+Binnen Edge Capital is Teagan verantwoordelijk voor het dagelijks bestuur en de besluitvorming van de onderneming. Vanuit zijn brede overzicht stuurt hij de organisatie aan en bepaalt hij de strategische en operationele koers.`,
     linkedin: "https://www.linkedin.com/in/teagan-de-groot-9b512616a/",
     image: images.landingPage.teagan,
   },
   {
     name: "Paul Lamain",
-    position: "Oprichter en raad van bestuur",
-    bio: `Paul Lamain is de oprichter van Edge Capital. Voordat hij Edge Capital oprichtte, werkte hij bij diverse gerenommeerde bedrijven, waaronder een grote online broker met wereldwijde activiteiten en een Europese institutionele vermogensbeheerder, waar hij waardevolle kennis en ervaring opdeed. Samen met Teagan is Paul verantwoordelijk voor het beleid van Edge Capital en nauw betrokken bij alle aspecten van het bedrijf.`,
+    position: "Oprichter en Head of Institutional",
+    bio: `Paul Lamain is de oprichter van Edge Capital. In zijn rol als Head of Institutional richt hij zich op het onderhouden en uitbouwen van relaties met institutionele partijen en het ondersteunen van strategische samenwerkingen.
+Daarnaast volgt Paul ontwikkelingen binnen het institutionele segment en draagt hij bij aan de positionering van Edge Capital richting professionele en institutionele relaties.`,
     linkedin: "https://www.linkedin.com/in/paul-lamain-72a079135/",
     image: images.landingPage.paul,
   },
@@ -241,6 +243,15 @@ export const advisoryBoard: teamMemberCardstDataType[] = [
     linkedin: "https://www.linkedin.com/in/mvandrunen/",
     image: images.landingPage.Henk,
   },
+  {
+    name: "Rob Greve",
+    position: "Secretary and Treasurer of the Trust Bonds Foundation Edge Capital",
+    bio: `Rob Greve joined the board of the Edge Capital Trust Bonds Foundation on July 1, 2025. He began his career in accountancy and tax law. After working at the European Commission in Luxembourg for five years, he moved to the steel and metal sector.
+Subsequently, Rob served as director of the Steel Federation Netherlands for fifteen years. After his retirement, he remained active as a board member of an international steel association.
+Throughout his professional career, Rob has held various board positions as chairman and treasurer within both public and private organizations.`,
+    linkedin: "https://www.linkedin.com/in/rob-greve-rae-816a04/",
+    image: images.landingPage.rob,
+  },
 ];
 
 export const advisoryBoardDutch: teamMemberCardstDataType[] = [
@@ -251,7 +262,15 @@ export const advisoryBoardDutch: teamMemberCardstDataType[] = [
     linkedin: "https://www.linkedin.com/in/mvandrunen/",
     image: images.landingPage.Henk,
   },
-
+  {
+    name: "Rob Greve",
+    position: "Secretaris en Penningmeester van de trust bonds stichting Edge Capital",
+    bio: `Rob Greve is per 1 juli 2025 toegetreden tot het bestuur van de trust bonds stichting Edge Capital. Hij begon zijn loopbaan in de accountancy en fiscale wetgeving. Na vijf jaar werkzaam te zijn geweest bij de Europese Commissie in Luxemburg maakte hij de overstap naar de staal- en metaalsector.
+Vervolgens was Rob vijftien jaar directeur van de Steel Federation Netherlands. Na zijn pensionering is hij actief gebleven als bestuurslid van een internationale staalvereniging.
+Naast zijn professionele loopbaan heeft Rob diverse bestuursfuncties vervuld als voorzitter en penningmeester binnen zowel publieke als private organisaties.`,
+    linkedin: "https://www.linkedin.com/in/rob-greve-rae-816a04/",
+    image: images.landingPage.rob,
+  },
 ];
 
 
@@ -280,27 +299,27 @@ export const SupportAndCommercialDutch: teamMemberCardstDataType[] = [
 export const edgeNextTeam: teamMemberCardstDataType[] = [
   {
     name: "Aron Broeken",
-    position: "General manager EdgeNext",
+    position: "Head of Institutional Business Development",
     bio: "Aron Broeken combines vision, leadership, and execution power in his role as General Manager. With years of experience in asset management and trading, he guides the organization toward sustainable growth and scalable operations with strategic insight, decisiveness, and accountability.",
     linkedin: "https://www.linkedin.com/in/aron-broeken-52b876171",
     image: images.landingPage.Aron,
   },
   {
     name: "Pepijn van den Hurk",
-    position: "Head of finance and technology EdgeNext",
+    position: "Head of Finance & Technology",
     bio: "Pepijn van den Hurk plays a central role in shaping the fund’s financial and technological strategy. He oversees financial operations including capital allocation, Risk management, and reporting, while also driving the long-term shift toward scalable, tech-driven processes.",
     linkedin: "",
     image: images.landingPage.Pepijn,
   },
   {
     name: "Tom Meulemans",
-    position: "Head of relationships and sales EdgeNext",
+    position: "Head of Relations & Marketing",
     bio: "Tom Meulemans is responsible for managing relationships and sales for the fund. With a strong commercial background and sharp eye for investor needs, he plays a key role in growing and maintaining the fund’s network. As a main point of contact for (potential) investors, Tom is known for his ability to communicate complex financial topics with clarity. His personal approach and deep market understanding foster long-term partnerships and strong investor trust.",
     linkedin: "",
     image: images.landingPage.Tom,
   },
 
-    {
+  {
     name: "Bernard Beerding",
     position: "Manager business development",
     bio: "Bernard Beerding brings years of experience in building and leading sales teams. At EdgeNext, he is responsible for developing our commercial team — a role that perfectly aligns with his expertise, drive, and attention to detail.",
@@ -313,26 +332,26 @@ export const edgeNextTeam: teamMemberCardstDataType[] = [
 export const edgeNextTeamDutch: teamMemberCardstDataType[] = [
   {
     name: "Aron Broeken",
-    position: "Algemeen directeur EdgeNext",
+    position: "Head of Institutional Business Development",
     bio: "Aron Broeken combineert visie, leiderschap en executiekracht in zijn rol als General Manager. Met jarenlange ervaring in asset management en trading, stuurt hij met strategisch inzicht, besluitvaardigheid en verantwoordelijkheid de organisatie richting duurzame groei en schaalbare bedrijfsvoering.",
     linkedin: "https://www.linkedin.com/in/aron-broeken-52b876171",
     image: images.landingPage.Aron,
   },
   {
     name: "Pepijn van den Hurk",
-    position: "Hoofd financiën en technologie EdgeNext",
+    position: "Head of Finance & Technology",
     bio: "Pepijn van den Hurk speelt een centrale rol in zowel de financiële als technologische strategie van het fonds. Hij is verantwoordelijk voor de financiële operatie, waaronder kapitaalallocatie, risicobeheer en rapportage, en stuurt tegelijkertijd de langetermijnontwikkeling aan richting schaalbare, technologiegedreven processen.",
     linkedin: "",
     image: images.landingPage.Pepijn,
   },
   {
     name: "Tom Meulemans",
-    position: "Hoofd relaties en sales EdgeNext",
+    position: "Head of Relations & Marketing",
     bio: "Tom Meulemans is verantwoordelijk voor relaties en sales van het fonds. Met een sterke commerciële achtergrond en een scherp oog voor de behoeften van investeerders, speelt hij een sleutelrol in het uitbreiden en onderhouden van het netwerk van het fonds. Tom is een vast aanspreekpunt voor (potentiële) investeerders en weet complexe financiële informatie helder en toegankelijk over te brengen. Zijn persoonlijke benadering, gecombineerd met diepgaande marktkennis, zorgt voor duurzame samenwerkingen en een solide vertrouwensbasis met onze partners.",
     linkedin: "",
     image: images.landingPage.Tom,
   },
-    {
+  {
     name: "Bernard Beerding",
     position: "Manager business development",
     bio: "Bernard Beerding brengt jarenlange ervaring mee in het opzetten en aansturen van salesteams. Binnen EdgeNext is hij verantwoordelijk voor de opbouw van ons commerciële team — een rol die perfect aansluit bij zijn expertise, gedrevenheid en oog voor detail.",

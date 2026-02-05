@@ -36,10 +36,10 @@
 .title-underline {
     width: clamp(200px, 30vw, 350px);
     height: auto;
-    margin-top: -35px;
+    margin-top: -10px;
     align-self: flex-start;
-    margin-left: calc(65% - clamp(100px, 15vw, 175px) - 80px);
-    margin-bottom: 40px;
+    margin-left: calc(45% - clamp(100px, 15vw, 175px) - 80px);
+    margin-bottom: 10px;
 }
 
 .ambassador-content {
@@ -158,6 +158,13 @@
     .ambassador-content {
         height: 600px;
     }
+
+    .title-underline {
+
+    margin-left: calc(65% - clamp(100px, 15vw, 175px) - 80px);
+    margin-top: -35px;
+
+}
 
     .ambassador-overlay {
         justify-content: center;

@@ -1,96 +1,85 @@
 import React from "react";
 import { motion } from "framer-motion";
 import images from "@/constant/images";
-import "../landingPage/component.css";
 import { Link } from "react-router-dom";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-
-// Translations object
 const translations = {
   en: {
-    title: "About EdgeFund",
-    description: "EdgeFund uses an automated, volatility-driven strategy focused on selling options while minimizing risk through delta hedging. Futures are used for hedging, with the S&P 500 as the primary market due to its liquidity. Additionally, the fund employs interest rate and FX arbitrage to enhance returns.",
-    minimumInvestment: "Minimum investment: €100,000.",
-    participateButton: "Participate"
+    about: "About EdgeFund",
+    title: "EdgeFund transforms market uncertainty into consistent, stable returns.",
+    desc1: "Unlike traditional funds that rely on rising prices, EdgeFund thrives on market uncertainty. Our strategy actively captures the Volatility Risk Premium on the S&P 500, while simultaneously enhancing yield through active Interest Arbitrage strategies.",
+    desc2: "By strictly delta-hedging every position, we neutralize price risk completely. We are pragmatic, systematic, and unfailingly committed to capital preservation. This approach makes sophisticated, institutional-level stability accessible to private investors starting from €100,000.",
+    requestBrochure: "Request Brochure",
   },
   nl: {
-    title: "Over EdgeFund",
-    description: "EdgeFund maakt gebruik van een geautomatiseerde, op volatiliteit gebaseerde strategie die zich richt op het verkopen van opties, terwijl het risico wordt geminimaliseerd via delta-hedging. Futures worden ingezet voor hedging, met de S&P 500 als primaire markt vanwege de hoge liquiditeit. Daarnaast maakt het fonds gebruik van rente- en valutaarbitrage om het rendement te verhogen.",
-    minimumInvestment: "Minimale investering: €100.000.",
-    participateButton: "Deelnemen"
-  }
+    about: "Over EdgeFund",
+    title: "EdgeFund transformeert marktonzekerheid in consistent, stabiel rendement.",
+    desc1: "In tegenstelling tot traditionele fondsen die afhankelijk zijn van stijgende prijzen, floreert EdgeFund bij marktonzekerheid. Onze strategie legt actief de Volatility Risk Premium vast op de S&P 500, terwijl we tegelijkertijd het rendement verhogen via actieve Interest Arbitrage-strategieën.",
+    desc2: "Door elke positie strikt te delta-hedgen, neutraliseren we het prijsrisico volledig. Wij zijn pragmatisch, systematisch en onvermoeibaar toegewijd aan kapitaalbehoud. Deze aanpak maakt geavanceerde stabiliteit op institutioneel niveau toegankelijk voor particuliere beleggers vanaf €100.000.",
+    requestBrochure: "Brochure aanvragen",
+  },
 };
 
 const AboutEdgeFund = () => {
   const { language } = useChangeLanguageContext();
-  const content = translations[language] || translations.en;
+  const t = translations[language] || translations.en;
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-0 py-16 md:py-16 md:mt-[7rem] mt-[4rem]">
+    <section className="relative z-20 w-[100%] rounded-[24px] mx-auto -mt-10 pb-12 bg-[#F6FEFF]">
       <motion.div
-        className="flex flex-col md:flex-row gap-8 md:gap-3 overflow-hidden"
-        initial={{ opacity: 0, y: 20 }}
+        className="w-[98%] max-w-[1700px] mx-auto bg-[#F6FEFF] rounded-[24px] p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row gap-16 items-start"
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
-        {/* Content Side */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-[#EEF4F5] rounded-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <div className="relative inline-block mb-2">
-              <h2 className="font-bold text-gray-900 text-[30.86px] md:text-[35px] relative z-10">
-                {content.title}
-              </h2>
-              <img
-                src={images.landingPage.Brush}
-                alt="Brush underline"
-                className="absolute bottom-[-1px] left-0 h-[6px] z-0"
-              />
-            </div>
-
-
-            {/* <div className="w-24 h-[1.2px] bg-yellow-400 mb-6"></div> */}
-
-            <p className="text-gray-800 mb-8 inter font-medium md:text-[20px] text-[14.91px]">
-              {content.description}
-            </p>
-
-            <p className="font-bold text-gray-900 mb-8 inter md:text-[18px] text-[10.72px]">
-              {content.minimumInvestment}
-            </p>
-            <Link to="/participate">
-              <motion.button
-                className="bg-[#206A7C] text-white px-8 py-3 rounded-full 
-                shadow-[0_4px_10px_rgba(32,106,124,0.3)] hover:shadow-[0_8px_20px_rgba(32,106,124,0.45)] 
-                hover:bg-[#206A7C] transition-all duration-300"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {content.participateButton}
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-
         {/* Image Side */}
-        <motion.div
-          className="w-full md:w-1/2 h-64 md:h-auto relative bottom-[1.5rem] md:bottom-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-        >
-          <div className="w-full h-full relative">
+        <div className="w-full lg:w-[30%] flex flex-col gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#DCA100]"></div>
+            <span className="text-[#00222C] font-semibold text-[clamp(12px,1vw,14px)] uppercase tracking-wider">
+              {t.about}
+            </span>
+          </div>
+          <div className="rounded-2xl overflow-hidden">
             <img
-              src={images.edgefund.edgehero}
-              alt="Edge Capital team meeting"
-              className="w-full h-full object-cover rounded-[10px]"
+              src={images.edgefund.aboutSide}
+              alt="EdgeFund Workspace"
+              className="w-full h-auto object-cover"
             />
           </div>
-        </motion.div>
+        </div>
+
+        {/* Content Side */}
+        <div className="w-full lg:w-[70%] flex flex-col gap-6 lg:gap-8">
+          <h2 className="text-[#00222C] font-semibold leading-[1.2] text-[clamp(24px,2.5vw,26px)]">
+            {t.title}
+          </h2>
+
+          <div className="w-full h-[1px] bg-gray-200"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <p className="text-[#00222C]/70 leading-relaxed font-normal text-[clamp(15px,1.2vw,18px)]">
+              {t.desc1}
+            </p>
+            <p className="text-[#00222C]/70 leading-relaxed font-normal text-[clamp(15px,1.2vw,18px)]">
+              {t.desc2}
+            </p>
+          </div>
+
+          <div className="flex justify-end mt-4">
+            <Link
+              to="/requestinfo"
+              className="text-[#0E7490] font-semibold flex items-center gap-2 hover:gap-4 transition-all text-[clamp(16px,1.5vw,18px)]"
+            >
+              {t.requestBrochure}
+              <FontAwesomeIcon icon={faChevronRight} className="text-[clamp(14px,1vw,16px)]" />
+            </Link>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
