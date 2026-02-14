@@ -1,29 +1,38 @@
-import NavBar from "@/common/NavBar";
-import Contact from "@/component/landingPage/Contact";
-import Footer from "@/common/Footer";
-import HeroSection from "@/component/Institutional/HeroSection";
-import ResearchDevelopmentSection from "@/component/Institutional/ResearchDevelopmentSection";
-import PrinciplesSection from "@/component/Institutional/Principles";
-import TradingApproachSection from "@/component/Institutional/TradingApproach";
-import InstitutionalInvestmentSolutions from "@/component/Institutional/InstitutionalInvestmentSolutions";
-import ClientsSection from "@/component/Institutional/ClientSection";
+import { Header } from "@/component/Institutional/layout/Header";
+import { Hero } from "@/component/Institutional/sections/Hero";
+import { StressDefinition } from "@/component/Institutional/sections/StressDefinition";
+import { EngineTimeline } from "@/component/Institutional/sections/EngineTimeline";
+import { MonthlyPerformance } from "@/component/Institutional/sections/MonthlyPerformance";
+import { BenchmarkComparison } from "@/component/Institutional/sections/BenchmarkComparison";
+import { NAVPerformance } from "@/component/Institutional/sections/NAVPerformance";
+import { StressTest2022 } from "@/component/Institutional/sections/StressTest2022";
+import { Governance } from "@/component/Institutional/sections/Governance";
+import { InvestmentFramework } from "@/component/Institutional/sections/InvestmentFramework";
+import Footer from "@/component/Institutional/sections/Footer";
+import Contact from "@/component/Institutional/sections/Contact";
 
+// Institutional-scoped CSS
+import "@/component/Institutional/styles/institutional-common.css";
+import "@/component/Institutional/styles/institutional-component.css";
 
 const Institutional = () => {
   return (
-    <>
-      <NavBar />
-      <div className="bg-white">
-        <HeroSection />
-        <ResearchDevelopmentSection />
-        <PrinciplesSection />
-        <TradingApproachSection />
-        <InstitutionalInvestmentSolutions />
-        <ClientsSection />
-        <Contact />
+    <main className="min-h-screen bg-institutional-white flex flex-col">
+      <Header />
+      <Hero />
+      <StressDefinition />
+      <EngineTimeline />
+      <MonthlyPerformance />
+      <BenchmarkComparison />
+      <NAVPerformance />
+      <StressTest2022 />
+      <Governance />
+      <div style={{ display: "none" }}>
+        <InvestmentFramework />
       </div>
+      <Contact />
       <Footer />
-    </>
+    </main>
   );
 };
 
