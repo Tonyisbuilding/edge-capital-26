@@ -25,10 +25,11 @@ const TeamCard = ({
   };
 
   const { pathname } = useLocation();
+  const isTeamPage = pathname.slice(1) === "team";
 
   return (
     <div
-      className="relative flex-shrink-0 w-[320px] md:w-[480px] h-[22rem] md:h-[32rem] cursor-pointer"
+      className={`relative cursor-pointer h-[22rem] md:h-[32rem] ${isTeamPage ? 'w-full' : 'flex-shrink-0 w-[320px] md:w-[480px]'}`}
       onClick={handleFlip}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
@@ -232,17 +233,25 @@ const TeamMemberCards = ({ teamMembers, department }: TeamMemberCardsProps) => {
             </p>
           </div>
 
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide w-full"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {teamMembers.map((member, index) => (
-              <TeamCard key={index} {...member} />
-            ))}
-          </div>
+          {isTeamPage ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+              {teamMembers.map((member, index) => (
+                <TeamCard key={index} {...member} />
+              ))}
+            </div>
+          ) : (
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide w-full"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {teamMembers.map((member, index) => (
+                <TeamCard key={index} {...member} />
+              ))}
+            </div>
+          )}
 
           <div
             className={`flex justify-center mt-10 ${pathname.slice(1) === "team" ? "hidden" : "block"

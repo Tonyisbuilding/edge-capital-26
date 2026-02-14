@@ -24,6 +24,10 @@ const FAQSection = () => {
                     answer: "In the EdgeFund we earn money by receiving premiums on options. You can compare this to selling insurance: Investors are sometimes afraid that the market will move sharply. That fear causes option premiums to rise, especially if volatility increases; investors (both retail and institutional) want to protect their portfolios by buying options (which we sell). We capitalize on this by selling options when premiums are high. In exchange, we receive a premium immediately. Because we fully hedge the price risk, it does not matter to us whether the market rises or falls. We do not earn from the direction of the market, but from the fact that fear and uncertainty are temporary. In short: More unrest in the market = higher premiums = more opportunities to collect premiums, without price risk."
                 },
                 {
+                    question: "How does Correlation Arbitrage Fund generate returns?",
+                    answer: "At Correlation Arbitrage Fund, we earn money by exploiting temporary deviations in currency relationships. In the FX market, many currencies structurally move together because they are driven by the same macro factors — interest rates, growth, inflation, and capital flows. Our strategy identifies moments when these relationships briefly fall out of balance. We then set up a hedged long/short position that profits when the relationship normalizes. Key point: we do not try to predict whether the euro or dollar will go \"up or down.\" We focus on relative movements between currencies — and manage risk through strict exposure and position limits."
+                },
+                {
                     question: "What exactly does an AFM registration entail?",
                     answer: "We are registered with the AFM under the AIFM light regime. This means that we are supervised by the AFM, but in a lighter supervisory framework than fully licensed managers. Concretely, this means: We must strict legal requirements regarding transparency, reporting, and organization. The AFM supervises compliance with these rules. There is no prior testing or approval of a prospectus by the AFM. The AFM registration is not a quality mark, but it does indicate that we operate within the legal framework and are under supervision."
                 },
@@ -65,6 +69,10 @@ const FAQSection = () => {
                 {
                     question: "Hoe maakt EdgeFund rendement?",
                     answer: "In het EdgeFund verdienen we geld door premies te ontvangen op opties. U kunt dit vergelijken met het verkopen van een verzekering: Beleggers zijn soms bang dat de markt hard gaat bewegen. Die angst zorgt ervoor dat optiepremies stijgen, vooral als de volatiliteit toeneemt, beleggers zowel particulier als institutioneel willen hun portfolio beschermen door opties te schrijven. Wij spelen daarop in door opties te verkopen wanneer die premies hoog zijn. In ruil daarvoor ontvangen we direct een premie. Omdat we het koersrisico volledig afdekken, maakt het voor ons niet uit of de markt stijgt of daalt. We verdienen niet aan de richting van de markt, maar aan het feit dat angst en onzekerheid tijdelijk zijn. Kort gezegd: Meer onrust in de markt = hogere premies = meer kansen om premie te incasseren, zonder koersrisico."
+                },
+                {
+                    question: "Hoe maakt Correlation Arbitrage Fund rendement?",
+                    answer: "Bij Correlation Arbitrage Fund verdienen we geld door tijdelijke afwijkingen in valuta relaties te benutten. In de FX-markt bewegen veel valuta's structureel met elkaar mee, omdat ze worden gedreven door dezelfde macrofactoren — rente, groei, inflatie, kapitaalstromen. Onze strategie zoekt momenten waarop die relaties kortstondig uit balans raken. Dan zetten we een afgedekte long/short-positie op die profiteert als de relatie normaliseert. Kernpunt: we proberen niet te voorspellen of de euro of dollar \"omhoog of omlaag\" gaat. We richten ons op relatieve bewegingen tussen valuta's — en beheren risico via strikte exposure- en limieten."
                 },
                 {
                     question: "Wat houdt een AFM registratie precies in?",

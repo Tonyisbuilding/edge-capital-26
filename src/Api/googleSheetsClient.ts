@@ -144,3 +144,84 @@ async function fetchFundReturns(): Promise<FundReturnsResponse | null> {
 
 export { fetchFundReturns };
 export type { FundReturnsResponse, FundClassData, FundMonth, FundReturns };
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Video CMS API
+// ────────────────────────────────────────────────────────────────────────────────
+
+interface VideoData {
+  youtube_url: string;
+  title_en: string;
+  title_nl: string;
+  description_en: string;
+  description_nl: string;
+  thumbnail_url: string;
+  sort_order: number;
+}
+
+/**
+ * Extracts YouTube video ID from various URL formats
+ */
+function extractYouTubeId(url: string): string | null {
+  const patterns = [
+    /youtu\.be\/([^?&]+)/,
+    /youtube\.com\/watch\?v=([^&]+)/,
+    /youtube\.com\/embed\/([^?&]+)/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+/**
+ * Returns an array of YouTube thumbnail URLs in descending quality order.
+ * maxresdefault (1080p) → sddefault (640p) → hqdefault (480p)
+ */
+function getYouTubeThumbnails(url: string): string[] {
+  const id = extractYouTubeId(url);
+  if (!id) return [];
+  return [
+    `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+    `https://img.youtube.com/vi/${id}/sddefault.jpg`,
+    `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+  ];
+}
+
+/**
+ * Returns the highest quality YouTube thumbnail URL (first in chain).
+ */
+function getYouTubeThumbnail(url: string): string {
+  const thumbs = getYouTubeThumbnails(url);
+  return thumbs[0] || '';
+}
+
+/**
+ * Fetches video data from the CMS (same endpoint as fund returns)
+ */
+async function fetchVideos(): Promise<VideoData[] | null> {
+  if (!FUND_RETURNS_SCRIPT_URL) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(FUND_RETURNS_SCRIPT_URL, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+    });
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
+    if (data.error) throw new Error(data.error);
+
+    return data.videos ?? null;
+  } catch (error) {
+    console.error("Failed to fetch videos:", error);
+    return null;
+  }
+}
+
+export { fetchVideos, getYouTubeThumbnail, getYouTubeThumbnails };
+export type { VideoData };

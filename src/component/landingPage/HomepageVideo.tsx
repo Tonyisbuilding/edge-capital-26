@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import images from "@/constant/images";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 import titleUnderline from "./Vector 13.svg";
+import { fetchVideos, getYouTubeThumbnails, VideoData } from "@/Api/googleSheetsClient";
 
-const videoData = [
+interface VideoItem {
+  url: string;
+  thumbnail: string;
+  thumbnailFallbacks: string[];
+  titleEn: string;
+  titleNl: string;
+  descriptionEn: string;
+  descriptionNl: string;
+}
+
+const fallbackVideoData: VideoItem[] = [
   {
     url: "https://youtu.be/mp56T2AXHnc",
     thumbnail: images.landingPage.EC_businessclassThumbnail,
+    thumbnailFallbacks: [],
     titleEn: "Interview with Teagan De Groot – Business Class",
     titleNl: "Interview met Teagan De Groot – Business Class",
     descriptionEn: "Teagan De Groot discusses Edge Capital's EdgeFund approach to market volatility, risk management, and market-neutral strategy design in an interview with Business Class.",
@@ -17,6 +29,7 @@ const videoData = [
   {
     url: "https://youtu.be/9QzTeE02-Ps",
     thumbnail: images.landingPage.EC_businessclassThumbnail,
+    thumbnailFallbacks: [],
     titleEn: "Edge Capital Media Feature",
     titleNl: "Edge Capital Mediafunctie",
     descriptionEn: "Discover how Edge Capital is making headlines with innovative investment strategies.",
@@ -25,6 +38,7 @@ const videoData = [
   {
     url: "https://youtu.be/fjxBUhkP9FM",
     thumbnail: images.landingPage.EC_businessclassThumbnail,
+    thumbnailFallbacks: [],
     titleEn: "Edge Capital Strategy Insights",
     titleNl: "Edge Capital Strategie Inzichten",
     descriptionEn: "An in-depth look at our investment approach and market analysis.",
@@ -33,6 +47,7 @@ const videoData = [
   {
     url: "https://youtu.be/8IdC8PDB4Cc",
     thumbnail: images.landingPage.Vid4Thumbnail,
+    thumbnailFallbacks: [],
     titleEn: "Edge Capital Innovation",
     titleNl: "Edge Capital Innovatie",
     descriptionEn: "How technology and expertise come together at Edge Capital.",
@@ -40,10 +55,38 @@ const videoData = [
   },
 ];
 
+const mapApiToVideoItems = (apiVideos: VideoData[]): VideoItem[] => {
+  return apiVideos
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .map((v) => {
+      const thumbs = getYouTubeThumbnails(v.youtube_url);
+      return {
+        url: v.youtube_url,
+        thumbnail: v.thumbnail_url || thumbs[0] || '',
+        thumbnailFallbacks: v.thumbnail_url ? thumbs : thumbs.slice(1),
+        titleEn: v.title_en,
+        titleNl: v.title_nl,
+        descriptionEn: v.description_en,
+        descriptionNl: v.description_nl,
+      };
+    });
+};
+
 const HomepageVideo = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoData, setVideoData] = useState<VideoItem[]>(fallbackVideoData);
   const { language } = useChangeLanguageContext();
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      const data = await fetchVideos();
+      if (data && data.length > 0) {
+        setVideoData(mapApiToVideoItems(data));
+      }
+    };
+    loadVideos();
+  }, []);
 
   const handleSwitch = (dir: "next" | "prev") => {
     const nextIndex =
@@ -109,6 +152,16 @@ const HomepageVideo = () => {
                 src={currentVideo.thumbnail}
                 alt="Video Thumbnail"
                 className="absolute inset-0 w-full h-full object-cover rounded-[30px] blur-sm"
+                onError={(e) => {
+                  const fallbacks = currentVideo.thumbnailFallbacks;
+                  const img = e.currentTarget;
+                  const currentSrc = img.src;
+                  const idx = fallbacks.findIndex((f) => currentSrc.includes(f) || f.includes(currentSrc));
+                  const nextIdx = idx >= 0 ? idx + 1 : 0;
+                  if (nextIdx < fallbacks.length) {
+                    img.src = fallbacks[nextIdx];
+                  }
+                }}
               />
               <button
                 onClick={() => {

@@ -152,12 +152,17 @@ export const timelineData: timelineDataType[] = [
   {
     year: "2023",
     content:
-      "Tradealot rebrands as Edge Capital, a name that better reflects its mission and vision. The new identity aligns with the company’s goal of empowering investors—true to its motto: Investing with an edge!",
+      "Tradealot rebrands as Edge Capital, a name that better reflects its mission and vision. The new identity aligns with the company's goal of empowering investors—true to its motto: Investing with an edge!",
   },
   {
-    year: "Future",
+    year: "2025",
     content:
-      "Edge Capital remains committed to innovation and growth. In 2024, the company will focus on obtaining a full AFM license, enabling it to serve a broader audience and compete more effectively in the investment industry.",
+      "With an eye on the next phase of Edge Capital, in April a deal is closed for the acquisition of a complete team from another fund. Under the joint leadership of Aron Broeken, Pepijn van den Hurk, and Tom Meulemans, the Correlation Arbitrage Fund is launched in August. The fund is positioned under the EdgeNext label, representing the next generation of expertise, innovation, and long-term vision.",
+  },
+  {
+    year: "2026",
+    content:
+      "Against the backdrop of the company's continued growth, in January Edge Capital enters into a partnership with Nyck de Vries, active in Formula E, endurance racing, and serving as a test driver for McLaren. The collaboration is based on shared principles around sustainable technology, strategic discipline, and long-term performance.",
   },
 ];
 export const timelineDataDutch: timelineDataType[] = [
@@ -187,9 +192,14 @@ export const timelineDataDutch: timelineDataType[] = [
       "Tradealot verandert haar naam in Edge Capital. De nieuwe naam sluit perfect aan bij de bedrijfsactiviteiten en weerspiegelt ons motto; Beleggen met een voorsprong!",
   },
   {
-    year: "Future",
+    year: "2025",
     content:
-      "Ook in de aankomende jaren zal Edge Capital blijven innoveren en investeren in verdere groei van de onderneming. In de nabije toekomst komt de focus te liggen op een volledige vergunning van de AFM. De onderneming kan hierdoor een breder publiek gaan bedienen en zich zo definitief meten met de gevestigde orde binnen de industrie.",
+      "Met het oog op de volgende fase van Edge Capital sluiten wij in april een deal voor de overname van een compleet team van een ander fonds. Onder gezamenlijke leiding van Aron Broeken, Pepijn van den Hurk en Tom Meulemans wordt het Correlation Arbitrage Fund in augustus gelanceerd. Het fonds wordt gepositioneerd onder het EdgeNext-label, dat de volgende generatie expertise, innovatie en langetermijnvisie vertegenwoordigt.",
+  },
+  {
+    year: "2026",
+    content:
+      "Tegen de achtergrond van de aanhoudende groei van de onderneming zijn wij in januari een partnership aangegaan met Nyck de Vries, actief in Formula E, endurance racing en als testcoureur verbonden aan McLaren. De samenwerking is gebaseerd op gedeelde principes rondom duurzame technologie, strategische discipline en prestaties op de lange termijn.",
   },
 ];
 
