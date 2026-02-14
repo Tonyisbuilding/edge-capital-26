@@ -49,9 +49,9 @@ const OurCharities = () => {
         ))}
       </div> */}
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="w-[98%] max-w-[1700px] mx-auto relative z-10">
         <div className="mb-6">
-          <h2 className="text-4xl font-bold text-gray-800 mb-2">{text.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-2">{text.title}</h2>
           <div className="w-20 h-1 bg-yellow-400 mb-4"></div>
           <p className="text-lg text-gray-700 max-w-3xl">
             {text.description}

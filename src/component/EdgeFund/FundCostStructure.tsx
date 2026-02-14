@@ -205,7 +205,7 @@ const FundCostStructure = () => {
           className="space-y-8"
         >
           <div className="relative mb-12 text-center flex flex-col items-center">
-            <h2 className="text-3xl lg:text-[40px] font-bold text-[#00222C] relative inline-block z-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#00222C] relative inline-block z-10">
               EdgeFund <span className="relative inline-block">
                 Cost Structure
                 <img

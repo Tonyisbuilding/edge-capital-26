@@ -43,7 +43,7 @@ const HeroSection = () => {
         </div>
 
         {/* Main content */}
-        <main className="relative z-10 container mx-auto px-4 flex flex-col min-h-screen">
+        <main className="relative z-10 w-[98%] max-w-[1700px] mx-auto px-4 flex flex-col min-h-screen">
           <div className=" mt-8 md:mt-16 gap-8 relative">
             {/* Hero Section - 40% width on medium+ screens */}
             <motion.div

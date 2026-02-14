@@ -241,10 +241,15 @@
         text-align: center;
     }
 
+    .hero-container {
+        width: 100%;
+    }
+
     .hero-features {
         flex-direction: column;
         gap: 16px;
         padding: 20px;
+        border-radius: 0;
     }
 
     .hero-feature {

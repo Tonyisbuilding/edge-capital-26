@@ -124,7 +124,7 @@ const HomepageVideo = () => {
     <section className="w-[98%] max-w-[1700px] mx-auto px-0 md:px-4 py-16">
       {/* Header - Centered */}
       <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#02080A] mb-1">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#02080A] mb-1">
           {t.title}
         </h2>
         <img src={titleUnderline} alt="" className="mx-auto w-[clamp(200px,30vw,350px)] h-auto mb-3" />

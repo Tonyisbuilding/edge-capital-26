@@ -28,7 +28,7 @@ const Marquee: React.FC<MarqueeProps> = ({ speed = 20 }) => {
 
   return (
     <section className="py-6 bg-[#F6FEFF] max-h-[150px]">
-      <div className="container mx-auto px-4">
+      <div className="w-[98%] max-w-[1700px] mx-auto px-4">
         <h2 className="text-center text-gray-500 text-sm md:text-base font-bold mb-10">
           {language === 'nl' ? 'Betrouwbare partners:' : 'Known from:'}
         </h2>

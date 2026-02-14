@@ -99,8 +99,8 @@ const InstitutionalInvestmentSolutions = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-[1.8rem] md:text-4xl font-bold text-center mb-12 text-gray-800">
+    <section className="w-[98%] max-w-[1700px] mx-auto px-4 py-12">
+      <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-800">
         {content.title}
       </h2>
 

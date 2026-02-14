@@ -185,7 +185,9 @@ assuming they exist or using system fonts for now matching the look .ec-campaign
 
 /* Hero Content */
 .ec-hero-content-container {
-    width: 100%;
+    width: 98%;
+    max-width: 1700px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     padding-bottom: 40px;

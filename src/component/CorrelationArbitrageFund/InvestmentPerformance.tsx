@@ -191,12 +191,12 @@ const InvestmentPerformance = () => {
   );
 
   return (
-    <div className="w-[98%] max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-[#F6FEFF]">
+    <div className="w-[98%] max-w-[1700px] mx-auto px-[10px] sm:px-6 lg:px-8 py-12 bg-[#F6FEFF]">
       <motion.div
         variants={cardVariants}
         className="mb-12 text-center flex flex-col items-center"
       >
-        <h2 className="text-3xl lg:text-[40px] font-bold text-[#00222C] relative inline-block z-10">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#00222C] relative inline-block z-10">
           Correlation Arbitrage Fund <span className="relative inline-block">
             Performance
             <img

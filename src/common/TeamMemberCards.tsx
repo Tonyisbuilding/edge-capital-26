@@ -29,7 +29,7 @@ const TeamCard = ({
 
   return (
     <div
-      className={`relative cursor-pointer h-[22rem] md:h-[32rem] ${isTeamPage ? 'w-full' : 'flex-shrink-0 w-[320px] md:w-[480px]'}`}
+      className={`relative cursor-pointer md:h-[32rem] ${isTeamPage ? 'h-[28rem] w-full' : 'h-[22rem] flex-shrink-0 w-[320px] md:w-[480px]'}`}
       onClick={handleFlip}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
@@ -73,10 +73,10 @@ const TeamCard = ({
         style={{ backfaceVisibility: "hidden" }}
       >
         <div>
-          <h1 className="inter text-[13.14px] md:text-[22.58px] font-medium">
+          <h1 className="inter text-[16px] md:text-[22.58px] font-medium">
             {name}
           </h1>
-          <h1 className="inter text-[8.15px] md:text-[14px] font-medium">
+          <h1 className="inter text-[11px] md:text-[14px] font-medium">
             {position}
           </h1>
         </div>
@@ -99,10 +99,10 @@ const TeamCard = ({
         style={{ backfaceVisibility: "hidden" }}
       >
         <div className="h-full flex flex-col justify-between">
-          <div>
-            <h3 className="text-xl font-bold mb-1">{name}</h3>
-            <p className="text-gray-300 mb-4">{position}</p>
-            <p className="text-sm">{bio}</p>
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            <h3 className="text-lg md:text-xl font-bold mb-1">{name}</h3>
+            <p className="text-gray-300 mb-2 md:mb-4 text-xs md:text-base">{position}</p>
+            <p className="text-xs md:text-sm">{bio}</p>
           </div>
           {linkedin && (
             <div>
@@ -201,7 +201,7 @@ const TeamMemberCards = ({ teamMembers, department }: TeamMemberCardsProps) => {
         </div>
         {/* ........ */}
         <div
-          className={`w-[98%] max-w-[1700px] mx-auto px-0 md:px-4 ${pathname.slice(1) === "team" ? "py-0 md:py-5" : "py-12"
+          className={`w-[98%] max-w-[1700px] mx-auto px-[10px] md:px-4 ${pathname.slice(1) === "team" ? "py-0 md:py-5" : "py-12"
             }`}
         >
           <div
@@ -222,7 +222,7 @@ const TeamMemberCards = ({ teamMembers, department }: TeamMemberCardsProps) => {
             {/* <div className=" bg-[#F9A600] h-[2px] w-[5rem]"></div> */}
           </div>
           <div className={`text-center mb-12 ${pathname.slice(1) === "team" ? "hidden" : "block"}`}>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#02080A] mb-1">
+            <h2 className="text-2xl md:text-5xl font-bold text-[#02080A] mb-1">
               {language === 'nl' ? 'Ontmoet het Edge Capital Team' : 'Meet the Edge Capital Team'}
             </h2>
             <img src={titleUnderline} alt="" className="mx-auto w-[clamp(200px,30vw,350px)] h-auto mb-3" />

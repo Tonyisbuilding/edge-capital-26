@@ -124,6 +124,11 @@
 }
 
 @media (max-width: 768px) {
+    .ec-faq-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     .ec-faq-container {
         width: 100%;
         padding: 0;

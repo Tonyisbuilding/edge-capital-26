@@ -230,7 +230,7 @@ const WhyWorkWithUs = () => {
       className="py-16 px-4 md:px-6 bg-[##EEF4F5]"
       aria-labelledby="why-work-with-us"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         <motion.h2
           id="why-work-with-us"
           className="text-3xl md:text-4xl font-bold text-center mb-12 text-black"

@@ -12,7 +12,7 @@ const WhyEdgeCapital = () => {
     <>
       <div className="bg-[#02080A] py-[1.5rem] rounded-t-[1rem] rounded-b-none px-[1rem] relative max-w-[1700px] mx-auto w-[98%]">
         <div className="p-[.1rem] text-center flex flex-col items-center">
-          <h1 className="text-[#FFFFFF] font-bold md:text-[48px] text-[25px] montserrat md:px-[.1rem]">
+          <h1 className="text-[#FFFFFF] font-bold text-3xl md:text-5xl montserrat md:px-[.1rem]">
             {language === 'nl' ? 'Waarom Edge Capital?' : 'Why Edge Capital?'}
           </h1>
           <p

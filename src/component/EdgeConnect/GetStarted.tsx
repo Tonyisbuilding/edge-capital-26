@@ -101,13 +101,13 @@ const GetStartedSection = () => {
 
   return (
     <div className="bg-gray-100 p-6 md:p-12 w-full">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         {/* Desktop View - Two column layout */}
         <div className="hidden md:flex">
           {/* Left column - Title and navigation */}
           <div className="w-1/2 pr-8">
             <div className="mb-8">
-              <h2 className="text-4xl font-bold text-gray-800">{t.title}</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-800">{t.title}</h2>
               <p className="text-xl text-gray-600 mt-2">{t.subtitle}</p>
             </div>
             
@@ -161,7 +161,7 @@ const GetStartedSection = () => {
         <div className="md:hidden">
           {/* Top section - Title and navigation */}
           <div className="mb-6">
-            <h2 className="text-3xl lg:text-[60px] font-bold text-[#001B20]">{t.title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#001B20]">{t.title}</h2>
             <p className="text-lg text-gray-600 mt-1">{t.subtitle}</p>
             
             <div className="flex items-center mt-4">

@@ -6,18 +6,10 @@ import EdgeHorizonSection from "@/component/EdgeHorizon/EdgeHorizonSection";
 const EdgeHorizon = () => {
   return (
     <>
-          <NavBar />
-      <div
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
-        <EdgeHorizonSection />
-        <Contact />
-        <Footer />
-      </div>
+      <NavBar />
+      <EdgeHorizonSection />
+      <Contact />
+      <Footer />
     </>
   );
 };

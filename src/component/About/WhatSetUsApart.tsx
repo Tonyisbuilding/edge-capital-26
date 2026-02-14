@@ -113,10 +113,10 @@ const WhatSetsUsApart = () => {
   const currentLanguageData = translations[language];
 
   return (
-    <section className="py-16 px-4 ">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-[10px] md:px-4 ">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12 text-gray-900"
+          className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}

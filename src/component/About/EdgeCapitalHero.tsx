@@ -77,7 +77,7 @@ const EdgeCapitalHero = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 mt-[6rem] pt-[54px] sm:pt-0">
+    <div className="w-[98%] max-w-[1700px] mx-auto px-[10px] sm:px-6 lg:px-8 py-12 md:py-16 mt-[6rem] pt-[54px] sm:pt-0">
       <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8">
         <div className="lg:w-1/2 space-y-6 mb-8 lg:mb-0">
           <motion.div
@@ -89,7 +89,7 @@ const EdgeCapitalHero = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="space-y-6"
           >
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-[clamp(1.25rem,5vw,2.25rem)] font-bold text-gray-900 leading-tight">
               {t("heading")}
             </h1>
 

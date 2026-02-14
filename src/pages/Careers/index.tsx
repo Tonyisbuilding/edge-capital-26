@@ -9,19 +9,11 @@ const Careers = () => {
   return (
     <>
           <NavBar />
-      <div
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
         <JoinTheTeam />
         <WhyWorkWithUs />
         <OpenPositions />
         <Contact />
         <Footer />
-      </div>
     </>
   );
 };

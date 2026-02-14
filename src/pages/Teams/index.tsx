@@ -18,33 +18,23 @@ const Teams = () => {
 
   return (
     <>
-        <NavBar />
-      <div
-        className="bg-[#EEF4F5] pt-[5rem]"
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
+      <NavBar />
+      <div className="bg-[#EEF4F5] pt-[6rem] md:pt-[5rem]">
         <TeamMemberCards
-  teamMembers={language === 'nl' ? teamMembersDutch : teamMembers}
-  department={language === 'nl' ? 'Management' : "Management"}
-/>
-
-<TeamMemberCards
-  teamMembers={language === 'nl' ? advisoryBoardDutch : advisoryBoard}
-  department={language === 'nl' ? 'Advies' : 'Advisory board'}
-/>
-
-<TeamMemberCards
-  teamMembers={language === 'nl' ? SupportAndCommercialDutch : SupportAndCommercial}
-  department={language === 'nl' ? 'Support en commercieel' : 'Support and commercial'}
-/>
-
+          teamMembers={language === 'nl' ? teamMembersDutch : teamMembers}
+          department={language === 'nl' ? 'Management' : "Management"}
+        />
+        <TeamMemberCards
+          teamMembers={language === 'nl' ? advisoryBoardDutch : advisoryBoard}
+          department={language === 'nl' ? 'Advies' : 'Advisory board'}
+        />
+        <TeamMemberCards
+          teamMembers={language === 'nl' ? SupportAndCommercialDutch : SupportAndCommercial}
+          department={language === 'nl' ? 'Support en commercieel' : 'Support and commercial'}
+        />
         <Contact />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

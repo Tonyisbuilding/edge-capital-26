@@ -7,10 +7,10 @@ const EdgeCareSection = () => {
 
   return (
     <section className="flex justify-center items-center py-12 px-8 bg-[#eef4f5cc] w-full mt-[5rem] h-screen lg:max-h-[700px]">
-      <div className="flex max-w-6xl w-full gap-12 items-center flex-wrap">
+      <div className="flex w-[98%] max-w-[1700px] gap-12 items-center flex-wrap">
         {/* Text Content */}
         <div className="flex-1 min-w-[300px] md:text-left text-center order-2 md:order-none">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-gray-800 leading-tight">
             {language === "nl"
               ? "Teruggeven met een doel"
               : "Giving Back with Purpose"}

@@ -93,7 +93,7 @@ const ClientsSection = () => {
 
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 to-[#206A7C]/5">
-      <div className="container mx-auto px-6">
+      <div className="w-[98%] max-w-[1700px] mx-auto px-6">
         <div className="text-center mb-16">
           {/* <div className="inline-block px-3 py-1 rounded-full bg-[#206A7C]/10 text-[#206A7C] text-sm font-medium mb-4">
             {content.subheader}

@@ -249,7 +249,7 @@ const Feature = () => {
     const t = translations[language] || translations.en;
 
     return (
-        <div className="bg-[#F6FEFF] py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#F6FEFF] py-12 px-[10px] sm:px-6 lg:px-8">
             <div className="w-[98%] max-w-[1700px] mx-auto">
                 <motion.div
                     initial="hidden"
@@ -261,7 +261,7 @@ const Feature = () => {
                         variants={itemVariants}
                         className="relative inline-block mb-4"
                     >
-                        <h2 className="text-3xl font-bold text-gray-900 relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 relative z-10">
                             {t.features}
                         </h2>
                         <img

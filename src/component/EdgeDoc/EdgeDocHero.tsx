@@ -37,7 +37,7 @@ const EdgeDocuments = () => {
       className="w-full bg-[#F8F9FA] py-20 px-4 md:px-6 lg:px-8 overflow-hidden mt-[5rem]"
       aria-labelledby="edge-documents-heading"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-[20%]">
           {/* Text content */}
           <div className="lg:max-w-xl z-10">

@@ -22,7 +22,7 @@ const ReachOut = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-8 max-w-6xl ">
+      <div className="w-[98%] max-w-[1700px] mx-auto px-6 md:px-8">
         <div className="flex flex-col md:flex-row md:items-center justify-center gap-[20%] lg:pl-20">
           {/* Text content */}
           <motion.div

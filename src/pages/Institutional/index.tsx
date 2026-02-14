@@ -12,15 +12,8 @@ import ClientsSection from "@/component/Institutional/ClientSection";
 const Institutional = () => {
   return (
     <>
-        <NavBar />
-      <div
-        className="bg-white"
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
+      <NavBar />
+      <div className="bg-white">
         <HeroSection />
         <ResearchDevelopmentSection />
         <PrinciplesSection />
@@ -28,8 +21,8 @@ const Institutional = () => {
         <InstitutionalInvestmentSolutions />
         <ClientsSection />
         <Contact />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

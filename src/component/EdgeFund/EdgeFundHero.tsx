@@ -51,7 +51,7 @@ const EdgeFundHero = () => {
             </div>
 
             {/* Hero Content */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 w-[65%] max-w-[1000px] mx-auto pb-20">
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-[10px] md:px-4 w-[95%] md:w-[65%] max-w-[1000px] mx-auto pb-20">
                 <div className="flex-none transition-transform duration-500 translate-y-[10vh]">
                     <motion.h1
                         className="text-white font-bold leading-[1.4] md:leading-[1.6] mb-8 text-[clamp(18px,3vw,22px)]"
@@ -68,12 +68,12 @@ const EdgeFundHero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <button className="bg-[#EEFDFF] text-[#004352] px-8 md:px-12 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center gap-3 hover:bg-white transition-all">
+                        <button className="bg-[#EEFDFF] text-[#004352] px-8 md:px-12 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white transition-all w-full md:w-auto">
                             {t.participate}
                             <FontAwesomeIcon icon={faChevronRight} className="text-[12px]" />
                         </button>
 
-                        <button className="bg-white/20 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center gap-3 hover:bg-white/30 backdrop-blur-md transition-all border border-white/30">
+                        <button className="bg-white/20 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white/30 backdrop-blur-md transition-all border border-white/30 w-full md:w-auto">
                             {t.scroll}
                             <FontAwesomeIcon icon={faArrowDown} className="text-[14px]" />
                         </button>

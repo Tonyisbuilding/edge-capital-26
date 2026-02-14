@@ -166,7 +166,7 @@ const HowDoesItWork = () => {
 
   return (
     <section
-      className="py-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto"
+      className="py-12 px-4 md:px-8 lg:px-16 w-[98%] max-w-[1700px] mx-auto"
       aria-labelledby="how-it-works-title"
     >
       <motion.div

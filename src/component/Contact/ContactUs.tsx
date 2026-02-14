@@ -133,10 +133,10 @@ const ContactInformation = () => {
     const { name, value } = e.target;
     setFormData(
       (prev) =>
-        ({
-          ...prev,
-          [name]: value,
-        } as FormDataType)
+      ({
+        ...prev,
+        [name]: value,
+      } as FormDataType)
     );
 
     // Clear error when user types
@@ -235,12 +235,12 @@ const ContactInformation = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto my-12 px-1 md:px-0 relative">
+    <section className="w-[98%] max-w-[1700px] mx-auto my-12 px-[5px] md:px-0 relative">
       <ToastContainer />
       <div className="flex flex-col md:flex-row rounded-[25px] overflow-hidden shadow-lg relative top-[-5rem]">
         {/* Contact information Panel */}
         <motion.div
-          className="bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50% text-white p-8 md:w-1/2"
+          className="bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50% text-white p-6 md:w-1/2"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
@@ -319,19 +319,19 @@ const ContactInformation = () => {
             >
               <FaLinkedinIn />
             </a>
-           
-           
+
+
           </motion.div>
         </motion.div>
 
         {/* Contact Form Panel */}
         <motion.div
-          className="bg-white p-8 md:w-1/2"
+          className="bg-white p-5 md:w-1/2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
             {content.form.title}
           </h2>
           <p className="mb-6 text-gray-600">{content.form.description}</p>
@@ -350,9 +350,8 @@ const ContactInformation = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                   placeholder={content.form.firstNamePlaceholder}
-                  className={`w-full p-3 border rounded-md ${
-                    errors.firstName ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className={`w-full p-3 border rounded-md ${errors.firstName ? "border-red-500" : "border-gray-300"
+                    }`}
                   aria-required="true"
                 />
                 {errors.firstName && (
@@ -374,9 +373,8 @@ const ContactInformation = () => {
                   value={formData.lastName}
                   onChange={handleChange}
                   placeholder={content.form.lastNamePlaceholder}
-                  className={`w-full p-3 border rounded-md ${
-                    errors.lastName ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className={`w-full p-3 border rounded-md ${errors.lastName ? "border-red-500" : "border-gray-300"
+                    }`}
                   aria-required="true"
                 />
                 {errors.lastName && (
@@ -412,9 +410,8 @@ const ContactInformation = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={content.form.emailPlaceholder}
-                className={`w-full p-3 border rounded-md ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                }`}
+                className={`w-full p-3 border rounded-md ${errors.email ? "border-red-500" : "border-gray-300"
+                  }`}
                 aria-required="true"
               />
               {errors.email && (

@@ -61,11 +61,11 @@ const StrategySection = () => {
   };
 
   return (
-    <section className="py-24 px-8 bg-[#F6FEFF]">
+    <section className="py-24 px-[10px] md:px-8 bg-[#F6FEFF]">
       <div className="w-[98%] max-w-[1700px] mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="relative mb-20 text-center">
-          <h2 className="text-[#00222C] text-[40px] md:text-[48px] font-bold">
+          <h2 className="text-[#00222C] text-3xl md:text-5xl font-bold">
             {t.ourStrategy}
           </h2>
           <img
@@ -80,7 +80,7 @@ const StrategySection = () => {
           {strategies.map((strategy, index) => (
             <motion.div
               key={strategy.id}
-              className="w-full max-w-[1000px] rounded-[32px] p-8 md:p-12 relative overflow-hidden"
+              className="w-full max-w-[1000px] rounded-[32px] p-5 md:p-12 relative overflow-hidden"
               style={{
                 border: "1px solid transparent",
                 background: `linear-gradient(#BDE0E8, #F6FEFF) padding-box, linear-gradient(to bottom, rgba(36, 109, 126, 1), rgba(65, 197, 228, 0.29)) border-box`,
@@ -131,14 +131,14 @@ const StrategySection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-start md:items-center justify-center pt-3 md:pt-0 px-[1%] md:p-4"
             onClick={closePopup}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-[32px] p-8 md:p-12 w-full max-w-[70%] shadow-2xl relative overflow-hidden"
+              className="bg-white rounded-[24px] md:rounded-[32px] p-5 md:p-12 w-[98%] md:w-full md:max-w-[70%] shadow-2xl relative overflow-hidden max-h-[95vh] md:max-h-none overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-start mb-8">

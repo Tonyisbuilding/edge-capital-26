@@ -178,10 +178,10 @@ const WhatSetsUsApart = () => {
 
   return (
     <section className="bg-[#F6FEFF] py-24">
-      <div className="w-[98%] max-w-[1700px] mx-auto px-8">
+      <div className="w-[98%] max-w-[1700px] mx-auto px-[10px] md:px-8">
         <div className="flex flex-col items-center text-center mb-16">
           <div className="relative mb-6">
-            <h2 className="text-[40px] md:text-[56px] font-bold text-[#00222C]">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#00222C]">
               {currentContent.sectionTitle}
             </h2>
             <img

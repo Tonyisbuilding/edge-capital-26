@@ -8,10 +8,10 @@ const EdgeHorizonSection = () => {
   return (
     <section className="flex justify-center items-center py-12 px-8 bg-[#eef4f5cc]-50 w-full pt-[15rem] md:h-screen
      lg:max-h-[700px] md:mt-[5rem] md:pt-0">
-      <div className="flex max-w-6xl w-full gap-1 renderedData items-center flex-wrap  ">
+      <div className="flex w-[98%] max-w-[1700px] gap-1 renderedData items-center flex-wrap  ">
         {/* Text Content */}
         <div className="flex-1 min-w-[300px] md:text-left text-center order-2 md:order-none">
-          <h2 className={`md:text-3xl text-xl font-semibold mb-6 text-gray-800 leading-tight`}>
+          <h2 className={`text-3xl md:text-5xl font-semibold mb-6 text-gray-800 leading-tight`}>
             {language === "nl"
               ? `De Edge Horizon Foundation vertegenwoordigt de ultieme visie van ons Edge Impact-initiatief. Ons doel is een stichting op te richten die ervoor zorgt dat elke gedoneerde euro effectief wordt besteed.`
               : `The Edge Horizon Foundation represents the ultimate vision of our Edge Impact initiative. Our goal is to establish a foundation that ensures every donated euro is allocated effectively.`}

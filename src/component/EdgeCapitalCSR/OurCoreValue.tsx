@@ -109,7 +109,7 @@ const OurCoreValues = () => {
 
   return (
     <section className="py-16 px-4 md:px-8 lg:px-0 bg-white" aria-labelledby="core-values-title">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h2

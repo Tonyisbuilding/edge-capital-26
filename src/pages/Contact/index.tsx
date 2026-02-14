@@ -8,19 +8,12 @@ const ContactPage = () => {
   return (
     <>
         <NavBar />
-      <div
-        className="relative"
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
+      <div className="relative">
         <ReachOut />
         <ContactInformation />
         <Contact />
-        <Footer />
       </div>
+        <Footer />
     </>
   );
 };

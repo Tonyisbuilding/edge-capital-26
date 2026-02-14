@@ -51,7 +51,7 @@ const CorrelationArbitrageFundHero = () => {
             </div>
 
             {/* Hero Content */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 w-[65%] max-w-[1000px] mx-auto pb-20">
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-[10px] md:px-4 w-[95%] md:w-[65%] max-w-[1000px] mx-auto pb-20">
                 <div className="flex-none transition-transform duration-500 translate-y-[10vh]">
                     <motion.h1
                         className="text-white font-bold leading-[1.4] md:leading-[1.6] mb-8 text-[clamp(18px,3vw,22px)]"

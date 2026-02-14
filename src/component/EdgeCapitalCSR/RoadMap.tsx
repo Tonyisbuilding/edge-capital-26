@@ -100,10 +100,10 @@ const RoadmapSection = () => {
       className="relative py-20 px-4 md:px-8 lg:px-16 min-h-screen flex flex-col items-center justify-start bg-white overflow-hidden"
       aria-labelledby="roadmap-title"
     >
-      <div className="max-w-6xl w-full mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
        <h2
   id="roadmap-title"
-  className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 text-black"
+  className="text-3xl md:text-5xl font-bold text-center mb-16 text-black"
 >
   <span
     className="inline-block relative"

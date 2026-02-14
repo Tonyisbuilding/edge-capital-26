@@ -75,7 +75,7 @@ const ResearchDevelopmentSection = () => {
 
   return (
     <section className="py-16 bg-[#EEF4F5C2] lg:p-[58px]">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="w-[98%] max-w-[1700px] mx-auto px-4 md:px-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Text content column */}
           <motion.div

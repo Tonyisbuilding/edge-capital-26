@@ -30,7 +30,7 @@ const AboutEdgeFund = () => {
   return (
     <section className="relative z-20 w-[100%] rounded-[24px] mx-auto -mt-10 pb-12 bg-[#F6FEFF]">
       <motion.div
-        className="w-[98%] max-w-[1700px] mx-auto bg-[#F6FEFF] rounded-[24px] p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row gap-16 items-start"
+        className="w-[98%] max-w-[1700px] mx-auto bg-[#F6FEFF] rounded-[24px] px-[10px] pt-8 pb-[10px] md:p-12 lg:p-16 flex flex-col lg:flex-row gap-16 items-start"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

@@ -97,14 +97,14 @@ const OpenPositions = () => {
 
   return (
     <section
-      className="w-full max-w-5xl mx-auto px-4 py-12"
+      className="w-[98%] max-w-[1700px] mx-auto px-4 py-12"
       id="open"
       aria-labelledby="positions-heading"
     >
       <div className="mb-10 text-center">
         <h2
           id="positions-heading"
-          className="text-4xl font-bold text-gray-900 mb-2 inline-block"
+          className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 inline-block"
         >
           {content.heading.split(" ")[0]}{" "}
           <span

@@ -7,18 +7,10 @@ import RequestInfoForm from "@/common/RequestInfoForm";
 function RequestInfo() {
   return (
     <>
-    <NavBar />
-      <div
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
-        <RequestInfoForm />
-        <Contact />
-        <Footer />
-      </div>
+      <NavBar />
+      <RequestInfoForm />
+      <Contact />
+      <Footer />
     </>
   )
 }

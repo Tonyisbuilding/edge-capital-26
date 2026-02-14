@@ -132,7 +132,7 @@ const Presentation = () => {
 
   return (
     <section
-      className="max-w-[1440px] w-[100%] md:w-full mx-auto px-[1rem] my-10 
+      className="w-[98%] max-w-[1700px] mx-auto px-[1rem] my-10
     rounded-lg overflow-hidden  pb-[1rem]"
     >
       <div className="flex flex-col md:flex-row gap-[2rem] justify-center">

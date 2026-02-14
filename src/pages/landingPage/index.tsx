@@ -36,13 +36,7 @@ const LandingPage = () => {
       <div>
         <NavBar />
         <HeroSection />
-        <div
-          style={{
-            maxWidth: "1920px",
-            margin: "0 auto",
-            width: "98%",
-          }}
-        >
+        <div>
           <Marquee speed={15} />
           <EdgeCapital />
           <WhyEdgeCapital />

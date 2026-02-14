@@ -10,20 +10,12 @@ const EdgeConnect = () => {
   return (
     <>
           <NavBar />
-      <div
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
         <EdgeConnectHero />
         <HowDoesItWork />
         <GetStartedSection />
         <OurCharities />
         <Contact />
         <Footer />
-      </div>
     </>
   );
 };

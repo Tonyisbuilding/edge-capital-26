@@ -29,8 +29,8 @@ const CorrelationArbitrageFundStats = () => {
     ];
 
     return (
-        <section className="relative z-10 bg-[#005569] pt-40 pb-20 -mt-32 px-8">
-            <div className="w-[98%] max-w-[1700px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0">
+        <section className="relative z-10 bg-[#005569] pt-40 pb-20 -mt-32 px-[10px] md:px-8">
+            <div className="w-[98%] max-w-[1700px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0">
                 {stats.map((stat, index) => (
                     <motion.div
                         key={index}
@@ -48,11 +48,11 @@ const CorrelationArbitrageFundStats = () => {
                             }}
                         />
 
-                        <h4 className="text-white text-[14px] md:text-[16px] font-medium leading-tight mb-12 opacity-80 max-w-[220px]">
+                        <h4 className="text-white text-[12px] md:text-[16px] font-medium leading-tight mb-8 md:mb-12 opacity-80 max-w-[220px]">
                             {stat.label}
                         </h4>
                         <span
-                            className="text-[44px] md:text-[50px] lg:text-[42px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
+                            className="text-[32px] md:text-[50px] lg:text-[42px] font-semibold leading-none tracking-tight bg-clip-text text-transparent"
                             style={{
                                 backgroundImage: "linear-gradient(to right, #F4FFFF 0%, #6C898F 100%)",
                                 display: 'inline-block'

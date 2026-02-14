@@ -55,7 +55,7 @@ const EdgeConnectHero = () => {
 
   return (
     <motion.div
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden mt-[5rem]"
+      className="w-[98%] max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden mt-[5rem]"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

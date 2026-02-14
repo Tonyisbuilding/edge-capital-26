@@ -410,7 +410,7 @@ const DocumentCardSections = () => {
 
   return (
     <section
-      className="py-8 w-full max-w-7xl mx-auto px-4 md:px-8 bg-[#F8F9FA]"
+      className="py-8 w-[98%] max-w-[1700px] mx-auto px-4 md:px-8 bg-[#F8F9FA]"
       aria-labelledby="documents-heading"
     >
       <h2 id="documents-heading" className="sr-only">

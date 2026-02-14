@@ -178,6 +178,12 @@
         margin-top: auto;
     }
 
+    .ambassador-cta {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
     .ambassador-loader {
         left: 50%;
         transform: translateX(-50%);

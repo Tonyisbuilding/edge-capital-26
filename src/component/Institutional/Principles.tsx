@@ -122,7 +122,7 @@ const PrinciplesSection: React.FC = () => {
 
   return (
     <section className="bg-[#F2F7F7] py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
           {/* <h3 className="text-teal-400 text-xl md:text-2xl font-medium mb-2">

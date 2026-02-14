@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { timelineData, timelineDataDutch } from "@/constant/data";
@@ -9,11 +9,28 @@ const CompanyTimeline = () => {
   const [mounted, setMounted] = useState(false);
   const renderedData = language === 'nl' ? timelineDataDutch : timelineData;
   const [activeYear, setActiveYear] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const yearRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Fix hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Auto-scroll active year into view
+  const scrollToActiveYear = useCallback((index: number) => {
+    const el = yearRefs.current[index];
+    const container = scrollContainerRef.current;
+    if (!el || !container) return;
+    const elRect = el.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const scrollLeft = container.scrollLeft + (elRect.left - containerRect.left) - (containerRect.width / 2) + (elRect.width / 2);
+    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    scrollToActiveYear(activeYear);
+  }, [activeYear, scrollToActiveYear]);
 
   const handlePrevYear = () => {
     setActiveYear((prev) => (prev === 0 ? timelineData.length - 1 : prev - 1));
@@ -28,10 +45,10 @@ const CompanyTimeline = () => {
   };
 
   return (
-    <section className="py-16 px-4  ">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="py-16 px-[10px] md:px-4  ">
+      <div className="w-[98%] max-w-[1700px] mx-auto text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+          className="text-3xl md:text-5xl font-bold mb-6 text-gray-900"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -40,7 +57,7 @@ const CompanyTimeline = () => {
         </motion.h2>
 
         <motion.p
-          className="text-lg text-gray-700 mb-16 max-w-3xl mx-auto"
+          className="text-lg text-gray-700 mb-8 md:mb-16 max-w-3xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -51,7 +68,7 @@ const CompanyTimeline = () => {
         </motion.p>
         
         {/* Timeline Navigation */}
-        <div className="relative flex items-center mb-16">
+        <div className="relative flex items-center mb-8 md:mb-16">
           <button 
             onClick={handlePrevYear}
             className="absolute left-0 bg-[#206A7C] text-white p-2 rounded-md hover:bg-teal-800 
@@ -61,15 +78,15 @@ const CompanyTimeline = () => {
             <ChevronLeft size={20} />
           </button>
           
-          <div className="w-full overflow-hidden mx-10 py-[2rem] px-[.5rem] md:px-[2rem]">
-            <div className="relative">
+          <div ref={scrollContainerRef} className="w-full overflow-x-auto mx-10 py-[2rem] px-[.5rem] md:px-[2rem]" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="relative min-w-[420px]">
               {/* Timeline Bar */}
               <div className="h-1 bg-[#206A7C] w-full absolute top-1/2 -translate-y-1/2"></div>
-              
+
               {/* Year Markers */}
-              <div className="flex justify-between relative mb-[1rem]">
+              <div className="flex justify-between relative mb-[1rem] gap-2">
                 {timelineData.map((item, index) => (
-                  <div key={`${item.year}-${index}`} className="flex flex-col items-center relative">
+                  <div key={`${item.year}-${index}`} ref={(el) => { yearRefs.current[index] = el; }} className="flex flex-col items-center relative">
                     <button
                       onClick={() => handleYearClick(index)}
                       className={`relative z-10 transition-all duration-300 ${

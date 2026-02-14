@@ -6,7 +6,7 @@ const EdgeCapitalFooter = () => {
   
   return (
     <footer className="bg-gray-900 text-gray-400 py-16 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Logo and Contact - Column 1 */}

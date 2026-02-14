@@ -46,7 +46,7 @@ const JoinTheTeam = () => {
 
   return (
     <section className="w-full py-16 px-4 md:px-6 lg:px-8 overflow-hidden bg-[##EEF4F5] mt-[5rem]">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-[98%] max-w-[1700px] mx-auto">
         <motion.div
           className="flex flex-col lg:flex-row items-center justify-center gap-[20%] lg:gap-12"
           initial="hidden"

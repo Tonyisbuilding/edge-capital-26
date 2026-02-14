@@ -3,6 +3,9 @@
 .fcs-container {
     padding: 3rem 1rem;
     background-color: #F6FEFF;
+    width: 98%;
+    max-width: 1700px;
+    margin: 0 auto;
 }
 
 .fcs-title {
@@ -229,4 +232,30 @@
 
 .fcs-watermark-button:hover {
     background-color: #AABFC0;
+}
+
+@media (max-width: 768px) {
+    .fcs-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .fcs-watermark-container {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 2rem 1.5rem !important;
+        text-align: center !important;
+        gap: 1.25rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: visible !important;
+    }
+
+    .fcs-watermark-content {
+        text-align: center;
+    }
+
+    .fcs-watermark-button {
+        width: 100%;
+    }
 }

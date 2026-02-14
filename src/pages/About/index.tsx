@@ -15,20 +15,12 @@ const About = () => {
   return (
     <>
       <NavBar />
-      <div
-        style={{
-          maxWidth: "1550px",
-          margin: "0 auto",
-          width: "100%",
-        }}
-      >
         <EdgeCapitalHero />
         <WhatSetsUsApart />
         <CompanyTimeline />
         <TeamMemberCards teamMembers={language  === 'nl' ? teamMembersDutch : teamMembers} />
         <Contact />
         <Footer />
-      </div>
       {/* <EdgeCapitalFooter /> */}
     </>
   );
