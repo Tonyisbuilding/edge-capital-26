@@ -200,18 +200,39 @@ export const teamMembers: teamMemberCardstDataType[] = [
   {
     name: "Teagan de Groot",
     position: "CEO Edge Capital",
-    bio: `Teagan de Groot is sinds 2021 bestuurder van Edge Capital. Hij beschikt over ruime ervaring in beleggen en was als actieve handelaar betrokken bij de ontwikkeling en toepassing van handelsstrategieën. Daarnaast heeft hij diverse managementfuncties bekleed binnen de financiële sector.
-Binnen Edge Capital is Teagan verantwoordelijk voor het dagelijks bestuur en de besluitvorming van de onderneming. Vanuit zijn brede overzicht stuurt hij de organisatie aan en bepaalt hij de strategische en operationele koers.`,
+    bio: `Teagan de Groot has been a director of Edge Capital since 2021. He has extensive experience in investing and was actively involved as a trader in the development and application of trading strategies. He has also held various management positions within the financial sector.
+Within Edge Capital, Teagan is responsible for the day-to-day management and decision-making of the company. With his broad overview, he leads the organization and determines the strategic and operational direction.`,
     linkedin: "https://www.linkedin.com/in/teagan-de-groot-9b512616a/",
     image: images.landingPage.teagan,
   },
   {
     name: "Paul Lamain",
     position: "Founder & Head of Institutional",
-    bio:  `Paul Lamain is de oprichter van Edge Capital. In zijn rol als Head of Institutional richt hij zich op het onderhouden en uitbouwen van relaties met institutionele partijen en het ondersteunen van strategische samenwerkingen.
-Daarnaas t Paul ontwikkelingen binnen het institutionele segment en draagt hij bij aan de positionering van Edge Capital richting professionele en institutionele relaties.`,
+    bio: `Paul Lamain is the founder of Edge Capital. In his role as Head of Institutional, he focuses on maintaining and expanding relationships with institutional parties and supporting strategic partnerships.
+Paul also follows developments within the institutional segment and contributes to the positioning of Edge Capital towards professional and institutional relationships.`,
     linkedin: "https://www.linkedin.com/in/paul-lamain-72a079135/",
     image: images.landingPage.paul,
+  },
+  {
+    name: "Aron Broeken",
+    position: "Head of Institutional Business Development",
+    bio: "Aron Broeken combines vision, leadership, and execution power in his role as Head of Institutional Business Development. With years of experience in asset management and trading, he guides the organization toward sustainable growth and scalable operations with strategic insight, decisiveness, and accountability.",
+    linkedin: "https://www.linkedin.com/in/aron-broeken-52b876171",
+    image: images.landingPage.Aron,
+  },
+  {
+    name: "Tom Meulemans",
+    position: "Head of Relations & Marketing",
+    bio: "Tom Meulemans is responsible for managing relationships and sales at Edge Capital. With a strong commercial background and sharp eye for investor needs, he plays a key role in growing and maintaining the network. As a main point of contact for (potential) investors, Tom is known for his ability to communicate complex financial topics with clarity. His personal approach and deep market understanding foster long-term partnerships and strong investor trust.",
+    linkedin: "",
+    image: images.landingPage.Tom,
+  },
+  {
+    name: "Pepijn van den Hurk",
+    position: "Head of Finance & Technology",
+    bio: "Pepijn van den Hurk plays a central role in shaping Edge Capital's financial and technological strategy. He oversees financial operations including capital allocation, risk management, and reporting, while also driving the long-term shift toward scalable, tech-driven processes.",
+    linkedin: "",
+    image: images.landingPage.Pepijn,
   },
 ];
 
@@ -231,6 +252,27 @@ Binnen Edge Capital is Teagan verantwoordelijk voor het dagelijks bestuur en de 
 Daarnaast volgt Paul ontwikkelingen binnen het institutionele segment en draagt hij bij aan de positionering van Edge Capital richting professionele en institutionele relaties.`,
     linkedin: "https://www.linkedin.com/in/paul-lamain-72a079135/",
     image: images.landingPage.paul,
+  },
+  {
+    name: "Aron Broeken",
+    position: "Head of Institutional Business Development",
+    bio: "Aron Broeken combineert visie, leiderschap en executiekracht in zijn rol als Head of Institutional Business Development. Met jarenlange ervaring in asset management en trading, stuurt hij met strategisch inzicht, besluitvaardigheid en verantwoordelijkheid de organisatie richting duurzame groei en schaalbare bedrijfsvoering.",
+    linkedin: "https://www.linkedin.com/in/aron-broeken-52b876171",
+    image: images.landingPage.Aron,
+  },
+  {
+    name: "Tom Meulemans",
+    position: "Head of Relations & Marketing",
+    bio: "Tom Meulemans is verantwoordelijk voor relaties en sales bij Edge Capital. Met een sterke commerciële achtergrond en een scherp oog voor de behoeften van investeerders, speelt hij een sleutelrol in het uitbreiden en onderhouden van het netwerk. Tom is een vast aanspreekpunt voor (potentiële) investeerders en weet complexe financiële informatie helder en toegankelijk over te brengen. Zijn persoonlijke benadering, gecombineerd met diepgaande marktkennis, zorgt voor duurzame samenwerkingen en een solide vertrouwensbasis met onze partners.",
+    linkedin: "",
+    image: images.landingPage.Tom,
+  },
+  {
+    name: "Pepijn van den Hurk",
+    position: "Head of Finance & Technology",
+    bio: "Pepijn van den Hurk speelt een centrale rol in zowel de financiële als technologische strategie van Edge Capital. Hij is verantwoordelijk voor de financiële operatie, waaronder kapitaalallocatie, risicobeheer en rapportage, en stuurt tegelijkertijd de langetermijnontwikkeling aan richting schaalbare, technologiegedreven processen.",
+    linkedin: "",
+    image: images.landingPage.Pepijn,
   },
 ];
 
@@ -282,6 +324,13 @@ export const SupportAndCommercial: teamMemberCardstDataType[] = [
     linkedin: "",
     image: images.landingPage.Brahim,
   },
+  {
+    name: "Bernard Beerding",
+    position: "Manager business development",
+    bio: "Bernard Beerding brings years of experience in building and leading sales teams. At Edge Capital, he is responsible for developing the commercial team — a role that perfectly aligns with his expertise, drive, and attention to detail.",
+    linkedin: "",
+    image: images.landingPage.Bernard,
+  },
 ];
 
 export const SupportAndCommercialDutch: teamMemberCardstDataType[] = [
@@ -289,14 +338,25 @@ export const SupportAndCommercialDutch: teamMemberCardstDataType[] = [
     name: "Brahim Bouzerrade",
     position: "Manager business development",
     bio: `Brahim is verantwoordelijk voor het identificeren, ontwikkelen en realiseren van groeimogelijkheden voor het bedrijf. Zijn focus ligt op het uitbreiden van de klantenkring en het ontwikkelen van strategische partnerschappen.`,
-    linkedin: "", // Add if available
-    image: images.landingPage.Brahim, // assuming this exists
+    linkedin: "",
+    image: images.landingPage.Brahim,
+  },
+  {
+    name: "Bernard Beerding",
+    position: "Manager business development",
+    bio: "Bernard Beerding brengt jarenlange ervaring mee in het opzetten en aansturen van salesteams. Binnen Edge Capital is hij verantwoordelijk voor de opbouw van het commerciële team — een rol die perfect aansluit bij zijn expertise, gedrevenheid en oog voor detail.",
+    linkedin: "",
+    image: images.landingPage.Bernard,
   },
 ];
 
 
 
-export const edgeNextTeam: teamMemberCardstDataType[] = [
+// edgeNextTeam removed - members moved to teamMembers (management) and SupportAndCommercial
+export const edgeNextTeam: teamMemberCardstDataType[] = [];
+export const edgeNextTeamDutch: teamMemberCardstDataType[] = [];
+/* Original edgeNextTeam removed - Aron, Tom, Pepijn moved to management; Bernard moved to SupportAndCommercial
+export const _deprecated_edgeNextTeam: teamMemberCardstDataType[] = [
   {
     name: "Aron Broeken",
     position: "Head of Institutional Business Development",
@@ -359,7 +419,7 @@ export const edgeNextTeamDutch: teamMemberCardstDataType[] = [
     image: images.landingPage.Bernard,
   },
 ];
-
+*/
 
 export const charities: charitiesDataType[] = [
   {

@@ -35,7 +35,7 @@ const InvestmentPerformance = () => {
       participationFrom: "participation from",
       metrics: {
         netReturn2024: "Net return 2024:",
-        netReturnSinceInception: "Net return since inception (2021):",
+        netReturnSinceInception: "Net return since inception :",
         averageAnnualReturn: "Average annual return since inception:"
       },
       downloadFactsheet: "Download our factsheet for a detailed overview.",
@@ -44,7 +44,7 @@ const InvestmentPerformance = () => {
       performanceSubheader: "Delivering high-performing interest isn't just a goal; it's our standard. Here is the latest report on our investment results, across different participation tiers, demonstrating the reliability of our approach since inception.",
       disclaimer: {
         title: "General disclaimer on returns:",
-        content: "Bolder Funds Services B.V. (administrator) calculates the fund's results on a monthly basis. The above results are net of the 22.5% profit share and the 1.50% annual management fee. The returns from September 1, 2022, represent the actual results of the fund. Returns prior to September 1, 2022, are based on forward testing (live account) and not on backtesting. These returns should not be considered as an indication of future results."
+        content: "Bolder Funds Services B.V. (administrator) calculates the fund's results on a monthly basis. The above results are net of the 22.5% profit share and the 1.50% annual management fee. The returns from October 1, 2022, represent the actual results of the fund. Returns prior to October 1, 2022, are based on forward testing (live account) and not on backtesting. These returns should not be considered as an indication of future results."
       }
     },
     nl: {
@@ -52,7 +52,7 @@ const InvestmentPerformance = () => {
       participationFrom: "participatie vanaf",
       metrics: {
         netReturn2024: "Nettorendement 2024:",
-        netReturnSinceInception: "Nettorendement sinds oprichting (2021):",
+        netReturnSinceInception: "Nettorendement sinds start  strategie:",
         averageAnnualReturn: "Gemiddeld jaarlijks rendement sinds oprichting:"
       },
       downloadFactsheet: "Download onze factsheet voor een gedetailleerd overzicht.",
@@ -61,7 +61,7 @@ const InvestmentPerformance = () => {
       performanceSubheader: "Het leveren van goed presterende rente is niet slechts een doel; het is onze standaard. Hier is het nieuwste rapport over onze beleggingsresultaten, over verschillende deelnameniveaus heen, wat de betrouwbaarheid van onze aanpak sinds de oprichting aantoont.",
       disclaimer: {
         title: "Algemene disclaimer rendementen:",
-        content: "Bolder Funds Services B.V. (administrateur) berekent maandelijks de resultaten van het fonds. Bovenstaande resultaten zijn na aftrek van de 22,5% winstdeling en de 1,50% jaarlijkse beheervergoeding. De rendementen vanaf 1 september 2022 vertegenwoordigen de werkelijke resultaten van het fonds. De rendementen vóór 1 september 2022 zijn gebaseerd op forward testing (live rekening) en niet op basis van backtesting. Deze rendementen dienen niet als indicatie voor toekomstige resultaten."
+        content: "Bolder Funds Services B.V. (administrateur) berekent maandelijks de resultaten van het fonds. Bovenstaande resultaten zijn na aftrek van de winstdeling en de jaarlijkse beheervergoeding. De rendementen vanaf 1 October 2025 vertegenwoordigen de werkelijke resultaten van het fonds. De rendementen vóór 1 October 2025 zijn gebaseerd op forward testing (live rekening) en niet op basis van backtesting. Deze rendementen dienen niet als indicatie voor toekomstige resultaten."
       }
     }
   };
@@ -73,31 +73,31 @@ const InvestmentPerformance = () => {
     {
       participation: "€100,000",
       monthName: language === 'nl' ? "November" : "November",
-      percentage: language === 'nl' ? "+1,47%" : "+1.47%",
+      percentage: "-0.05%",
       metrics: [
-        { label: t.metrics.netReturn2024, value: language === 'nl' ? "+18,47%" : "+18.47%" },
-        { label: t.metrics.netReturnSinceInception, value: language === 'nl' ? "+146,69%" : "+146.69%" },
-        { label: t.metrics.averageAnnualReturn, value: language === 'nl' ? "22,62%" : "22.62%" },
+        { label: t.metrics.netReturn2024, value: "5.17%" },
+        { label: t.metrics.netReturnSinceInception, value: "100.60%" },
+        { label: t.metrics.averageAnnualReturn, value: "12.60%" },
       ],
     },
     {
       participation: "€250,000",
       monthName: language === 'nl' ? "November" : "November",
-      percentage: language === 'nl' ? "+1,58%" : "+1.58%",
+      percentage: "-0.03%",
       metrics: [
-        { label: t.metrics.netReturn2024, value: language === 'nl' ? "+19,76%" : "+19.76%" },
-        { label: t.metrics.netReturnSinceInception, value: language === 'nl' ? "+163,53%" : "+163.53%" },
-        { label: t.metrics.averageAnnualReturn, value: language === 'nl' ? "24,44%" : "24.44%" },
+        { label: t.metrics.netReturn2024, value: "5.84%" },
+        { label: t.metrics.netReturnSinceInception, value: "113.43%" },
+        { label: t.metrics.averageAnnualReturn, value: "13.80%" },
       ],
     },
     {
       participation: "€500,000",
       monthName: language === 'nl' ? "November" : "November",
-      percentage: language === 'nl' ? "+1,69%" : "+1.69%",
+      percentage: "-0.01%",
       metrics: [
-        { label: t.metrics.netReturn2024, value: language === 'nl' ? "+21,28%" : "+21.28%" },
-        { label: t.metrics.netReturnSinceInception, value: language === 'nl' ? "+180,92%" : "+180.92%" },
-        { label: t.metrics.averageAnnualReturn, value: language === 'nl' ? "26,37%" : "26.37%" },
+        { label: t.metrics.netReturn2024, value: "6.55%" },
+        { label: t.metrics.netReturnSinceInception, value: "124.86%" },
+        { label: t.metrics.averageAnnualReturn, value: "14.81%" },
       ],
     },
   ];
@@ -113,9 +113,9 @@ const InvestmentPerformance = () => {
   // Convert API data to display format
   const mapFundDataToCards = (data: FundReturnsResponse): PerformanceCard[] => {
     const classes: { key: keyof FundReturnsResponse; participation: string }[] = [
-      { key: 'EC_Class_I', participation: '€100,000' },
-      { key: 'EC_Class_II', participation: '€250,000' },
-      { key: 'EC_Class_III', participation: '€500,000' },
+      { key: 'EN_Class_I', participation: '\u20AC100,000' },
+      { key: 'EN_Class_II', participation: '\u20AC250,000' },
+      { key: 'EN_Class_III', participation: '\u20AC500,000' },
     ];
 
     return classes.map(({ key, participation }, index) => {
@@ -197,7 +197,7 @@ const InvestmentPerformance = () => {
         className="mb-12 text-center flex flex-col items-center"
       >
         <h2 className="text-3xl lg:text-[40px] font-bold text-[#00222C] relative inline-block z-10">
-          EdgeFund <span className="relative inline-block">
+          Correlation Arbitrage Fund <span className="relative inline-block">
             Performance
             <img
               src={images.landingPage.Brush}
@@ -262,7 +262,7 @@ const InvestmentPerformance = () => {
                         {metric.label}
                       </span>
                       <span className="ip-col-sep">:</span>
-                      <span className="ip-col-value before:content-['↑'] before:mr-1">
+                      <span className="ip-col-value before:content-['\2191'] before:mr-1">
                         {metric.value}
                       </span>
                     </li>

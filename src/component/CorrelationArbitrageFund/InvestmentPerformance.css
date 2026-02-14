@@ -1,0 +1,198 @@
+/* InvestmentPerformance.css */
+
+/* Main Card Styling */
+.ip-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #F1FCFF;
+    border-radius: 20px;
+    border: 1px solid #E5E7EB;
+    /* Matching tailwind gray-100 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ip-card-content {
+    padding: 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ip-participation-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.75rem;
+}
+
+/* Background Image Layer (10% opacity) */
+.ip-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/images/edgefund/returns-card-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    /* 10% Opacity */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Gradient Overlay Layer */
+.ip-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(241, 252, 255, 0.23) 0%,
+            #F1FCFF 51%,
+            #F1FCFF 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure content sits above background layers */
+.ip-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Date Holder (Header) Styling */
+.ip-header-container {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+    height: 60px;
+}
+
+/* Left Half: Date with Background */
+.ip-date-half {
+    position: relative;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    overflow: hidden;
+    border-bottom-right-radius: 15px;
+}
+
+/* Right Half: Return Percentage (Transparent) */
+.ip-return-half {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align to right */
+    padding: 0 1.5rem;
+    background-color: transparent;
+}
+
+/* Button Styling */
+.ip-button {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Shared Background Image for Button & Date Half */
+.ip-bg-img {
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/images/edgefund/cost-str-bg.png);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+/* Shared Overlay for Button & Date Half */
+.ip-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(32, 94, 112, 0.85);
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+/* Hover effects for button overlay */
+.ip-button:hover .ip-overlay {
+    background-color: rgba(32, 94, 112, 0.95);
+}
+
+/* Content z-index */
+.ip-content-layer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+/* Date Half Text Styling */
+.ip-date-half span {
+    color: white;
+}
+
+/* Report Lines: 3-Column Layout */
+.ip-report-row {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.ip-report-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Column 1: Label */
+.ip-col-label {
+    width: 70%;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4B5563;
+}
+
+/* Column 2: Colon */
+.ip-col-sep {
+    width: 20px;
+    text-align: center;
+    color: #4B5563;
+    font-weight: 500;
+}
+
+/* Column 3: Return Value */
+.ip-col-value {
+    width: 25%;
+    text-align: right;
+    font-weight: 700;
+    color: #2C7C7D;
+    white-space: nowrap;
+}
+
+/* Adjust text colors for Date Holder to be white since it has dark overlay */
+.ip-date-half svg,
+.ip-date-half svg path {
+    color: white;
+    stroke: white;
+}

@@ -7,8 +7,6 @@ import {
   advisoryBoardDutch,
   SupportAndCommercial,
   SupportAndCommercialDutch,
-    edgeNextTeam,
-  edgeNextTeamDutch,
 } from "@/constant/data";
 import Contact from "@/component/landingPage/Contact";
 import Footer from "@/common/Footer";
@@ -17,7 +15,7 @@ import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 const Teams = () => {
 
   const { language } = useChangeLanguageContext();
-  
+
   return (
     <>
         <NavBar />
@@ -42,11 +40,6 @@ const Teams = () => {
 <TeamMemberCards
   teamMembers={language === 'nl' ? SupportAndCommercialDutch : SupportAndCommercial}
   department={language === 'nl' ? 'Support en commercieel' : 'Support and commercial'}
-/>
-
-<TeamMemberCards
-  teamMembers={language === 'nl' ? edgeNextTeamDutch : edgeNextTeam}
-  department="EdgeNext"
 />
 
         <Contact />

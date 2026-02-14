@@ -1,23 +1,40 @@
-import Navbar from "@/common/NavBar";
+import Contact from "@/component/landingPage/Contact";
 import Footer from "@/common/Footer";
+import AboutCorrelationArbitrageFund from "@/component/CorrelationArbitrageFund/AboutCorrelationArbitrageFund";
+import Target from "@/component/CorrelationArbitrageFund/Target";
+import WhatSetsUsApart from "@/component/CorrelationArbitrageFund/WhatSetUsApart";
+import StrategySection from "@/component/CorrelationArbitrageFund/Strategy";
+import Feature from "@/component/CorrelationArbitrageFund/Features";
+import FundCostStructure from "@/component/CorrelationArbitrageFund/FundCostStructure";
+import InvestmentPerformance from "@/component/CorrelationArbitrageFund/InvestmentPerformance";
+import FAQSection from '@/component/EC-Campaign/FAQSection';
+import CorrelationArbitrageFundHero from "@/component/CorrelationArbitrageFund/CorrelationArbitrageFundHero";
+import CorrelationArbitrageFundStats from "@/component/CorrelationArbitrageFund/CorrelationArbitrageFundStats";
 
 const CorrelationArbitrageFund = () => {
-    return (
-        <>
-            <Navbar />
-            <main className="pt-[140px] min-h-screen bg-[#eef4f5]">
-                <div className="container mx-auto px-4 py-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#192227] text-center">
-                        Correlation Arbitrage Fund
-                    </h1>
-                    <p className="text-center text-gray-600 mt-4 text-lg">
-                        Coming soon...
-                    </p>
-                </div>
-            </main>
-            <Footer />
-        </>
-    );
+  return (
+    <div className="bg-[#FCFFFF]">
+      <CorrelationArbitrageFundHero />
+      <AboutCorrelationArbitrageFund />
+      <CorrelationArbitrageFundStats />
+      <div
+        style={{
+          maxWidth: "1550px",
+          margin: "0 auto",
+          width: "100%",
+        }}
+      >
+        <StrategySection />
+        <WhatSetsUsApart />
+        <Feature />
+        <FundCostStructure />
+        <InvestmentPerformance />
+      </div>
+      <FAQSection />
+      <Contact />
+      <Footer />
+    </div>
+  );
 };
 
 export default CorrelationArbitrageFund;

@@ -16,7 +16,6 @@ import {
   teamMembers, teamMembersDutch,
   advisoryBoard, advisoryBoardDutch,
   SupportAndCommercial, SupportAndCommercialDutch,
-  edgeNextTeam, edgeNextTeamDutch
 } from "@/constant/data";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 
@@ -27,10 +26,10 @@ import FAQSection from '@/component/EC-Campaign/FAQSection';
 const LandingPage = () => {
   const { language } = useChangeLanguageContext();
 
-  // Combine all team members
+  // Combine all team members: Management → Support/Commercial → Advisory
   const allTeamMembers = language === 'nl'
-    ? [...teamMembersDutch, ...advisoryBoardDutch, ...SupportAndCommercialDutch, ...edgeNextTeamDutch]
-    : [...teamMembers, ...advisoryBoard, ...SupportAndCommercial, ...edgeNextTeam];
+    ? [...teamMembersDutch, ...SupportAndCommercialDutch, ...advisoryBoardDutch]
+    : [...teamMembers, ...SupportAndCommercial, ...advisoryBoard];
 
   return (
     <>

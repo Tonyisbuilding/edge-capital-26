@@ -101,6 +101,9 @@ interface FundReturnsResponse {
   EC_Class_I: FundClassData | null;
   EC_Class_II: FundClassData | null;
   EC_Class_III: FundClassData | null;
+  EN_Class_I: FundClassData | null;
+  EN_Class_II: FundClassData | null;
+  EN_Class_III: FundClassData | null;
 }
 
 /**

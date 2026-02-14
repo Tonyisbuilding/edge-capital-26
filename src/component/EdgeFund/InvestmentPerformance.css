@@ -9,7 +9,7 @@
     border: 1px solid #E5E7EB;
     /* Matching tailwind gray-100 */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    min-height: 510px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -20,6 +20,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.ip-participation-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.75rem;
 }
 
 /* Background Image Layer (10% opacity) */
@@ -179,7 +186,7 @@
     width: 25%;
     text-align: right;
     font-weight: 700;
-    color: #059669;
+    color: #2C7C7D;
     white-space: nowrap;
 }
 
