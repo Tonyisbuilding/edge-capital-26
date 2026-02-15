@@ -2,38 +2,108 @@ import React, { useRef } from "react";
 import Navbar from "../../common/NavBar";
 import Footer from "../../common/Footer";
 import Contact from "@/component/landingPage/Contact";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 import heroBg from "@/assets/images/amb/amb-hero-without-overlay.jpg";
 import cardImg1 from "@/assets/images/amb/amb-card-img1.png";
 import cardImg2 from "@/assets/images/amb/amb-card-img2.png";
 import cardImg3 from "@/assets/images/amb/amb-card-img3.png";
 import statementImg from "@/assets/images/amb/amb-statement-img.png";
 
-const CARDS = [
-    {
-        num: "1/3",
-        title: "Performance within clear limits",
-        description:
-            "Formula E represents the next generation of motorsport: fully electric, technologically advanced, and driven by efficiency, principles that align seamlessly with Edge Capital's investment philosophy, where risk management and capital protection are every bit as essential as achieving returns.",
-        image: cardImg1,
+const translations = {
+    en: {
+        // Hero
+        heroLine1: "Endurance. Discipline.",
+        heroLine2: "Long-term performance.",
+        heroDescription:
+            "As part of Edge Capital's further development, we have partnered with Nyck de Vries, active in Formula E and endurance racing. This collaboration is based on shared principles: sustainable technology, strategic discipline, and long-term performance.",
+        keepScrolling: "Keep scrolling",
+
+        // Principles section
+        principlesTitle: "Built on the Same Principles",
+        principlesDescription:
+            "We partner with those who share our mindset: discipline, consistency, and performing when it matters most.",
+        cards: [
+            {
+                num: "1/3",
+                title: "Performance within clear limits",
+                description:
+                    "Formula E represents the next generation of motorsport: fully electric, technologically advanced, and driven by efficiency, principles that align seamlessly with Edge Capital's investment philosophy, where risk management and capital protection are every bit as essential as achieving returns.",
+            },
+            {
+                num: "2/3",
+                title: "Shared vision, shared principles",
+                description:
+                    "This partnership transcends mere visibility, grounded in a shared philosophy of performance, preparation, and risk management, recognizing that in both elite sport and asset management, true success lies not in peaks but in consistency, discipline, and controlled performance under varying conditions.",
+            },
+            {
+                num: "3/3",
+                title: "Endurance and long-term focus",
+                description:
+                    "Endurance racing demands precision, composure, and long-term focus — winning by the smallest margins requires consistent execution of the fundamentals that form the core of any great strategy, pushing boundaries and relentlessly fine-tuning every detail to stay ahead.",
+            },
+        ],
+
+        // Statement section
+        statementTitle: "Top-level sport and entrepreneurship meet",
+        statementP1:
+            "Besides technology and strategy, the human factor plays a decisive role. Leadership, responsibility, and the ability to continuously improve are not just qualities admired in elite sport, they are essential in professional asset management. In both arenas, it is the people behind the decisions who ultimately determine the outcome.",
+        statementP2:
+            "Success depends on individuals who remain composed under pressure, take ownership of their results, and commit to refining their approach with every challenge they face. It is this relentless pursuit of growth, paired with a deep sense of accountability, that separates sustained excellence from short-lived results.",
+        statementP3:
+            "Whether on the track or in the markets, performance is ultimately shaped by the character, judgment, and resilience of the people driving it forward. The ability to lead, adapt, and hold oneself to the highest standard is what connects these two worlds at their core.",
+        speakWithTeam: "Speak with the team",
     },
-    {
-        num: "2/3",
-        title: "Shared vision, shared principles",
-        description:
-            "This partnership transcends mere visibility, grounded in a shared philosophy of performance, preparation, and risk management, recognizing that in both elite sport and asset management, true success lies not in peaks but in consistency, discipline, and controlled performance under varying conditions.",
-        image: cardImg2,
+    nl: {
+        // Hero
+        heroLine1: "Uithoudingsvermogen. Discipline.",
+        heroLine2: "Langetermijnprestaties.",
+        heroDescription:
+            "Als onderdeel van de verdere ontwikkeling van Edge Capital zijn wij een samenwerking aangegaan met Nyck de Vries, actief in de Formule E en endurance racing. Deze samenwerking is gebaseerd op gedeelde principes: duurzame technologie, strategische discipline en langetermijnprestaties.",
+        keepScrolling: "Blijf scrollen",
+
+        // Principles section
+        principlesTitle: "Gebouwd op dezelfde principes",
+        principlesDescription:
+            "Wij werken samen met wie onze mentaliteit deelt: discipline, consistentie en presteren wanneer het ertoe doet.",
+        cards: [
+            {
+                num: "1/3",
+                title: "Presteren binnen duidelijke kaders",
+                description:
+                    "Formule E vertegenwoordigt de volgende generatie motorsport: volledig elektrisch, technologisch geavanceerd en gedreven door efficiëntie — principes die naadloos aansluiten bij de beleggingsfilosofie van Edge Capital, waar risicobeheer en kapitaalbescherming minstens zo essentieel zijn als het behalen van rendement.",
+            },
+            {
+                num: "2/3",
+                title: "Gedeelde visie, gedeelde principes",
+                description:
+                    "Dit partnerschap overstijgt louter zichtbaarheid, geworteld in een gedeelde filosofie van prestatie, voorbereiding en risicobeheer, in het besef dat in zowel topsport als vermogensbeheer echt succes niet in pieken ligt, maar in consistentie, discipline en beheerste prestaties onder wisselende omstandigheden.",
+            },
+            {
+                num: "3/3",
+                title: "Uithoudingsvermogen en langetermijnfocus",
+                description:
+                    "Endurance racing vereist precisie, kalmte en langetermijnfocus — winnen met de kleinste marges vraagt om consistente uitvoering van de fundamenten die de kern vormen van elke sterke strategie, grenzen verleggen en onophoudelijk elk detail verfijnen om voorop te blijven.",
+            },
+        ],
+
+        // Statement section
+        statementTitle: "Topsport en ondernemerschap ontmoeten elkaar",
+        statementP1:
+            "Naast technologie en strategie speelt de menselijke factor een beslissende rol. Leiderschap, verantwoordelijkheid en het vermogen om continu te verbeteren zijn niet alleen kwaliteiten die in topsport worden bewonderd — ze zijn essentieel in professioneel vermogensbeheer. In beide arena's zijn het de mensen achter de beslissingen die uiteindelijk het resultaat bepalen.",
+        statementP2:
+            "Succes hangt af van individuen die kalm blijven onder druk, eigenaarschap nemen over hun resultaten en zich committeren aan het verfijnen van hun aanpak bij elke uitdaging. Het is dit onophoudelijke streven naar groei, gecombineerd met een diep gevoel van verantwoordelijkheid, dat duurzame excellentie onderscheidt van kortdurende resultaten.",
+        statementP3:
+            "Of het nu op het circuit is of op de markten, prestaties worden uiteindelijk gevormd door het karakter, het oordeelsvermogen en de veerkracht van de mensen die het voortdrijven. Het vermogen om te leiden, zich aan te passen en zichzelf aan de hoogste standaard te houden is wat deze twee werelden in hun kern verbindt.",
+        speakWithTeam: "Spreek met het team",
     },
-    {
-        num: "3/3",
-        title: "Endurance and long-term focus",
-        description:
-            "Endurance racing demands precision, composure, and long-term focus — winning by the smallest margins requires consistent execution of the fundamentals that form the core of any great strategy, pushing boundaries and relentlessly fine-tuning every detail to stay ahead.",
-        image: cardImg3,
-    },
-];
+};
+
+const CARD_IMAGES = [cardImg1, cardImg2, cardImg3];
 
 const AmbassadeurNyckDeVries: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const { language } = useChangeLanguageContext();
+    const t = translations[language] || translations.en;
 
     const scroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return;
@@ -73,24 +143,21 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                         className="font-bold text-white leading-tight mb-4"
                         style={{ fontSize: "clamp(2rem, 4.5vw, 4.5rem)" }}
                     >
-                        Endurance. Discipline.
+                        {t.heroLine1}
                         <br />
-                        <span className="text-[#D48C3A]">Long-term performance.</span>
+                        <span className="text-[#D48C3A]">{t.heroLine2}</span>
                     </h1>
                     <p
                         className="text-white/70 max-w-2xl leading-relaxed mt-2"
                         style={{ fontSize: "clamp(0.85rem, 1.1vw, 1.125rem)" }}
                     >
-                        As part of Edge Capital's further development, we have partnered with
-                        Nyck de Vries, active in Formula E and endurance racing. This collaboration
-                        is based on shared principles: sustainable technology, strategic discipline,
-                        and long-term performance.
+                        {t.heroDescription}
                     </p>
                 </div>
 
                 {/* Keep scrolling indicator */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-                    <span className="text-white/60 text-sm tracking-wide">Keep scrolling</span>
+                    <span className="text-white/60 text-sm tracking-wide">{t.keepScrolling}</span>
                     <svg
                         className="w-5 h-5 text-white/60 animate-bounce"
                         fill="none"
@@ -111,14 +178,13 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                             className="text-white font-bold leading-tight max-w-2xl"
                             style={{ fontSize: "clamp(1.75rem, 3.2vw, 3.25rem)" }}
                         >
-                            Built on the Same Principles
+                            {t.principlesTitle}
                         </h2>
                         <p
                             className="text-white/70 leading-relaxed max-w-lg md:pt-1"
                             style={{ fontSize: "clamp(0.85rem, 1.1vw, 1.125rem)" }}
                         >
-                            We partner with those who share our mindset: discipline,
-                            consistency, and performing when it matters most.
+                            {t.principlesDescription}
                         </p>
                     </div>
 
@@ -155,7 +221,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                         msOverflowStyle: "none",
                     }}
                 >
-                    {CARDS.map((card, i) => (
+                    {t.cards.map((card, i) => (
                         <div
                             key={i}
                             className="flex-shrink-0 snap-start rounded-2xl overflow-hidden flex flex-col"
@@ -206,7 +272,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                                     }}
                                 />
                                 <img
-                                    src={card.image}
+                                    src={CARD_IMAGES[i]}
                                     alt={card.title}
                                     className="w-full h-full object-cover"
                                 />
@@ -223,7 +289,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                     <div className="w-full md:w-1/2 flex-shrink-0">
                         <img
                             src={statementImg}
-                            alt="Top-level sport and entrepreneurship meet"
+                            alt={t.statementTitle}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -234,7 +300,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                             className="text-[#1A2B30] font-bold leading-tight"
                             style={{ fontSize: "clamp(1.75rem, 3vw, 3rem)" }}
                         >
-                            Top-level sport and entrepreneurship meet
+                            {t.statementTitle}
                         </h2>
 
                         <div className="flex flex-col">
@@ -245,26 +311,9 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                                     gap: "clamp(1rem, 1.8vw, 1.5rem)",
                                 }}
                             >
-                                <p>
-                                    Besides technology and strategy, the human factor plays a decisive
-                                    role. Leadership, responsibility, and the ability to continuously
-                                    improve are not just qualities admired in elite sport, they are essential
-                                    in professional asset management. In both arenas, it is the people
-                                    behind the decisions who ultimately determine the outcome.
-                                </p>
-                                <p>
-                                    Success depends on individuals who remain composed under
-                                    pressure, take ownership of their results, and commit to refining their
-                                    approach with every challenge they face. It is this relentless pursuit of
-                                    growth, paired with a deep sense of accountability, that separates
-                                    sustained excellence from short-lived results.
-                                </p>
-                                <p>
-                                    Whether on the track or in the markets, performance is ultimately
-                                    shaped by the character, judgment, and resilience of the people
-                                    driving it forward. The ability to lead, adapt, and hold oneself to the
-                                    highest standard is what connects these two worlds at their core.
-                                </p>
+                                <p>{t.statementP1}</p>
+                                <p>{t.statementP2}</p>
+                                <p>{t.statementP3}</p>
                             </div>
 
                             <a
@@ -276,7 +325,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                                     marginTop: "clamp(1rem, 1.5vw, 1.25rem)",
                                 }}
                             >
-                                Speak with the team
+                                {t.speakWithTeam}
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
