@@ -2,6 +2,60 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { fetchNAVPerformance } from "@/Api/googleSheetsClient";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
+
+const translations = {
+    en: {
+        heading: "We Systematically Outperform Global Equity Benchmarks Since Inception",
+        description:
+            "Since inception, the platform has delivered nearly 3x the cumulative return of global equities—independent of market cycles and structurally immune to drawdowns.",
+        downloadFactsheet: "Download factsheet",
+        msciWorld: "MSCI World",
+        edgeCapital: "Edge Capital",
+        infoCards: [
+            {
+                num: "01",
+                title: "REGULATED STRUCTURE",
+                desc: "When the global 60/40 portfolio failed during the 2022 Rate Shock, our volatility and correlation engines did exactly what they were engineered to do.",
+            },
+            {
+                num: "02",
+                title: "ASSET SAFETY",
+                desc: "Client assets are held in a separate legal entity (Stichting Bewaring), isolating investor capital from platform balance sheet risk.",
+            },
+            {
+                num: "03",
+                title: "LIQUID TERMS",
+                desc: "Monthly liquidity with zero lock-up periods, ensuring capital remains accessible and decision-ready.",
+            },
+        ],
+    },
+    nl: {
+        heading: "Wij presteren systematisch beter dan wereldwijde aandelenbenchmarks sinds oprichting",
+        description:
+            "Sinds de oprichting heeft het platform bijna 3x het cumulatieve rendement van wereldwijde aandelen geleverd—onafhankelijk van marktcycli en structureel immuun voor dalingen.",
+        downloadFactsheet: "Download factsheet",
+        msciWorld: "MSCI World",
+        edgeCapital: "Edge Capital",
+        infoCards: [
+            {
+                num: "01",
+                title: "GEREGULEERDE STRUCTUUR",
+                desc: "Toen de wereldwijde 60/40-portefeuille faalde tijdens de renteschok van 2022, deden onze volatiliteits- en correlatiemotoren precies waarvoor ze ontworpen waren.",
+            },
+            {
+                num: "02",
+                title: "VERMOGENSBESCHERMING",
+                desc: "Klantvermogen wordt aangehouden in een aparte juridische entiteit (Stichting Bewaring), waardoor beleggersvermogen geïsoleerd is van het balanserisico van het platform.",
+            },
+            {
+                num: "03",
+                title: "LIQUIDE VOORWAARDEN",
+                desc: "Maandelijkse liquiditeit zonder lock-up periodes, zodat kapitaal altijd toegankelijk en beschikbaar blijft.",
+            },
+        ],
+    },
+};
 
 /* ═══════════════════════════════════════════════════════════
    Fallback data
@@ -141,6 +195,9 @@ const ChamferedBar = ({
    Component
    ═══════════════════════════════════════════════════════════ */
 export function BenchmarkComparison() {
+    const { language } = useChangeLanguageContext();
+    const t = translations[language] || translations.en;
+
     // State for dynamic benchmark values
     const [edgeCapital, setEdgeCapital] = useState(FALLBACK_EDGE_CAPITAL);
     const [msciWorld, setMsciWorld] = useState(FALLBACK_MSCI_WORLD);
@@ -259,16 +316,14 @@ export function BenchmarkComparison() {
                                 className="font-mono font-bold text-white leading-[1.15] mb-6"
                                 style={{ fontSize: "clamp(1.4rem, 4vw, 35px)" }}
                             >
-                                We Systematically Outperform Global Equity Benchmarks Since Inception
+                                {t.heading}
                             </h2>
 
                             <p
                                 className="text-[#8AABB0] leading-relaxed mb-8"
                                 style={{ fontSize: "clamp(0.8rem, 1.5vw, 1rem)" }}
                             >
-                                Since inception, the platform has delivered nearly 3x the cumulative
-                                return of global equities—independent of market cycles and
-                                structurally immune to drawdowns.
+                                {t.description}
                             </p>
 
                             <button
@@ -278,7 +333,7 @@ export function BenchmarkComparison() {
                                     borderRadius: "8px",
                                 }}
                             >
-                                Download factsheet
+                                {t.downloadFactsheet}
                                 <img
                                     src="/download.svg"
                                     alt=""
@@ -305,7 +360,7 @@ export function BenchmarkComparison() {
                                     {msciWorld.toFixed(1)}%
                                 </span>
                                 <span className="font-mono text-[10px] md:text-xs text-[#8AABB0] tracking-wide mb-2">
-                                    MSCI World
+                                    {t.msciWorld}
                                 </span>
 
                                 {/* Dotted Line Connector with circle head */}
@@ -353,7 +408,7 @@ export function BenchmarkComparison() {
                                     {edgeCapital.toFixed(1)}%
                                 </span>
                                 <span className="font-mono text-[10px] md:text-xs text-[#8AABB0] tracking-wide mb-2">
-                                    Edge Capital
+                                    {t.edgeCapital}
                                 </span>
 
                                 {/* Dotted Line Connector with circle head */}
@@ -394,23 +449,7 @@ export function BenchmarkComparison() {
 
             {/* ══ INFO CARDS — full section width ══ */}
             <div className="relative z-[3] grid grid-cols-1 md:grid-cols-3 mt-auto max-w-[1700px] mx-auto w-full">
-                {[
-                    {
-                        num: "01",
-                        title: "REGULATED STRUCTURE",
-                        desc: "When the global 60/40 portfolio failed during the 2022 Rate Shock, our volatility and correlation engines did exactly what they were engineered to do.",
-                    },
-                    {
-                        num: "02",
-                        title: "ASSET SAFETY",
-                        desc: "Client assets are held in a separate legal entity (Stichting Bewaring), isolating investor capital from platform balance sheet risk.",
-                    },
-                    {
-                        num: "03",
-                        title: "LIQUID TERMS",
-                        desc: "Monthly liquidity with zero lock-up periods, ensuring capital remains accessible and decision-ready.",
-                    },
-                ].map((card, i) => (
+                {t.infoCards.map((card, i) => (
                     <div
                         key={i}
                         className="relative overflow-hidden px-6 py-8 flex flex-col gap-6"

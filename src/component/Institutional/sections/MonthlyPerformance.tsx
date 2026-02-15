@@ -1,7 +1,49 @@
 
 
+
 import React, { useState, useEffect } from "react";
 import { fetchMonthlyPerformance, type MonthlyPerformanceItem, type PerformanceStrategy } from "@/Api/googleSheetsClient";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
+
+/* ═══════════════════════════════════════════════════════════
+   Translations
+   ═══════════════════════════════════════════════════════════ */
+const translations = {
+    en: {
+        returns: "Returns",
+        monthlyPerformance: "Monthly performance",
+        downloadFactsheet: "Download factsheet",
+        thePerformanceTable: "The performance table",
+        updatesMonthly: "updates monthly",
+        requestFactsheet: "Request factsheet",
+        periods: ["6 mon", "1yr", "All time"] as const,
+        strategies: [
+            { value: "vol_premium" as PerformanceStrategy, label: "Vol Premium" },
+            { value: "corr_arb" as PerformanceStrategy, label: "Corr Arb" },
+        ],
+        monthNames: [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December",
+        ],
+    },
+    nl: {
+        returns: "Rendementen",
+        monthlyPerformance: "Maandelijkse prestaties",
+        downloadFactsheet: "Download factsheet",
+        thePerformanceTable: "De prestatietabel",
+        updatesMonthly: "wordt maandelijks bijgewerkt",
+        requestFactsheet: "Factsheet aanvragen",
+        periods: ["6 mnd", "1jr", "Totaal"] as const,
+        strategies: [
+            { value: "vol_premium" as PerformanceStrategy, label: "Vol Premium" },
+            { value: "corr_arb" as PerformanceStrategy, label: "Corr Arb" },
+        ],
+        monthNames: [
+            "Januari", "Februari", "Maart", "April", "Mei", "Juni",
+            "Juli", "Augustus", "September", "Oktober", "November", "December",
+        ],
+    },
+};
 
 /* ═══════════════════════════════════════════════════════════
    Fallback data (used while fetching or on failure)
@@ -15,39 +57,49 @@ const FALLBACK_MONTHS: MonthlyPerformanceItem[] = [
     { month: "June", value: 3.28 },
 ];
 
-const MONTH_NAMES = [
+const MONTH_NAMES_EN = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 ];
 
 /** Extract month name from various formats:
- *  - "Sat Feb 01 2025 00:00:00 GMT+0200 ..." → "February"
- *  - "January 2025" → "January"
- *  - "January" → "January"
+ *  - "Sat Feb 01 2025 00:00:00 GMT+0200 ..." → "February" / "Februari"
+ *  - "January 2025" → "January" / "Januari"
+ *  - "January" → "January" / "Januari"
  */
-function displayMonth(raw: string): string {
+function displayMonth(raw: string, monthNames: string[]): string {
     const d = new Date(raw);
     if (!isNaN(d.getTime())) {
-        return MONTH_NAMES[d.getMonth()];
+        return monthNames[d.getMonth()];
     }
-    return raw.replace(/\s+\d{4}$/, "");
+    // Try to match an English month name and translate it
+    const stripped = raw.replace(/\s+\d{4}$/, "");
+    const idx = MONTH_NAMES_EN.indexOf(stripped);
+    if (idx !== -1) {
+        return monthNames[idx];
+    }
+    return stripped;
 }
-
-const PERIODS = ["6 mon", "1yr", "All time"] as const;
-
-const STRATEGIES: { value: PerformanceStrategy; label: string }[] = [
-    { value: "vol_premium", label: "Vol Premium" },
-    { value: "corr_arb", label: "Corr Arb" },
-];
 
 /* ═══════════════════════════════════════════════════════════
    Component
    ═══════════════════════════════════════════════════════════ */
 export function MonthlyPerformance() {
-    const [activePeriod, setActivePeriod] = useState<string>("6 mon");
+    const { language } = useChangeLanguageContext();
+    const t = translations[language as keyof typeof translations] || translations.en;
+
+    const PERIODS = t.periods;
+    const STRATEGIES = t.strategies;
+
+    const [activePeriod, setActivePeriod] = useState<string>(PERIODS[0]);
     const [activeStrategy, setActiveStrategy] = useState<PerformanceStrategy>("vol_premium");
     const [allMonths, setAllMonths] = useState<MonthlyPerformanceItem[]>(FALLBACK_MONTHS);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    // Reset activePeriod when language changes so it matches the new labels
+    useEffect(() => {
+        setActivePeriod(t.periods[0]);
+    }, [language]);
 
     useEffect(() => {
         let cancelled = false;
@@ -67,9 +119,9 @@ export function MonthlyPerformance() {
 
     // Derive visible months based on active period
     const months =
-        activePeriod === "1yr"
+        activePeriod === PERIODS[1]
             ? allMonths.slice(-12)
-            : allMonths.slice(-6); // "6 mon" and "All time" both show last 6 behind overlay
+            : allMonths.slice(-6); // first period and last period both show last 6 behind overlay
 
     const values = months.map((m) => m.value);
     const maxValue = Math.max(...values);
@@ -129,13 +181,13 @@ export function MonthlyPerformance() {
                             className="block font-mono tracking-[0.2em] uppercase text-[#5A8A8F] mb-2"
                             style={{ fontSize: "clamp(12px, 3vw, 18px)" }}
                         >
-                            Returns
+                            {t.returns}
                         </span>
                         <h2
                             className="font-mono font-bold text-white leading-tight"
                             style={{ fontSize: "clamp(1.4rem, 5vw, 3rem)" }}
                         >
-                            Monthly performance
+                            {t.monthlyPerformance}
                         </h2>
                     </div>
 
@@ -146,7 +198,7 @@ export function MonthlyPerformance() {
                             borderRadius: "8px",
                         }}
                     >
-                        Download factsheet
+                        {t.downloadFactsheet}
                         <img src="/download.svg" alt="" className="w-4 h-4" style={{ filter: "brightness(0) invert(1)" }} aria-hidden="true" />
                     </button>
                 </div>
@@ -195,8 +247,8 @@ export function MonthlyPerformance() {
                             <div className="flex items-start gap-2">
                                 <span className="text-[#5CCAD3] text-base leading-none mt-0.5">✳</span>
                                 <p className="font-mono text-[11px] md:text-xs text-[#6A9A9E] leading-relaxed">
-                                    The performance table<br />
-                                    updates monthly
+                                    {t.thePerformanceTable}<br />
+                                    {t.updatesMonthly}
                                 </p>
                             </div>
 
@@ -268,8 +320,8 @@ export function MonthlyPerformance() {
                         {/* ── Bar chart — fills remaining height ── */}
                         <div className="relative flex items-end gap-1.5 md:gap-5 lg:gap-8 flex-1">
 
-                            {/* Glassy overlay for "All time" */}
-                            {activePeriod === "All time" && (
+                            {/* Glassy overlay for "All time" / "Totaal" */}
+                            {activePeriod === PERIODS[2] && (
                                 <div
                                     className="absolute inset-0 z-10 flex items-center justify-center rounded-xl"
                                     style={{
@@ -286,7 +338,7 @@ export function MonthlyPerformance() {
                                             borderRadius: "10px",
                                         }}
                                     >
-                                        Request factsheet
+                                        {t.requestFactsheet}
                                         <img src="/download.svg" alt="" className="w-4 h-4" style={{ filter: "brightness(0) invert(1)" }} aria-hidden="true" />
                                     </button>
                                 </div>
@@ -348,7 +400,7 @@ export function MonthlyPerformance() {
                                                             : "text-[#F4FFFF]"
                                                             }`}
                                                     >
-                                                        {displayMonth(item.month)}
+                                                        {displayMonth(item.month, t.monthNames)}
                                                     </span>
                                                 </div>
                                             </div>

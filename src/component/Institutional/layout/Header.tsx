@@ -1,10 +1,53 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, X } from "lucide-react";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
+
+const translations = {
+    en: {
+        home: "Home",
+        aboutUs: "About us",
+        about: "About",
+        team: "Team",
+        ourFunds: "Our funds",
+        edgeFund: "EdgeFund",
+        correlationArbitrageFund: "Correlation Arbitrage Fund",
+        institutional: "Institutional",
+        contact: "Contact",
+        documents: "Documents",
+        careers: "Careers",
+        edgeCapitalCSR: "Edge Capital CSR",
+        ambassadeur: "Ambassadeur Nyck de Vries",
+        contactUs: "Contact us",
+        english: "English",
+        nederland: "Nederland",
+    },
+    nl: {
+        home: "Home",
+        aboutUs: "Over ons",
+        about: "Over ons",
+        team: "Team",
+        ourFunds: "Onze fondsen",
+        edgeFund: "EdgeFund",
+        correlationArbitrageFund: "Correlation Arbitrage Fund",
+        institutional: "Institutioneel",
+        contact: "Contact",
+        documents: "Documenten",
+        careers: "Carrières",
+        edgeCapitalCSR: "Edge Capital MVO",
+        ambassadeur: "Ambassadeur Nyck de Vries",
+        contactUs: "Neem contact op",
+        english: "English",
+        nederland: "Nederlands",
+    },
+};
 
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+    const { language, setLanguage } = useChangeLanguageContext();
+
+    const t = translations[language];
 
     const toggleSubmenu = (name: string) => {
         setOpenSubmenu(openSubmenu === name ? null : name);
@@ -51,41 +94,41 @@ export function Header() {
                                     to="/"
                                     className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors font-mono"
                                 >
-                                    Home
+                                    {t.home}
                                 </Link>
                             </li>
                             <li className="relative group">
                                 <button className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors flex items-center gap-1.5 font-mono">
-                                    About us
+                                    {t.aboutUs}
                                     <ChevronDown className="w-3 h-3" />
                                 </button>
                                 <ul className="absolute top-full left-0 mt-3 bg-white shadow-lg min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50" style={{ borderRadius: '10px' }}>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/about" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '10px 10px 0 0' }}>
-                                            About
+                                            {t.about}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="/team" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '0 0 10px 10px' }}>
-                                            Team
+                                            {t.team}
                                         </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li className="relative group">
                                 <button className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors flex items-center gap-1.5 font-mono">
-                                    Our funds
+                                    {t.ourFunds}
                                     <ChevronDown className="w-3 h-3" />
                                 </button>
                                 <ul className="absolute top-full left-0 mt-3 bg-white shadow-lg min-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50" style={{ borderRadius: '10px' }}>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/edge-fund" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '10px 10px 0 0' }}>
-                                            EdgeFund
+                                            {t.edgeFund}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="/correlation-arbitrage-fund" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '0 0 10px 10px' }}>
-                                            Correlation Arbitrage Fund
+                                            {t.correlationArbitrageFund}
                                         </Link>
                                     </li>
                                 </ul>
@@ -95,38 +138,38 @@ export function Header() {
                                     to="/institutional"
                                     className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors font-mono"
                                 >
-                                    Institutional
+                                    {t.institutional}
                                 </Link>
                             </li>
                             <li className="relative group">
                                 <button className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors flex items-center gap-1.5 font-mono">
-                                    Contact
+                                    {t.contact}
                                     <ChevronDown className="w-3 h-3" />
                                 </button>
                                 <ul className="absolute top-full right-0 mt-3 bg-white shadow-lg min-w-[260px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50" style={{ borderRadius: '10px' }}>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/contact" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '10px 10px 0 0' }}>
-                                            Contact
+                                            {t.contact}
                                         </Link>
                                     </li>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/documents" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]">
-                                            Documents
+                                            {t.documents}
                                         </Link>
                                     </li>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/careers" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]">
-                                            Careers
+                                            {t.careers}
                                         </Link>
                                     </li>
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/edge-capitla-csr" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]">
-                                            Edge Capital CSR
+                                            {t.edgeCapitalCSR}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="/ambassadeur-nyck-de-vries" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]" style={{ borderRadius: '0 0 10px 10px' }}>
-                                            Ambassadeur Nyck de Vries
+                                            {t.ambassadeur}
                                         </Link>
                                     </li>
                                 </ul>
@@ -145,12 +188,13 @@ export function Header() {
                     >
                         <div className="relative">
                             <select
-                                defaultValue="nl"
+                                value={language}
+                                onChange={(e) => setLanguage(e.target.value as 'en' | 'nl')}
                                 className="bg-transparent text-white font-medium text-base 2xl:text-lg px-2 py-1 appearance-none cursor-pointer pr-7 outline-none font-mono"
                                 style={{ minWidth: '100px' }}
                             >
-                                <option value="en" className="text-black bg-white">English</option>
-                                <option value="nl" className="text-black bg-white">Nederland</option>
+                                <option value="en" className="text-black bg-white">{t.english}</option>
+                                <option value="nl" className="text-black bg-white">{t.nederland}</option>
                             </select>
                             <svg
                                 className="w-3 h-3 text-white absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none"
@@ -166,7 +210,7 @@ export function Header() {
                             className="bg-[#EDF3F4] text-[#091114] font-medium text-base 2xl:text-lg px-4 py-1.5 hover:bg-[#dce5e7] transition-colors flex items-center gap-1.5 font-mono"
                             style={{ borderRadius: '8px' }}
                         >
-                            Contact us
+                            {t.contactUs}
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                             </svg>
@@ -212,7 +256,7 @@ export function Header() {
                             className="text-white font-mono font-medium text-lg py-3 border-b border-white/10"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Home
+                            {t.home}
                         </Link>
 
                         <div className="border-b border-white/10">
@@ -220,15 +264,15 @@ export function Header() {
                                 className="text-white font-mono font-medium text-lg py-3 w-full flex items-center justify-between"
                                 onClick={() => toggleSubmenu('about')}
                             >
-                                About us
+                                {t.aboutUs}
                                 <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === 'about' ? 'rotate-180' : ''}`} />
                             </button>
                             <div className={`overflow-hidden transition-all duration-200 ${openSubmenu === 'about' ? 'max-h-40' : 'max-h-0'}`}>
                                 <Link to="/about" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    About
+                                    {t.about}
                                 </Link>
                                 <Link to="/team" className="block text-white/70 font-mono text-base py-2.5 pl-4 mb-2" onClick={() => setMobileMenuOpen(false)}>
-                                    Team
+                                    {t.team}
                                 </Link>
                             </div>
                         </div>
@@ -238,15 +282,15 @@ export function Header() {
                                 className="text-white font-mono font-medium text-lg py-3 w-full flex items-center justify-between"
                                 onClick={() => toggleSubmenu('funds')}
                             >
-                                Our funds
+                                {t.ourFunds}
                                 <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === 'funds' ? 'rotate-180' : ''}`} />
                             </button>
                             <div className={`overflow-hidden transition-all duration-200 ${openSubmenu === 'funds' ? 'max-h-40' : 'max-h-0'}`}>
                                 <Link to="/edge-fund" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    EdgeFund
+                                    {t.edgeFund}
                                 </Link>
                                 <Link to="/correlation-arbitrage-fund" className="block text-white/70 font-mono text-base py-2.5 pl-4 mb-2" onClick={() => setMobileMenuOpen(false)}>
-                                    Correlation Arbitrage Fund
+                                    {t.correlationArbitrageFund}
                                 </Link>
                             </div>
                         </div>
@@ -256,7 +300,7 @@ export function Header() {
                             className="text-white font-mono font-medium text-lg py-3 border-b border-white/10"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            Institutional
+                            {t.institutional}
                         </Link>
 
                         <div className="border-b border-white/10">
@@ -264,24 +308,24 @@ export function Header() {
                                 className="text-white font-mono font-medium text-lg py-3 w-full flex items-center justify-between"
                                 onClick={() => toggleSubmenu('contact')}
                             >
-                                Contact
+                                {t.contact}
                                 <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === 'contact' ? 'rotate-180' : ''}`} />
                             </button>
                             <div className={`overflow-hidden transition-all duration-200 ${openSubmenu === 'contact' ? 'max-h-60' : 'max-h-0'}`}>
                                 <Link to="/contact" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    Contact
+                                    {t.contact}
                                 </Link>
                                 <Link to="/documents" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    Documents
+                                    {t.documents}
                                 </Link>
                                 <Link to="/careers" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    Careers
+                                    {t.careers}
                                 </Link>
                                 <Link to="/edge-capitla-csr" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    Edge Capital CSR
+                                    {t.edgeCapitalCSR}
                                 </Link>
                                 <Link to="/ambassadeur-nyck-de-vries" className="block text-white/70 font-mono text-base py-2.5 pl-4 mb-2" onClick={() => setMobileMenuOpen(false)}>
-                                    Ambassadeur Nyck de Vries
+                                    {t.ambassadeur}
                                 </Link>
                             </div>
                         </div>
@@ -289,11 +333,12 @@ export function Header() {
                         <div className="flex items-center justify-between mt-4 pt-2">
                             <div className="relative">
                                 <select
-                                    defaultValue="nl"
+                                    value={language}
+                                    onChange={(e) => setLanguage(e.target.value as 'en' | 'nl')}
                                     className="bg-transparent text-white font-medium text-base px-2 py-1 appearance-none cursor-pointer pr-7 outline-none font-mono"
                                 >
-                                    <option value="en" className="text-black bg-white">English</option>
-                                    <option value="nl" className="text-black bg-white">Nederland</option>
+                                    <option value="en" className="text-black bg-white">{t.english}</option>
+                                    <option value="nl" className="text-black bg-white">{t.nederland}</option>
                                 </select>
                                 <svg
                                     className="w-3 h-3 text-white absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none"
@@ -310,7 +355,7 @@ export function Header() {
                                 style={{ borderRadius: '8px' }}
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Contact us
+                                {t.contactUs}
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                                 </svg>

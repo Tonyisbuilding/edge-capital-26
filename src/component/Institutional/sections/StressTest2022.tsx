@@ -2,6 +2,38 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { StressTestChart2022 } from "@/component/Institutional/charts/StressTestChart2022";
 import { fetchNAVPerformance, type NAVDataPoint } from "@/Api/googleSheetsClient";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
+
+const translations = {
+    en: {
+        duringMarketCrises: "During market crises,",
+        ourSystemDelivers: "our system delivers.",
+        crisisAlpha: "Crisis Alpha",
+        the2022: "The 2022",
+        stressTest: "Stress Test.",
+        paragraph: "In 2022, the 60/40 portfolio faced its worst year in decades as stocks and bonds fell together. In that same window, Edge Capital\u2019s volatility engines didn\u2019t just survive\u2014they",
+        monetizedTheChaos: "monetized the chaos",
+        delivering: "delivering",
+        netReturns: "net returns",
+        whileBenchmarkFell: "while the global benchmark fell",
+        performanceSpread: "Performance Spread",
+        correlationToBenchmark: "Correlation to Benchmark",
+    },
+    nl: {
+        duringMarketCrises: "Tijdens marktcrises,",
+        ourSystemDelivers: "levert ons systeem.",
+        crisisAlpha: "Crisis Alpha",
+        the2022: "De 2022",
+        stressTest: "Stresstest.",
+        paragraph: "In 2022 kende de 60/40-portefeuille het slechtste jaar in decennia doordat aandelen en obligaties gelijktijdig daalden. In diezelfde periode hebben de volatiliteitsmotoren van Edge Capital niet alleen overleefd\u2014ze hebben",
+        monetizedTheChaos: "de chaos gemonetariseerd",
+        delivering: "en leverden",
+        netReturns: "nettorendement",
+        whileBenchmarkFell: "terwijl de wereldwijde benchmark daalde met",
+        performanceSpread: "Prestatiespreiding",
+        correlationToBenchmark: "Correlatie met Benchmark",
+    },
+};
 
 // Helper: Calculate 2022 returns from NAV data
 function calculate2022Returns(navData: NAVDataPoint[]) {
@@ -20,6 +52,8 @@ function calculate2022Returns(navData: NAVDataPoint[]) {
 
 export function StressTest2022() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { language } = useChangeLanguageContext();
+    const t = translations[language] || translations.en;
 
     // State for dynamic 2022 returns
     const [returns, setReturns] = useState({
@@ -118,10 +152,10 @@ export function StressTest2022() {
                             style={{ fontSize: "clamp(1.8rem, 4vw, 4.5rem)" }}
                         >
                             <span className="block text-white">
-                                During market crises,
+                                {t.duringMarketCrises}
                             </span>
                             <span className="block text-white/30">
-                                our system delivers.
+                                {t.ourSystemDelivers}
                             </span>
                         </h2>
                     </div>
@@ -129,10 +163,10 @@ export function StressTest2022() {
                     {/* Text content */}
                     <div className="max-w-xl">
                         <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#5EEAD4]/50 mb-5">
-                            Crisis Alpha
+                            {t.crisisAlpha}
                         </p>
                         <h3 className="text-2xl font-mono font-light text-white leading-[1.15] mb-6">
-                            The 2022{" "}
+                            {t.the2022}{" "}
                             <span
                                 className="font-normal"
                                 style={{
@@ -141,19 +175,17 @@ export function StressTest2022() {
                                     WebkitTextFillColor: "transparent",
                                 }}
                             >
-                                Stress Test.
+                                {t.stressTest}
                             </span>
                         </h3>
                         <p className="text-[14px] text-white/45 leading-[1.85] font-mono font-light">
-                            In 2022, the 60/40 portfolio faced its worst year in decades as
-                            stocks and bonds fell together. In that same window, Edge
-                            Capital&apos;s volatility engines didn&apos;t just survive—they{" "}
-                            <span className="text-white/70 font-normal">monetized the chaos</span>,
-                            delivering{" "}
+                            {t.paragraph}{" "}
+                            <span className="text-white/70 font-normal">{t.monetizedTheChaos}</span>,
+                            {" "}{t.delivering}{" "}
                             <span className="font-medium" style={{ color: "#5EEAD4" }}>
-                                {returns.volPrem}% net returns
+                                {returns.volPrem}% {t.netReturns}
                             </span>{" "}
-                            while the global benchmark fell{" "}
+                            {t.whileBenchmarkFell}{" "}
                             <span className="font-medium text-white/60">{returns.msci}%</span>.
                         </p>
 
@@ -161,7 +193,7 @@ export function StressTest2022() {
                         <div className="mt-10 flex items-center gap-6 border-t border-white/[0.06] pt-6">
                             <div>
                                 <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
-                                    Performance Spread
+                                    {t.performanceSpread}
                                 </p>
                                 <p
                                     className="text-2xl font-mono font-light tabular-nums"
@@ -177,7 +209,7 @@ export function StressTest2022() {
                             <div className="w-[1px] h-10 bg-white/[0.06]" />
                             <div>
                                 <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
-                                    Correlation to Benchmark
+                                    {t.correlationToBenchmark}
                                 </p>
                                 <p className="text-2xl font-mono font-light tabular-nums text-white/70">
                                     −0.82
@@ -222,10 +254,10 @@ export function StressTest2022() {
                                 style={{ fontSize: "clamp(1.8rem, 4vw, 4.5rem)" }}
                             >
                                 <span className="block text-white">
-                                    During market crises,
+                                    {t.duringMarketCrises}
                                 </span>
                                 <span className="block text-white/30">
-                                    our system delivers.
+                                    {t.ourSystemDelivers}
                                 </span>
                             </h2>
                         </div>
@@ -244,12 +276,12 @@ export function StressTest2022() {
                             >
                                 {/* Eyebrow */}
                                 <p className="text-[10px] md:text-[11px] font-mono tracking-[0.25em] uppercase text-[#5EEAD4]/50 mb-5">
-                                    Crisis Alpha
+                                    {t.crisisAlpha}
                                 </p>
 
                                 {/* Headline */}
                                 <h2 className="text-3xl md:text-4xl lg:text-[42px] font-mono font-light text-white leading-[1.15] mb-8">
-                                    The 2022{" "}
+                                    {t.the2022}{" "}
                                     <span
                                         className="font-normal"
                                         style={{
@@ -258,24 +290,22 @@ export function StressTest2022() {
                                             WebkitTextFillColor: "transparent",
                                         }}
                                     >
-                                        Stress Test.
+                                        {t.stressTest}
                                     </span>
                                 </h2>
 
                                 {/* Body */}
                                 <p className="text-[15px] md:text-base text-white/45 leading-[1.85] font-mono font-light">
-                                    In 2022, the 60/40 portfolio faced its worst year in decades as
-                                    stocks and bonds fell together. In that same window, Edge
-                                    Capital&apos;s volatility engines didn&apos;t just survive—they{" "}
-                                    <span className="text-white/70 font-normal">monetized the chaos</span>,
-                                    delivering{" "}
+                                    {t.paragraph}{" "}
+                                    <span className="text-white/70 font-normal">{t.monetizedTheChaos}</span>,
+                                    {" "}{t.delivering}{" "}
                                     <span
                                         className="font-medium"
                                         style={{ color: "#5EEAD4" }}
                                     >
-                                        {returns.volPrem}% net returns
+                                        {returns.volPrem}% {t.netReturns}
                                     </span>{" "}
-                                    while the global benchmark fell{" "}
+                                    {t.whileBenchmarkFell}{" "}
                                     <span className="font-medium text-white/60">
                                         {returns.msci}%
                                     </span>.
@@ -285,7 +315,7 @@ export function StressTest2022() {
                                 <div className="mt-16 md:mt-20 flex items-center gap-6 border-t border-white/[0.06] pt-8">
                                     <div>
                                         <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
-                                            Performance Spread
+                                            {t.performanceSpread}
                                         </p>
                                         <p
                                             className="text-3xl md:text-4xl font-mono font-light tabular-nums"
@@ -301,7 +331,7 @@ export function StressTest2022() {
                                     <div className="w-[1px] h-12 bg-white/[0.06]" />
                                     <div>
                                         <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
-                                            Correlation to Benchmark
+                                            {t.correlationToBenchmark}
                                         </p>
                                         <p className="text-3xl md:text-4xl font-mono font-light tabular-nums text-white/70">
                                             −0.82

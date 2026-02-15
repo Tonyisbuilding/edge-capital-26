@@ -2,36 +2,76 @@
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 
 /* ═══════════════════════════════════════════════════════════
    Data
    ═══════════════════════════════════════════════════════════ */
-const ITEMS = [
-    {
-        tab: "Engine one",
-        step: "01",
-        title: "Market Neutral\nVolatility Premium",
-        description:
-            "We systematically harvest the structural spread between Implied Volatility (market fear) and Realized Volatility (actual movement). By selling expensive convexity while dynamically hedging Delta, we generate consistent yield that is mathematically independent of market direction.",
-        imgSrc: "/Market Neutral Volatility Premium.png",
-    },
-    {
-        tab: "Engine two",
-        step: "02",
-        title: "Correlation / Relative-\nValue Dislocation",
-        description:
-            "We do not just trade assets; we trade the relationships between them. Our engines exploit statistical dislocations across G10 FX and global equity indices, capturing alpha when correlations break down or mean-revert during periods of macro stress.",
-        imgSrc: "/Relative- Value Dislocation.png",
-    },
-    {
-        tab: "Risk upgrade",
-        step: "03",
-        title: "The Risk-Engine\nUpgrade (Nov 2022)",
-        description:
-            "Following the 2022 rate shock, we deployed a structural architectural upgrade: a \"Crisis Alpha\" overlay. This adaptive logic allows the system to instantly transition from \"Harvesting\" to \"Long Volatility,\" monetizing the velocity of tail-risk events rather than just surviving them.",
-        imgSrc: "/The Risk-Engine Upgrade.png",
-    },
-];
+type Item = {
+    tab: string;
+    step: string;
+    title: string;
+    description: string;
+    imgSrc: string;
+};
+
+function getItems(language: string): Item[] {
+    if (language === "nl") {
+        return [
+            {
+                tab: "Motor één",
+                step: "01",
+                title: "Marktneutraal\nVolatiliteitspremie",
+                description:
+                    "Wij oogsten systematisch de structurele spread tussen Implied Volatility (marktangst) en Realized Volatility (werkelijke beweging). Door dure convexiteit te verkopen terwijl we Delta dynamisch hedgen, genereren we consistent rendement dat wiskundig onafhankelijk is van de marktrichting.",
+                imgSrc: "/Market Neutral Volatility Premium.png",
+            },
+            {
+                tab: "Motor twee",
+                step: "02",
+                title: "Correlatie / Relatieve\nWaarde-Dislocatie",
+                description:
+                    "We handelen niet alleen in activa; we handelen in de relaties ertussen. Onze motoren exploiteren statistische dislocaties over G10 FX en wereldwijde aandelenindices, en vangen alpha wanneer correlaties afbreken of mean-reverten tijdens periodes van macrostress.",
+                imgSrc: "/Relative- Value Dislocation.png",
+            },
+            {
+                tab: "Risico-upgrade",
+                step: "03",
+                title: "De Risico-Motor\nUpgrade (Nov 2022)",
+                description:
+                    "Na de renteschok van 2022 hebben we een structurele architecturale upgrade doorgevoerd: een \"Crisis Alpha\" overlay. Deze adaptieve logica stelt het systeem in staat om onmiddellijk over te schakelen van \"Harvesting\" naar \"Long Volatility,\" waardoor de snelheid van staartrisico-gebeurtenissen wordt gemonetariseerd in plaats van er alleen maar te overleven.",
+                imgSrc: "/The Risk-Engine Upgrade.png",
+            },
+        ];
+    }
+
+    return [
+        {
+            tab: "Engine one",
+            step: "01",
+            title: "Market Neutral\nVolatility Premium",
+            description:
+                "We systematically harvest the structural spread between Implied Volatility (market fear) and Realized Volatility (actual movement). By selling expensive convexity while dynamically hedging Delta, we generate consistent yield that is mathematically independent of market direction.",
+            imgSrc: "/Market Neutral Volatility Premium.png",
+        },
+        {
+            tab: "Engine two",
+            step: "02",
+            title: "Correlation / Relative-\nValue Dislocation",
+            description:
+                "We do not just trade assets; we trade the relationships between them. Our engines exploit statistical dislocations across G10 FX and global equity indices, capturing alpha when correlations break down or mean-revert during periods of macro stress.",
+            imgSrc: "/Relative- Value Dislocation.png",
+        },
+        {
+            tab: "Risk upgrade",
+            step: "03",
+            title: "The Risk-Engine\nUpgrade (Nov 2022)",
+            description:
+                "Following the 2022 rate shock, we deployed a structural architectural upgrade: a \"Crisis Alpha\" overlay. This adaptive logic allows the system to instantly transition from \"Harvesting\" to \"Long Volatility,\" monetizing the velocity of tail-risk events rather than just surviving them.",
+            imgSrc: "/The Risk-Engine Upgrade.png",
+        },
+    ];
+}
 
 const NAV_HEIGHT = 88;
 
@@ -98,17 +138,19 @@ function useTextScramble(targetText: string, duration = 700) {
    - stroke: rgba(63, 88, 94, 0.15) @ 0.4px
    ═══════════════════════════════════════════════════════════ */
 function TabBar({
+    items,
     activeIndex,
     subProgress,
     onTabClick,
 }: {
+    items: Item[];
     activeIndex: number;
     subProgress: number;
     onTabClick: (index: number) => void;
 }) {
     return (
         <div className="grid grid-cols-3">
-            {ITEMS.map((item, i) => {
+            {items.map((item, i) => {
                 const isActive = i === activeIndex;
                 const isPast = i < activeIndex;
 
@@ -167,18 +209,18 @@ function TabBar({
 /* ═══════════════════════════════════════════════════════════
    Right Content Card
    ═══════════════════════════════════════════════════════════ */
-function RightContent({ item }: { item: (typeof ITEMS)[number] }) {
+function RightContent({ item }: { item: Item }) {
     return (
-        <div className="flex flex-col gap-4 md:gap-6 h-full overflow-hidden">
-            <p className="text-[#1A2B30]/55 text-sm md:text-[15px] leading-relaxed max-w-xl flex-shrink-0">
+        <div className="flex flex-col gap-2 md:gap-6 h-full overflow-hidden">
+            <p className="text-[#1A2B30]/55 text-sm md:text-[15px] leading-snug md:leading-relaxed max-w-xl flex-shrink-0">
                 {item.description}
             </p>
 
-            <div className="mt-2 md:mt-4 rounded-lg overflow-hidden flex justify-start items-start flex-1 min-h-0">
+            <div className="mt-0 md:mt-4 rounded-lg overflow-hidden flex items-start flex-1 min-h-0">
                 <img
                     src={item.imgSrc}
                     alt={item.title}
-                    className="w-full h-auto max-h-full object-contain block"
+                    className="w-full h-auto object-contain object-left block max-h-[45vh] md:max-h-[55vh]"
                 />
             </div>
         </div>
@@ -188,8 +230,8 @@ function RightContent({ item }: { item: (typeof ITEMS)[number] }) {
 /* ═══════════════════════════════════════════════════════════
    Left Title — stays fixed, scrambles text on change
    ═══════════════════════════════════════════════════════════ */
-function LeftTitle({ activeIndex }: { activeIndex: number }) {
-    const title = ITEMS[activeIndex]?.title ?? ITEMS[0].title;
+function LeftTitle({ items, activeIndex }: { items: Item[]; activeIndex: number }) {
+    const title = items[activeIndex]?.title ?? items[0].title;
     const displayText = useTextScramble(title, 700);
 
     return (
@@ -213,6 +255,8 @@ function LeftTitle({ activeIndex }: { activeIndex: number }) {
    • Step indicator: active→next line is wide; others narrow.
    ═══════════════════════════════════════════════════════════ */
 export function EngineTimeline() {
+    const { language } = useChangeLanguageContext();
+    const items = getItems(language);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -226,13 +270,13 @@ export function EngineTimeline() {
 
     useEffect(() => {
         const unsub = scrollYProgress.on("change", (v) => {
-            const scaled = v * ITEMS.length;
-            const idx = Math.min(Math.floor(scaled), ITEMS.length - 1);
+            const scaled = v * items.length;
+            const idx = Math.min(Math.floor(scaled), items.length - 1);
             setActiveIndex(idx);
             setSubProgress(Math.min(scaled - idx, 1));
         });
         return unsub;
-    }, [scrollYProgress]);
+    }, [scrollYProgress, items.length]);
 
     /* ── Right-column Y transforms ──
        Smooth slide transitions over ~0.05 scroll range (~200px of 4000px scroll).
@@ -284,7 +328,7 @@ export function EngineTimeline() {
             const rect = containerRef.current.getBoundingClientRect();
             const containerTop = window.scrollY + rect.top;
             const totalScroll = containerRef.current.scrollHeight - window.innerHeight;
-            const targetScroll = containerTop + (index / ITEMS.length) * totalScroll;
+            const targetScroll = containerTop + (index / items.length) * totalScroll;
             window.scrollTo({ top: targetScroll, behavior: "smooth" });
         },
         []
@@ -311,28 +355,27 @@ export function EngineTimeline() {
                 />
 
                 <div
-                    className="relative z-10 w-full max-w-[1700px] mx-auto px-[10px] md:px-12 flex flex-col flex-1"
-                    style={{ paddingTop: NAV_HEIGHT + 24 }}
+                    className="relative z-10 w-full max-w-[1700px] mx-auto px-[10px] md:px-12 flex flex-col flex-1 pt-[72px] md:pt-[112px]"
                 >
                     {/* Tab bar with progress */}
-                    <TabBar activeIndex={activeIndex} subProgress={subProgress} onTabClick={handleTabClick} />
+                    <TabBar items={items} activeIndex={activeIndex} subProgress={subProgress} onTabClick={handleTabClick} />
 
                     {/* Main content */}
-                    <div className="flex-1 flex flex-col pt-8 md:pt-12 overflow-hidden">
+                    <div className="flex-1 flex flex-col pt-3 md:pt-12 overflow-hidden">
 
                         {/* Two-column layout */}
-                        <div className="flex flex-col md:flex-row gap-6 md:gap-12 flex-1">
+                        <div className="flex flex-col md:flex-row gap-2 md:gap-12 flex-1">
                             {/* LEFT — fixed in place, scrambles */}
                             <div className="md:w-[40%] shrink-0">
-                                <LeftTitle activeIndex={activeIndex} />
+                                <LeftTitle items={items} activeIndex={activeIndex} />
                             </div>
 
                             {/* RIGHT — scrolls vertically */}
-                            <div className="flex-1 relative overflow-hidden">
-                                {ITEMS.map((item, i) => (
+                            <div className="flex-1 relative overflow-hidden min-h-[50vh] md:min-h-0">
+                                {items.map((item, i) => (
                                     <motion.div
                                         key={i}
-                                        className="absolute inset-x-0 top-0"
+                                        className="absolute inset-x-0 top-0 bottom-0"
                                         style={{
                                             y: yArr[i],
                                             opacity: opArr[i],

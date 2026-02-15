@@ -2,25 +2,31 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 
-const PARAGRAPH_TEXT =
-    "We define stress not as fear, but as an operational state. When risk premia reprice and correlations destabilize, the platform activates a pre-defined operational loop.";
-
-const WORDS = PARAGRAPH_TEXT.split(" ");
-
-// Words that should always be bold/dark for emphasis
-const BOLD_WORDS = new Set(["operational", "state."]);
+const translations = {
+    en: {
+        text: "We define stress not as fear, but as an operational state. When risk premia reprice and correlations destabilize, the platform activates a pre-defined operational loop.",
+        boldWords: new Set(["operational", "state."]),
+    },
+    nl: {
+        text: "Wij definiëren stress niet als angst, maar als een operationele toestand. Wanneer risicopremies herprijzen en correlaties destabiliseren, activeert het platform een vooraf gedefinieerde operationele cyclus.",
+        boldWords: new Set(["operationele", "toestand."]),
+    },
+};
 
 function AnimatedWord({
     word,
     index,
     totalWords,
     scrollYProgress,
+    isBold,
 }: {
     word: string;
     index: number;
     totalWords: number;
     scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+    isBold: boolean;
 }) {
     // Each word transitions from muted to active over a small scroll range
     // Stagger the start so words animate one by one
@@ -32,8 +38,6 @@ function AnimatedWord({
         [wordStart, wordEnd],
         ["#B0BEC5", "#1A2B30"]
     );
-
-    const isBold = BOLD_WORDS.has(word);
 
     return (
         <motion.span
@@ -48,6 +52,10 @@ function AnimatedWord({
 
 export function StressDefinition() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { language } = useChangeLanguageContext();
+    const t = translations[language] || translations.en;
+
+    const words = t.text.split(" ");
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -81,13 +89,14 @@ export function StressDefinition() {
                             className="leading-[1.6] font-mono font-semibold text-center"
                             style={{ fontSize: "clamp(20px, 2.5vw, 34px)" }}
                         >
-                            {WORDS.map((word, i) => (
+                            {words.map((word, i) => (
                                 <AnimatedWord
                                     key={i}
                                     word={word}
                                     index={i}
-                                    totalWords={WORDS.length}
+                                    totalWords={words.length}
                                     scrollYProgress={scrollYProgress}
+                                    isBold={t.boldWords.has(word)}
                                 />
                             ))}
                         </p>
