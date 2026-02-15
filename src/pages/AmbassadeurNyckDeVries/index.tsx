@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Navbar from "../../common/NavBar";
 import Footer from "../../common/Footer";
+import Contact from "@/component/landingPage/Contact";
 import heroBg from "@/assets/images/amb/amb-hero-without-overlay.jpg";
 import cardImg1 from "@/assets/images/amb/amb-card-img1.png";
 import cardImg2 from "@/assets/images/amb/amb-card-img2.png";
@@ -284,6 +285,10 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Contact Section */}
+            <Contact />
+
             <Footer />
         </>
     );
