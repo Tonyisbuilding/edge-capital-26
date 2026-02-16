@@ -242,10 +242,12 @@ const TeamMemberCards = ({ teamMembers, department }: TeamMemberCardsProps) => {
           ) : (
             <div
               ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide w-full"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide w-full cursor-grab active:cursor-grabbing touch-pan-x"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
             >
               {teamMembers.map((member, index) => (
                 <TeamCard key={index} {...member} />

@@ -148,7 +148,13 @@ const InvestmentPerformance = () => {
     });
   };
 
-  const performanceData = fundData ? mapFundDataToCards(fundData) : fallbackData;
+  // Check if API returned empty/zero data (sheet not populated)
+  const isEmptyData = fundData &&
+    fundData.EC_Class_I?.returns.monthly === 0 &&
+    fundData.EC_Class_I?.returns.ytd === 0 &&
+    fundData.EC_Class_I?.returns.since_inception === 0;
+
+  const performanceData = (fundData && !isEmptyData) ? mapFundDataToCards(fundData) : fallbackData;
 
   const cardVariants = {
     initial: { opacity: 0, y: 50 },
@@ -256,17 +262,20 @@ const InvestmentPerformance = () => {
                   </div>
                 </div>
                 <ul>
-                  {card.metrics.map((metric, i) => (
+                  {card.metrics.map((metric, i) => {
+                    const isNegative = metric.value.includes("-");
+                    return (
                     <li key={i} className="ip-report-row">
                       <span className="ip-col-label">
                         {metric.label}
                       </span>
                       <span className="ip-col-sep">:</span>
-                      <span className="ip-col-value before:content-['↑'] before:mr-1">
+                      <span className={`ip-col-value before:mr-1 ${isNegative ? "before:content-['↓']" : "before:content-['↑']"}`}>
                         {metric.value}
                       </span>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
                 <div className="flex flex-col gap-4">
                   <p className="text-sm text-gray-600">

@@ -243,6 +243,9 @@ const Navbar = () => {
                       <li className="py-2 border-t border-gray-100">
                         <Link to="/edge-capitla-csr" className="block text-[#192227] px-2 py-1.5 rounded active:bg-[#215467]/15 hover:bg-[#215467]/15 transition-colors" onClick={toggleNav}>{t("edgeCapitalCSR")}</Link>
                       </li>
+                      <li className="py-2 border-t border-gray-100">
+                        <Link to="/ambassadeur-nyck-de-vries" className="block text-[#192227] px-2 py-1.5 rounded active:bg-[#215467]/15 hover:bg-[#215467]/15 transition-colors" onClick={toggleNav}>{t("ambassadeur")}</Link>
+                      </li>
                     </ul>
                   )}
                 </li>
