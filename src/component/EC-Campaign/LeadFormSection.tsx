@@ -39,7 +39,7 @@ const LeadFormSection = ({ initialEmail, sectionRef }: LeadFormSectionProps) => 
 
         try {
             await submitToGoogleSheet({
-                formSlug: 'EC-Campaign',
+                formSlug: 'Cashcow',
                 payload: { ...formData, type: 'Full' }
             });
             toast.success(language === 'en' ? "Thank you! We will contact you shortly." : "Bedankt! We nemen spoedig contact met u op.");

@@ -1,7 +1,7 @@
 
 
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { motion, useScroll, useTransform, useMotionValue, MotionValue } from "framer-motion";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 
 /* ═══════════════════════════════════════════════════════════
@@ -140,12 +140,12 @@ function useTextScramble(targetText: string, duration = 700) {
 function TabBar({
     items,
     activeIndex,
-    subProgress,
+    subProgressMV,
     onTabClick,
 }: {
     items: Item[];
     activeIndex: number;
-    subProgress: number;
+    subProgressMV: MotionValue<number>;
     onTabClick: (index: number) => void;
 }) {
     return (
@@ -166,21 +166,8 @@ function TabBar({
                             marginLeft: i > 0 ? "-0.4px" : 0,
                         }}
                     >
-                        {/* Progress fill */}
-                        <div
-                            className="absolute inset-0 pointer-events-none"
-                            style={{
-                                backgroundColor: "#DCE8EA",
-                                width: isPast
-                                    ? "100%"
-                                    : isActive
-                                        ? `${subProgress * 100}%`
-                                        : "0%",
-                                transition: isActive
-                                    ? "width 0.08s linear"
-                                    : "width 0.4s ease",
-                            }}
-                        />
+                        {/* Progress fill — driven by motion value, no re-renders */}
+                        <TabProgressFill isActive={isActive} isPast={isPast} subProgressMV={subProgressMV} />
 
                         {/* Tab label */}
                         <div
@@ -206,10 +193,44 @@ function TabBar({
     );
 }
 
+/* Progress fill bar — uses motion value directly, bypasses React re-renders */
+function TabProgressFill({
+    isActive,
+    isPast,
+    subProgressMV,
+}: {
+    isActive: boolean;
+    isPast: boolean;
+    subProgressMV: MotionValue<number>;
+}) {
+    const fillRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!isActive) return;
+        const unsub = subProgressMV.on("change", (v) => {
+            if (fillRef.current) {
+                fillRef.current.style.width = `${v * 100}%`;
+            }
+        });
+        return unsub;
+    }, [isActive, subProgressMV]);
+
+    return (
+        <div
+            ref={fillRef}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+                backgroundColor: "#DCE8EA",
+                width: isPast ? "100%" : isActive ? `${subProgressMV.get() * 100}%` : "0%",
+            }}
+        />
+    );
+}
+
 /* ═══════════════════════════════════════════════════════════
    Right Content Card
    ═══════════════════════════════════════════════════════════ */
-function RightContent({ item }: { item: Item }) {
+const RightContent = React.memo(function RightContent({ item }: { item: Item }) {
     return (
         <div className="flex flex-col gap-2 md:gap-6 h-full overflow-hidden">
             <p className="text-[#1A2B30]/55 text-sm md:text-[15px] leading-snug md:leading-relaxed max-w-xl flex-shrink-0">
@@ -225,7 +246,7 @@ function RightContent({ item }: { item: Item }) {
             </div>
         </div>
     );
-}
+});
 
 /* ═══════════════════════════════════════════════════════════
    Left Title — stays fixed, scrambles text on change
@@ -236,8 +257,8 @@ function LeftTitle({ items, activeIndex }: { items: Item[]; activeIndex: number 
 
     return (
         <h3
-            className="font-mono font-bold text-[#1A2B30] leading-[1.12] whitespace-pre-line"
-            style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)" }}
+            className="font-mono font-bold text-[#1A2B30] leading-[1.12] whitespace-pre-line overflow-hidden"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)", height: "2.24em" }}
         >
             {displayText}
         </h3>
@@ -256,7 +277,7 @@ function LeftTitle({ items, activeIndex }: { items: Item[]; activeIndex: number 
    ═══════════════════════════════════════════════════════════ */
 export function EngineTimeline() {
     const { language } = useChangeLanguageContext();
-    const items = getItems(language);
+    const items = useMemo(() => getItems(language), [language]);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -266,17 +287,26 @@ export function EngineTimeline() {
 
     /* ── Derived state ── */
     const [activeIndex, setActiveIndex] = useState(0);
-    const [subProgress, setSubProgress] = useState(0);
+    const subProgressMV = useMotionValue(0);
+    const activeIndexRef = useRef(0);
 
     useEffect(() => {
         const unsub = scrollYProgress.on("change", (v) => {
             const scaled = v * items.length;
             const idx = Math.min(Math.floor(scaled), items.length - 1);
-            setActiveIndex(idx);
-            setSubProgress(Math.min(scaled - idx, 1));
+            const sub = Math.min(scaled - idx, 1);
+
+            // Update motion value directly — no re-render
+            subProgressMV.set(sub);
+
+            // Only trigger React re-render when tab actually changes
+            if (idx !== activeIndexRef.current) {
+                activeIndexRef.current = idx;
+                setActiveIndex(idx);
+            }
         });
         return unsub;
-    }, [scrollYProgress, items.length]);
+    }, [scrollYProgress, items.length, subProgressMV]);
 
     /* ── Right-column Y transforms ──
        Smooth slide transitions over ~0.05 scroll range (~200px of 4000px scroll).
@@ -358,7 +388,7 @@ export function EngineTimeline() {
                     className="relative z-10 w-full max-w-[1700px] mx-auto px-[10px] md:px-12 flex flex-col flex-1 pt-[72px] md:pt-[112px]"
                 >
                     {/* Tab bar with progress */}
-                    <TabBar items={items} activeIndex={activeIndex} subProgress={subProgress} onTabClick={handleTabClick} />
+                    <TabBar items={items} activeIndex={activeIndex} subProgressMV={subProgressMV} onTabClick={handleTabClick} />
 
                     {/* Main content */}
                     <div className="flex-1 flex flex-col pt-3 md:pt-12 overflow-hidden">
@@ -379,6 +409,7 @@ export function EngineTimeline() {
                                         style={{
                                             y: yArr[i],
                                             opacity: opArr[i],
+                                            willChange: "transform, opacity",
                                         }}
                                     >
                                         <RightContent item={item} />

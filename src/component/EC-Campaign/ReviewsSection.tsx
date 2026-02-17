@@ -14,7 +14,7 @@ const ReviewsSection = () => {
 
                 },
                 {
-                    text: "Very satisfied! I’ve been participating in the EdgeFund from Edge Capital for a year now and have earned over 15% return on my investment. The monthly reports sent by Bolder could come a bit earlier in the month, but fortunately Edge Capital always shares the gross return itself at the end of the month. Contact with Edge Capital is also very satisfactory: they are easy to reach and very helpful. I recommend this firm to invest with.",
+                    text: "Very satisfied!! I’ve been participating in the EdgeFund from Edge Capital for a year now and have earned over 15% return on my investment. The monthly reports sent by Bolder could come a bit earlier in the month, but fortunately Edge Capital always shares the gross return itself at the end of the month. Contact with Edge Capital is also very satisfactory: they are easy to reach and very helpful. I recommend this firm to invest with.",
                     name: "Bo & Di",
 
                 },
@@ -34,7 +34,7 @@ const ReviewsSection = () => {
 
                 },
                 {
-                    text: "Sinds begin 2024 beleg ik in het Edgefund en mijn ervaring is zeer positief. Het rendement in 2024 was bijna 20% en ook dit jaar blijft de performance stabiel, ondanks de volatiele markten. Opnames werden snel en zorgvuldig verwerkt, wat mijn vertrouwen versterkt. Het team is deskundig en transparant; mijn bezoek aan het kantoor bevestigde dit. Edge Capital is voor mij een betrouwbare partner met duidelijke communicatie en solide resultaten.",
+                    text: "Zeer tevreden!! Ik doe nu een jaar mee in het Edgefund van Edge Capital en heb ruim 15% op mijn investering aan rendement. De maandelijkse overzichten die door Bolder worden verstuurd mogen wat eerder in de maand, maar gelukkig deelt Edge Capital zelf ook altijd bij het aflopen van de maand het bruto rendement. Het contact met Edge Capital verloopt ook zeker naar tevredenheid, ze zijn goed bereikbaar en erg behulpzaam. Ik raad deze partij aan om bij te investeren.",
                     name: "Bo & Di",
 
                 },

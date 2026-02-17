@@ -40,7 +40,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         if (email) {
             // Fire and forget partial submission
             submitToGoogleSheet({
-                formSlug: 'EC-Campaign',
+                formSlug: 'Cashcow',
                 payload: { email, type: 'Partial' }
             }).catch(err => {
                 console.error("Partial submission failed", err);

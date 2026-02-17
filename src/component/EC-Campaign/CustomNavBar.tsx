@@ -108,32 +108,6 @@ const CustomNavBar = () => {
                 {/* Desktop & Mobile Menu Container */}
                 <div className={`ec-nav-menu-container ${isNavActive ? "active" : ""}`}>
                     <div className="ec-nav-links">
-                        <Link to="/">{t("home")}</Link>
-
-                        <div className="ec-nav-dropdown-container">
-                            <a href="#" className="ec-nav-dropdown-trigger">
-                                {t("aboutUs")} <FontAwesomeIcon icon={faChevronDown} className="ec-dropdown-icon" />
-                            </a>
-                            <div className="ec-nav-dropdown-menu">
-                                <Link to="/about">{t("about")}</Link>
-                                <Link to="/team">{t("team")}</Link>
-                            </div>
-                        </div>
-
-                        <Link to="/edge-fund">{t("edgeFund")}</Link>
-                        <Link to="/institutional">{t("institutional")}</Link>
-
-                        <div className="ec-nav-dropdown-container">
-                            <a href="#" className="ec-nav-dropdown-trigger">
-                                {t("company")} <FontAwesomeIcon icon={faChevronDown} className="ec-dropdown-icon" />
-                            </a>
-                            <div className="ec-nav-dropdown-menu">
-                                <Link to="/contact">{t("contact")}</Link>
-                                <Link to="/documents">{t("documents")}</Link>
-                                <Link to="/edge-capitla-csr">{t("edgeCapitalCSR")}</Link>
-                                <Link to="/careers">{t("careers")}</Link>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="ec-nav-actions">

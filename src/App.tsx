@@ -104,7 +104,7 @@ function App(): JSX.Element {
         <Route path="/requestinfo" element={<RequestInfo />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/beleggersfair" element={<Beleggersfair />} />
-        <Route path="/landing" element={<ECCampaign />} />
+        <Route path="/cashcow" element={<ECCampaign />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <ScrollToTopButton />
