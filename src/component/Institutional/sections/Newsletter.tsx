@@ -58,7 +58,7 @@ export function Newsletter() {
             <div className="w-[98%] max-w-[1700px] mx-auto">
                 {/* Outer teal card with padding on all sides */}
                 <div
-                    className="rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6"
+                    className="rounded-2xl overflow-hidden px-[10px] py-6 md:p-10 lg:p-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6"
                     style={{ backgroundColor: "#206A7C" }}
                 >
                     {/* Left — text at top, input at bottom, gap fills between */}
@@ -88,7 +88,7 @@ export function Newsletter() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder={t.placeholder}
                                 required
-                                className="flex-1 h-14 md:h-11 px-4 bg-transparent text-[#02080A] text-sm font-mono placeholder:text-[#02080A]/40 outline-none border-0 w-full"
+                                className="md:flex-1 min-h-[52px] md:min-h-0 md:h-11 px-4 bg-transparent text-[#02080A] text-sm font-mono placeholder:text-[#02080A]/40 outline-none border-0 w-full"
                             />
                             <button
                                 type="submit"
@@ -103,8 +103,7 @@ export function Newsletter() {
                     </div>
 
                     {/* Right — image with relative height */}
-                    <div className="overflow-hidden w-full md:w-auto"
-                        style={{ maxWidth: "clamp(300px, 30vw, 480px)" }}
+                    <div className="overflow-hidden w-full md:w-[clamp(300px,30vw,480px)]"
                     >
                         <img
                             src={NewsletterImg}
