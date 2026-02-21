@@ -17,7 +17,7 @@ const translations = {
         alphaPlatform: "Alpha Platform",
         subtitle: "What we do",
         description:
-            "We monetize the measurable mechanisms of market stress—volatility repricing, dispersion, and correlation stress—across highly liquid G10 FX and exchange-traded equity index derivatives (SPX/ES options & futures), built for unstable and unpredictable regimes and designed to deliver a liquid return stream that is less dependent on equity/interest rate beta than traditional portfolios.",
+            "We at Edge Capital monetize the measurable mechanisms of market stress, that being volatility repricing, dispersion, and correlation stress across highly liquid G10 FX and exchange-traded equity index derivatives (SPX/ES options & futures), built for unstable and unpredictable regimes and designed to deliver a liquid return stream that is less dependent on equity/interest rate beta than traditional portfolios.",
         requestCall: "Request Call",
         enterDataRoom: "Enter Data Room",
         // Modal
@@ -38,7 +38,7 @@ const translations = {
         alphaPlatform: "Alpha Platform",
         subtitle: "Wat wij doen",
         description:
-            "Wij monetariseren de meetbare mechanismen van marktstress—volatiliteitsherprijzing, dispersie en correlatiestress—via zeer liquide G10 FX- en beursgenoteerde aandelenindexderivaten (SPX/ES-opties & futures), gebouwd voor instabiele en onvoorspelbare regimes en ontworpen om een liquide rendementsstroom te leveren die minder afhankelijk is van aandelen-/rentebèta dan traditionele portefeuilles.",
+            "Wij bij Edge Capital monetariseren de meetbare mechanismen van marktstress, namelijk volatiliteitsherprijzing, dispersie en correlatiestress, via zeer liquide G10 FX- en beursgenoteerde aandelenindexderivaten (SPX/ES-opties & futures), gebouwd voor instabiele en onvoorspelbare regimes en ontworpen om een liquide rendementsstroom te leveren die minder afhankelijk is van aandelen-/rentebèta dan traditionele portefeuilles.",
         requestCall: "Gesprek aanvragen",
         enterDataRoom: "Data Room openen",
         // Modal

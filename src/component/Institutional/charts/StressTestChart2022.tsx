@@ -301,6 +301,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                 strokeWidth: 1.5,
                             }}
                         >
+                            {!isMobile && (
                             <LabelList
                                 dataKey="msci"
                                 position="right"
@@ -318,6 +319,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                     );
                                 }}
                             />
+                            )}
                         </Line>
 
                         {/* Corr Arb — solid light cyan, steady growth */}
@@ -335,6 +337,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                 strokeWidth: 1.5,
                             }}
                         >
+                            {!isMobile && (
                             <LabelList
                                 dataKey="corr"
                                 position="right"
@@ -352,6 +355,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                     );
                                 }}
                             />
+                            )}
                         </Line>
 
                         {/* Vol Prem — solid teal/slate, rising, with glow */}
@@ -372,6 +376,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                 filter: "drop-shadow(0 0 6px rgba(66, 128, 149, 0.4))",
                             }}
                         >
+                            {!isMobile && (
                             <LabelList
                                 dataKey="volPrem"
                                 position="right"
@@ -389,6 +394,7 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                     );
                                 }}
                             />
+                            )}
                         </Line>
                     </LineChart>
                 </ResponsiveContainer>
