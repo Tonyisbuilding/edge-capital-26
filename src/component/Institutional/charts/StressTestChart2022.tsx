@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
     LineChart,
     Line,
@@ -13,7 +13,6 @@ import {
     ReferenceLine,
     LabelList,
 } from "recharts";
-import { fetchNAVPerformance, type NAVDataPoint } from "@/Api/googleSheetsClient";
 
 // ------------------------------------------------------------------
 // Synthetic WEEKLY data for 2022 — Edge rises with volatility, MSCI drops with bear rallies
@@ -194,54 +193,12 @@ const YAxisTick = ({ x, y, payload }: any) => (
 );
 
 // ------------------------------------------------------------------
-// Helper: Extract and rebase 2022 data from NAV performance
-// ------------------------------------------------------------------
-function extract2022Data(navData: NAVDataPoint[]) {
-    // Filter for 2022 months only
-    const data2022 = navData.filter(d => d.date.includes("2022"));
-
-    if (data2022.length === 0) return null;
-
-    // Get Jan 2022 baseline values
-    const baseline = data2022[0];
-    const vpBase = baseline.volPremiumRisk;
-    const caBase = baseline.correlationArbitrage;
-    const msciBase = baseline.msciWorld;
-
-    // Rebase all values to start at 100 in Jan 2022
-    return data2022.map(d => ({
-        week: d.date.split(" ")[0], // "Jan", "Feb", etc. (using "week" key for chart compatibility)
-        volPrem: Math.round((d.volPremiumRisk / vpBase) * 100 * 10) / 10,
-        corr: Math.round((d.correlationArbitrage / caBase) * 100 * 10) / 10,
-        msci: Math.round((d.msciWorld / msciBase) * 100 * 10) / 10,
-    }));
-}
-
-// ------------------------------------------------------------------
 // Main Component
 // ------------------------------------------------------------------
 export function StressTestChart2022({ data }: { data?: typeof chartData }) {
-    const [chartData2022, setChartData2022] = useState<typeof chartData | null>(null);
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-    useEffect(() => {
-        let cancelled = false;
-
-        async function loadData() {
-            const navData = await fetchNAVPerformance();
-            if (!cancelled && navData && navData.length > 0) {
-                const processed = extract2022Data(navData);
-                if (processed) {
-                    setChartData2022(processed);
-                }
-            }
-        }
-
-        loadData();
-        return () => { cancelled = true; };
-    }, []);
-
-    const displayData = data || chartData2022 || chartData;
+    const displayData = data || chartData;
 
     return (
         <div className="relative h-full">

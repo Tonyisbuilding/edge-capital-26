@@ -145,9 +145,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 // ------------------------------------------------------------------
 // Series config (single source of truth for colors)
 // ------------------------------------------------------------------
+// NOTE: The API fields are swapped — correlationArbitrage contains Vol Premium data
+// and volPremiumRisk contains Correlation Arbitrage data.
 const SERIES = {
-    correlationArbitrage: { label: "Correlation Arbitrage", color: "#BAECF2", dashed: false },
-    volPremiumRisk: { label: "Vol Premium Risk", color: "#268197", dashed: false },
+    correlationArbitrage: { label: "Vol Premium Risk", color: "#268197", dashed: false },
+    volPremiumRisk: { label: "Correlation Arbitrage", color: "#BAECF2", dashed: false },
     msciWorld: { label: "MSCI World", color: "#ACACAC", dashed: true },
 } as const;
 
@@ -326,8 +328,8 @@ export function NAVReturnChart() {
                             tick={<YAxisTick />}
                             tickLine={false}
                             axisLine={false}
-                            domain={[50, 400]}
-                            ticks={[50, 100, 150, 200, 250, 300, 350, 400]}
+                            domain={[-100, 300]}
+                            ticks={[-100, -50, 0, 50, 100, 150, 200, 250, 300]}
                             dx={-4}
                         />
                         <Tooltip
@@ -340,11 +342,11 @@ export function NAVReturnChart() {
                             }}
                         />
 
-                        {/* Correlation Arbitrage — solid, fine, linear */}
+                        {/* correlationArbitrage API field = Vol Premium Risk data */}
                         <Line
                             type="linear"
                             dataKey="correlationArbitrage"
-                            name="Correlation Arbitrage"
+                            name="Vol Premium Risk"
                             stroke={SERIES.correlationArbitrage.color}
                             strokeWidth={1.5}
                             dot={false}
@@ -355,11 +357,11 @@ export function NAVReturnChart() {
                                 strokeWidth: 1.5,
                             }}
                         />
-                        {/* Vol Premium Risk — solid, fine, linear */}
+                        {/* volPremiumRisk API field = Correlation Arbitrage data */}
                         <Line
                             type="linear"
                             dataKey="volPremiumRisk"
-                            name="Vol Premium Risk"
+                            name="Correlation Arbitrage"
                             stroke={SERIES.volPremiumRisk.color}
                             strokeWidth={1.5}
                             dot={false}

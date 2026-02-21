@@ -28,7 +28,7 @@ const translations = {
         emailPlaceholder: "E-mail address",
         phonePlaceholder: "Phone number",
         checkboxLabel:
-            "I would like a free customized quote for favorable prices and more.",
+            "I would like to subscribe to the Edge Capital newsletter.",
         submit: "Submit",
         submitting: "Submitting...",
     },
@@ -49,7 +49,7 @@ const translations = {
         emailPlaceholder: "E-mailadres",
         phonePlaceholder: "Telefoonnummer",
         checkboxLabel:
-            "Ik wil gratis een op maat gemaakte offerte voor gunstige prijzen en meer.",
+            "Ik wil me graag inschrijven voor de Edge Capital nieuwsbrief.",
         submit: "Verzenden",
         submitting: "Bezig met verzenden...",
     },
