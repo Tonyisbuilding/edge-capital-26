@@ -41,7 +41,7 @@ export function Newsletter() {
         setIsSubmitting(true);
         try {
             await submitToGoogleSheet({
-                formSlug: "newsletter",
+                formSlug: "News letter",
                 payload: { email },
             });
             toast.success(t.success);
@@ -54,12 +54,12 @@ export function Newsletter() {
     };
 
     return (
-        <section className="bg-[#F6FEFF] py-16 md:py-20 px-[10px] md:px-8">
+        <section id="institutional-newsletter" className="bg-[#F6FEFF] py-16 md:py-20 px-[10px] md:px-8">
             <div className="w-[98%] max-w-[1700px] mx-auto">
                 {/* Outer teal card with padding on all sides */}
                 <div
                     className="rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6"
-                    style={{ backgroundColor: "#1A6B7A" }}
+                    style={{ backgroundColor: "#206A7C" }}
                 >
                     {/* Left — text at top, input at bottom, gap fills between */}
                     <div className="flex flex-col justify-between">
@@ -79,7 +79,7 @@ export function Newsletter() {
                         {/* Email form — bottom */}
                         <form
                             onSubmit={handleSubmit}
-                            className="mt-10 flex items-center max-w-lg rounded-lg p-[3px]"
+                            className="mt-10 flex flex-col md:flex-row md:items-center max-w-lg rounded-lg p-[3px]"
                             style={{ backgroundColor: "#EAF7FA" }}
                         >
                             <input
@@ -88,12 +88,12 @@ export function Newsletter() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder={t.placeholder}
                                 required
-                                className="flex-1 h-11 px-4 bg-transparent text-[#02080A] text-sm font-mono placeholder:text-[#02080A]/40 outline-none border-0"
+                                className="flex-1 h-14 md:h-11 px-4 bg-transparent text-[#02080A] text-sm font-mono placeholder:text-[#02080A]/40 outline-none border-0 w-full"
                             />
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="h-11 px-5 bg-[#0A3A44] hover:bg-[#0D4D5A] text-white font-mono text-sm tracking-wide flex items-center gap-2 transition-colors cursor-pointer disabled:opacity-70 whitespace-nowrap"
+                                className="h-11 px-5 bg-[#0A3A44] hover:bg-[#0D4D5A] text-white font-mono text-sm tracking-wide flex items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-70 whitespace-nowrap w-full md:w-auto"
                                 style={{ borderRadius: "8px" }}
                             >
                                 {isSubmitting ? t.submitting : t.subscribe}
@@ -103,14 +103,17 @@ export function Newsletter() {
                     </div>
 
                     {/* Right — image with relative height */}
-                    <div className="hidden md:block rounded-xl overflow-hidden"
-                        style={{ width: "clamp(300px, 30vw, 480px)" }}
+                    <div className="overflow-hidden w-full md:w-auto"
+                        style={{ maxWidth: "clamp(300px, 30vw, 480px)" }}
                     >
                         <img
                             src={NewsletterImg}
                             alt="Newsletter"
-                            className="w-full object-cover rounded-xl"
-                            style={{ height: "clamp(300px, 30vw, 480px)" }}
+                            className="w-full object-cover"
+                            style={{
+                                height: "clamp(200px, 30vw, 480px)",
+                                borderRadius: "0 12px 0 12px",
+                            }}
                         />
                     </div>
                 </div>
