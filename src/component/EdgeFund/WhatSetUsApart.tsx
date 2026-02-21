@@ -101,8 +101,8 @@ const WhatSetsUsApart = () => {
 
   const content = {
     en: {
-      sectionTitle: "Risk & Mitigation",
-      sectionDesc: "Below is a detailed breakdown of specific market and operational risks, alongside the safeguards and hedging strategies we use to minimise exposure.",
+      sectionTitle: "Risk",
+      sectionDesc: "",
       riskItems: [
         {
           title: "Liquidity risk",
@@ -137,11 +137,11 @@ const WhatSetsUsApart = () => {
       ]
     },
     nl: {
-      sectionTitle: "Risk & Mitigation",
-      sectionDesc: "Hieronder vindt u een gedetailleerde uitsplitsing van specifieke markt- en operationele risico's, samen met de waarborgen en hedgingstrategieën die we gebruiken om de blootstelling te minimaliseren.",
+      sectionTitle: "Risico",
+      sectionDesc: "",
       riskItems: [
         {
-          title: "Correlatiebreuk",
+          title: "Liquiditeit risico",
           description: "Het onvermogen om gemakkelijk uit een positie te stappen vanwege het gebrek aan liquiditeit van het gebruikte beleggingsinstrument.",
           measures: (
             <div className="flex flex-col gap-2">

@@ -3,6 +3,7 @@ import Footer from "@/common/Footer";
 import AboutCorrelationArbitrageFund from "@/component/CorrelationArbitrageFund/AboutCorrelationArbitrageFund";
 import Target from "@/component/CorrelationArbitrageFund/Target";
 import WhatSetsUsApart from "@/component/CorrelationArbitrageFund/WhatSetUsApart";
+import OurEngine from "@/component/CorrelationArbitrageFund/OurEngine";
 import StrategySection from "@/component/CorrelationArbitrageFund/Strategy";
 import Feature from "@/component/CorrelationArbitrageFund/Features";
 import FundCostStructure from "@/component/CorrelationArbitrageFund/FundCostStructure";
@@ -25,6 +26,7 @@ const CorrelationArbitrageFund = () => {
         }}
       >
         <StrategySection />
+        <OurEngine />
         <WhatSetsUsApart />
         <Feature />
         <FundCostStructure />

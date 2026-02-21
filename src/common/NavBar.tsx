@@ -43,7 +43,6 @@ const Navbar = () => {
       ourFunds: "Our funds",
       edgeFund: "EdgeFund",
       correlationArbitrageFund: "Correlation Arbitrage Fund",
-      edgeCapitalCSR: "Edge Capital CSR",
       institutional: "Institutional",
       company: "Company",
       contact: "Contact",
@@ -53,7 +52,7 @@ const Navbar = () => {
       ambassadeur: "Ambassadeur Nyck de Vries",
       contactUs: "Contact us",
       english: "English",
-      dutch: "Nederland",
+      dutch: "Nederlands",
     },
     nl: {
       home: "Home",
@@ -63,7 +62,6 @@ const Navbar = () => {
       ourFunds: "Onze fondsen",
       edgeFund: "EdgeFund",
       correlationArbitrageFund: "Correlation Arbitrage Fund",
-      edgeCapitalCSR: "Edge Capital MVO",
       institutional: "Institutioneel",
       company: "Bedrijf",
       contact: "Contact",
@@ -73,7 +71,7 @@ const Navbar = () => {
       ambassadeur: "Ambassadeur Nyck de Vries",
       contactUs: "Neem contact op",
       english: "English",
-      dutch: "Nederland",
+      dutch: "Nederlands",
     }
   };
 
@@ -241,9 +239,6 @@ const Navbar = () => {
                         <Link to="/careers" className="block text-[#192227] px-2 py-1.5 rounded active:bg-[#215467]/15 hover:bg-[#215467]/15 transition-colors" onClick={toggleNav}>{t("careers")}</Link>
                       </li>
                       <li className="py-2 border-t border-gray-100">
-                        <Link to="/edge-capitla-csr" className="block text-[#192227] px-2 py-1.5 rounded active:bg-[#215467]/15 hover:bg-[#215467]/15 transition-colors" onClick={toggleNav}>{t("edgeCapitalCSR")}</Link>
-                      </li>
-                      <li className="py-2 border-t border-gray-100">
                         <Link to="/ambassadeur-nyck-de-vries" className="block text-[#192227] px-2 py-1.5 rounded active:bg-[#215467]/15 hover:bg-[#215467]/15 transition-colors" onClick={toggleNav}>{t("ambassadeur")}</Link>
                       </li>
                     </ul>
@@ -371,11 +366,6 @@ const Navbar = () => {
                         {t("careers")}
                       </Link>
                     </li>
-                    <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
-                      <Link to="/edge-capitla-csr" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:text-[#002632]" style={{ backgroundColor: 'transparent' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(33, 84, 103, 0.15)'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
-                        {t("edgeCapitalCSR")}
-                      </Link>
-                    </li>
                     <li>
                       <Link to="/ambassadeur-nyck-de-vries" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:text-[#002632]" style={{ borderRadius: '0 0 10px 10px', backgroundColor: 'transparent' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(33, 84, 103, 0.15)'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
                         {t("ambassadeur")}
@@ -403,7 +393,7 @@ const Navbar = () => {
                   style={{ minWidth: '100px' }}
                 >
                   <option value="en" className="text-black bg-white">English</option>
-                  <option value="nl" className="text-black bg-white">Nederland</option>
+                  <option value="nl" className="text-black bg-white">Nederlands</option>
                 </select>
                 <svg
                   className="w-3 h-3 text-white absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none"

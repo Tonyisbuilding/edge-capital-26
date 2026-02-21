@@ -369,7 +369,7 @@ export function EngineTimeline() {
             <div
                 className="sticky flex flex-col relative overflow-hidden"
                 style={{
-                    backgroundColor: "#EDF3F4",
+                    backgroundColor: "#F6FEFF",
                     top: 0,
                     height: "100vh",
                 }}

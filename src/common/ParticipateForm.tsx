@@ -105,7 +105,11 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-const ParticipantForm: React.FC = () => {
+interface ParticipantFormProps {
+  formSlug?: string;
+}
+
+const ParticipantForm: React.FC<ParticipantFormProps> = ({ formSlug = 'participate' }) => {
   const { language } = useChangeLanguageContext();
   // const [phonePrefix, setPhonePrefix] = useState<string>("+1");
   const [formData, setFormData] = useState<FormData>({
@@ -726,7 +730,7 @@ const ParticipantForm: React.FC = () => {
 
     try {
       await submitToGoogleSheet({
-        formSlug: "participate",
+        formSlug,
         payload,
       });
 

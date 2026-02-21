@@ -26,10 +26,10 @@ import FAQSection from '@/component/EC-Campaign/FAQSection';
 const LandingPage = () => {
   const { language } = useChangeLanguageContext();
 
-  // Combine all team members: Management → Support/Commercial → Advisory
+  // Only show management team on homepage carousel
   const allTeamMembers = language === 'nl'
-    ? [...teamMembersDutch, ...SupportAndCommercialDutch, ...advisoryBoardDutch]
-    : [...teamMembers, ...SupportAndCommercial, ...advisoryBoard];
+    ? [...teamMembersDutch]
+    : [...teamMembers];
 
   return (
     <>

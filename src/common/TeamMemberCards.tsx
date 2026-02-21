@@ -223,14 +223,9 @@ const TeamMemberCards = ({ teamMembers, department }: TeamMemberCardsProps) => {
           </div>
           <div className={`text-center mb-12 ${pathname.slice(1) === "team" ? "hidden" : "block"}`}>
             <h2 className="text-2xl md:text-5xl font-bold text-[#02080A] mb-1">
-              {language === 'nl' ? 'Ontmoet het Edge Capital Team' : 'Meet the Edge Capital Team'}
+              Management team
             </h2>
             <img src={titleUnderline} alt="" className="mx-auto w-[clamp(200px,30vw,350px)] h-auto mb-3" />
-            <p className="text-base md:text-lg text-[#02080A] opacity-80">
-              {language === 'nl'
-                ? 'Ontmoet de mensen die alles stabiel en in beweging houden.'
-                : 'Meet the minds who keep things steady and moving forward.'}
-            </p>
           </div>
 
           {isTeamPage ? (

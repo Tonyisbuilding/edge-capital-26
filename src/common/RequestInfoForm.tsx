@@ -43,10 +43,13 @@ const RequestInfoForm = () => {
         preferenceLabel: "What would you like to receive information about?",
         preferenceOptions: [
           { value: "", label: "- Select -" },
-          { value: "investment", label: "Investment Options" },
-          { value: "services", label: "Financial Services" },
-          { value: "consultation", label: "Personal Consultation" },
-          { value: "other", label: "Other" },
+          { value: "factsheet_edgefund", label: "Factsheet EdgeFund" },
+          { value: "info_memo_edgefund", label: "Information Memorandum EdgeFund" },
+          { value: "registration_edgefund", label: "Registration Forms EdgeFund" },
+          { value: "factsheet_caf", label: "Factsheet Correlation Arbitrage Fund" },
+          { value: "info_memo_caf", label: "Information Memorandum Correlation Arbitrage Fund" },
+          { value: "registration_caf", label: "Registration Forms Correlation Arbitrage Fund" },
+          { value: "presentation", label: "1-on-1 Presentation" },
         ],
         messageLabel: "Message",
         firstNamePlaceholder: "First Name",
@@ -73,10 +76,13 @@ const RequestInfoForm = () => {
         preferenceLabel: "Waar wilt u informatie over ontvangen?",
         preferenceOptions: [
           { value: "", label: "- Selecteer -" },
-          { value: "investment", label: "Factsheet EdgeFund" },
-          { value: "services", label: "Informatiememorandum EdgeFund" },
-          { value: "consultation", label: "Inschrijfformulieren EdgeFund" },
-          { value: "other", label: "1 op 1 presentatie" },
+          { value: "factsheet_edgefund", label: "Factsheet EdgeFund" },
+          { value: "info_memo_edgefund", label: "Informatiememorandum EdgeFund" },
+          { value: "registration_edgefund", label: "Inschrijfformulieren EdgeFund" },
+          { value: "factsheet_caf", label: "Factsheet Correlation Arbitrage Fund" },
+          { value: "info_memo_caf", label: "Informatiememorandum Correlation Arbitrage Fund" },
+          { value: "registration_caf", label: "Inschrijformulieren Correlation Arbitrage Fund" },
+          { value: "presentation", label: "1 op 1 presentatie" },
         ],
         messageLabel: "Bericht",
         firstNamePlaceholder: "Voornaam",
@@ -183,7 +189,7 @@ const RequestInfoForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100
+    <div className="min-h-screen bg-[#F6FEFF]
      p-6 flex items-center justify-center pt-[8rem]">
       <ToastContainer />
       <motion.div
@@ -436,11 +442,10 @@ const RequestInfoForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white transition-all duration-200 shadow-lg ${
-                  isSubmitting
-                    ? "bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50%  cursor-not-allowed"
-                    : "bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50%  hover:bg-[#219EB2]"
-                }`}
+                className={`w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white transition-all duration-200 shadow-lg ${isSubmitting
+                  ? "bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50%  cursor-not-allowed"
+                  : "bg-gradient-to-br from-[#206D80] from-20% to-[#219EB2] to-50%  hover:bg-[#219EB2]"
+                  }`}
               >
                 {isSubmitting ? (
                   content.form.submittingText

@@ -38,7 +38,7 @@ const Feature = () => {
     const translations = {
         en: {
             features: 'Features',
-            description: 'An open-end mutual fund offering sophisticated investment strategies with institutional-level management.',
+            description: '',
             investmentStrategy: {
                 title: 'Investment strategy',
                 description: 'Sophisticated approaches to maximize returns with Managed risk',
@@ -51,10 +51,6 @@ const Feature = () => {
                         title: 'Interest rate arbitrage',
                         description: 'Market-neutral profit from interest rate differentials'
                     },
-                    {
-                        title: 'FX arbitrage',
-                        description: 'Exploiting discrepancies within the currency markets — a modern and improved version of the well-known index arbitrage.'
-                    }
                 ]
             },
             keyInformation: {
@@ -127,7 +123,7 @@ const Feature = () => {
         },
         nl: {
             features: 'Kenmerken',
-            description: 'Een open-end beleggingsfonds dat geavanceerde investeringsstrategieën biedt met beheer op institutioneel niveau.',
+            description: '',
             investmentStrategy: {
                 title: 'Beleggingsstrategie',
                 description: 'Geavanceerde benaderingen om rendement te maximaliseren met een beheerst risico',
@@ -140,10 +136,6 @@ const Feature = () => {
                         title: 'Rente-arbitrage',
                         description: 'Marktneutraal profiteren van renteverschillen'
                     },
-                    {
-                        title: 'FX-arbitrage',
-                        description: 'Benutten van discrepanties binnen de valautamarkten, een moderne en verbeterde versie van het wel bekende index-arbitrage'
-                    }
                 ]
             },
             keyInformation: {
@@ -224,8 +216,7 @@ const Feature = () => {
             icon: columnSummaryIcon,
             items: [
                 { id: 'volatility-premium' },
-                { id: 'interest-rate-arbitrage' },
-                { id: 'fx-arbitrage' }
+                { id: 'interest-rate-arbitrage' }
             ]
         },
         {

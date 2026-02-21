@@ -106,8 +106,14 @@ interface FundReturnsResponse {
   EN_Class_III: FundClassData | null;
 }
 
+// In-memory cache for fund returns (avoids duplicate slow API calls)
+let _fundReturnsCache: { data: FundReturnsResponse; timestamp: number } | null = null;
+let _fundReturnsPending: Promise<FundReturnsResponse | null> | null = null;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
 /**
- * Fetches the latest published fund returns from the Google Sheets CMS
+ * Fetches the latest published fund returns from the Google Sheets CMS.
+ * Uses in-memory cache (5 min TTL) and deduplicates concurrent requests.
  */
 async function fetchFundReturns(): Promise<FundReturnsResponse | null> {
   if (!FUND_RETURNS_SCRIPT_URL) {
@@ -117,29 +123,46 @@ async function fetchFundReturns(): Promise<FundReturnsResponse | null> {
     return null;
   }
 
-  try {
-    const response = await fetch(FUND_RETURNS_SCRIPT_URL, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (data.error) {
-      throw new Error(data.error);
-    }
-
-    return data as FundReturnsResponse;
-  } catch (error) {
-    console.error("Failed to fetch fund returns:", error);
-    return null;
+  // Return cached data if still fresh
+  if (_fundReturnsCache && Date.now() - _fundReturnsCache.timestamp < CACHE_TTL) {
+    return _fundReturnsCache.data;
   }
+
+  // Deduplicate: if a request is already in-flight, wait for it
+  if (_fundReturnsPending) {
+    return _fundReturnsPending;
+  }
+
+  _fundReturnsPending = (async () => {
+    try {
+      const url = `${FUND_RETURNS_SCRIPT_URL}?t=${Date.now()}`;
+      const response = await fetch(url, {
+        method: "GET",
+        redirect: "follow",
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      _fundReturnsCache = { data: data as FundReturnsResponse, timestamp: Date.now() };
+      return data as FundReturnsResponse;
+    } catch (error) {
+      console.error("Failed to fetch fund returns:", error);
+      return null;
+    } finally {
+      _fundReturnsPending = null;
+    }
+  })();
+
+  return _fundReturnsPending;
 }
 
 export { fetchFundReturns };
@@ -198,7 +221,8 @@ function getYouTubeThumbnail(url: string): string {
 }
 
 /**
- * Fetches video data from the CMS (same endpoint as fund returns)
+ * Fetches video data from the CMS (same endpoint as fund returns).
+ * Reuses the fund returns cache since it's the same API call.
  */
 async function fetchVideos(): Promise<VideoData[] | null> {
   if (!FUND_RETURNS_SCRIPT_URL) {
@@ -206,15 +230,25 @@ async function fetchVideos(): Promise<VideoData[] | null> {
   }
 
   try {
-    const response = await fetch(FUND_RETURNS_SCRIPT_URL, {
+    // Reuse the fund returns cache — same endpoint, avoids duplicate call
+    if (_fundReturnsCache && Date.now() - _fundReturnsCache.timestamp < CACHE_TTL) {
+      return (_fundReturnsCache.data as unknown as Record<string, unknown>).videos as VideoData[] ?? null;
+    }
+
+    const url = `${FUND_RETURNS_SCRIPT_URL}?t=${Date.now()}`;
+    const response = await fetch(url, {
       method: "GET",
-      headers: { Accept: "application/json" },
+      redirect: "follow",
+      cache: "no-store",
     });
 
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const data = await response.json();
     if (data.error) throw new Error(data.error);
+
+    // Also populate the fund returns cache
+    _fundReturnsCache = { data: data as FundReturnsResponse, timestamp: Date.now() };
 
     return data.videos ?? null;
   } catch (error) {

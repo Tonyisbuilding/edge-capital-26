@@ -13,6 +13,12 @@ import Third from "../../src/assets/images/landingPage/Third_logo.png";
 import Forth from "../../src/assets/images/landingPage/fourth_logo.png";
 import Logo_five from "../../src/assets/images/landingPage/Logo_five.png";
 import Afm_disclaimer from "../../src/assets/images/landingPage/Afm_disclaimer.png";
+import PerformanceProfile from "../../src/assets/images/Performance-profile.jpg";
+import PerformanceProfileDutch from "../../src/assets/images/Performance-profile_Dutch.jpg";
+import MarketIndependentAlpha from "../../src/assets/images/Market-independent-alpha.jpg";
+import MarketIndependentAlphaDutch from "../../src/assets/images/Market-independent-alpha_Dutch.jpg";
+import PureDataDiscipline from "../../src/assets/images/Pure-data-discipline.jpg";
+import PureDataDisciplineDutch from "../../src/assets/images/Pure-data-discipline_Dutch.jpg";
 
 
 // import Numberfive from "../../src/assets/images/landingPage/Numberfive.png";
@@ -191,7 +197,13 @@ const images = {
         EC_businessclassThumbnail,
         CrisisResilientIcon,
         LimitedRiskIcon,
-        FlexibleIcon
+        FlexibleIcon,
+        PerformanceProfile,
+        PerformanceProfileDutch,
+        MarketIndependentAlpha,
+        MarketIndependentAlphaDutch,
+        PureDataDiscipline,
+        PureDataDisciplineDutch
     },
     about: {
         herosectionforabout,

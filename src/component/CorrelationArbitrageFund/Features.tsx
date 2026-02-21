@@ -38,7 +38,7 @@ const Feature = () => {
     const translations = {
         en: {
             features: 'Features',
-            description: 'An open-end mutual fund offering sophisticated investment strategies with institutional-level management.',
+            description: '',
             investmentStrategy: {
                 title: 'Investment strategy',
                 description: 'Sophisticated approaches to maximize returns with Managed risk',
@@ -119,7 +119,7 @@ const Feature = () => {
         },
         nl: {
             features: 'Kenmerken',
-            description: 'Een open-end beleggingsfonds dat geavanceerde investeringsstrategie\u00EBn biedt met beheer op institutioneel niveau.',
+            description: '',
             investmentStrategy: {
                 title: 'Beleggingsstrategie',
                 description: 'Geavanceerde benaderingen om rendement te maximaliseren met een beheerst risico',

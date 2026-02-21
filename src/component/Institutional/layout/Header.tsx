@@ -13,14 +13,14 @@ const translations = {
         edgeFund: "EdgeFund",
         correlationArbitrageFund: "Correlation Arbitrage Fund",
         institutional: "Institutional",
+        company: "Company",
         contact: "Contact",
         documents: "Documents",
         careers: "Careers",
-        edgeCapitalCSR: "Edge Capital CSR",
         ambassadeur: "Ambassadeur Nyck de Vries",
         contactUs: "Contact us",
         english: "English",
-        nederland: "Nederland",
+        nederland: "Nederlands",
     },
     nl: {
         home: "Home",
@@ -31,10 +31,10 @@ const translations = {
         edgeFund: "EdgeFund",
         correlationArbitrageFund: "Correlation Arbitrage Fund",
         institutional: "Institutioneel",
+        company: "Bedrijf",
         contact: "Contact",
         documents: "Documenten",
         careers: "Carrières",
-        edgeCapitalCSR: "Edge Capital MVO",
         ambassadeur: "Ambassadeur Nyck de Vries",
         contactUs: "Neem contact op",
         english: "English",
@@ -143,7 +143,7 @@ export function Header() {
                             </li>
                             <li className="relative group">
                                 <button className="text-white font-medium text-base 2xl:text-lg px-3 py-1 hover:text-gray-200 transition-colors flex items-center gap-1.5 font-mono">
-                                    {t.contact}
+                                    {t.company}
                                     <ChevronDown className="w-3 h-3" />
                                 </button>
                                 <ul className="absolute top-full right-0 mt-3 bg-white shadow-lg min-w-[260px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50" style={{ borderRadius: '10px' }}>
@@ -160,11 +160,6 @@ export function Header() {
                                     <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
                                         <Link to="/careers" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]">
                                             {t.careers}
-                                        </Link>
-                                    </li>
-                                    <li style={{ borderBottom: '0.5px solid #C1CFD5' }}>
-                                        <Link to="/edge-capitla-csr" className="block px-5 py-3.5 text-[#3D5861] font-medium transition-colors hover:bg-[#215467]/15 hover:text-[#002632]">
-                                            {t.edgeCapitalCSR}
                                         </Link>
                                     </li>
                                     <li>
@@ -306,12 +301,12 @@ export function Header() {
                         <div className="border-b border-white/10">
                             <button
                                 className="text-white font-mono font-medium text-lg py-3 w-full flex items-center justify-between"
-                                onClick={() => toggleSubmenu('contact')}
+                                onClick={() => toggleSubmenu('company')}
                             >
-                                {t.contact}
-                                <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === 'contact' ? 'rotate-180' : ''}`} />
+                                {t.company}
+                                <ChevronDown className={`w-4 h-4 transition-transform ${openSubmenu === 'company' ? 'rotate-180' : ''}`} />
                             </button>
-                            <div className={`overflow-hidden transition-all duration-200 ${openSubmenu === 'contact' ? 'max-h-60' : 'max-h-0'}`}>
+                            <div className={`overflow-hidden transition-all duration-200 ${openSubmenu === 'company' ? 'max-h-60' : 'max-h-0'}`}>
                                 <Link to="/contact" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
                                     {t.contact}
                                 </Link>
@@ -320,9 +315,6 @@ export function Header() {
                                 </Link>
                                 <Link to="/careers" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
                                     {t.careers}
-                                </Link>
-                                <Link to="/edge-capitla-csr" className="block text-white/70 font-mono text-base py-2.5 pl-4" onClick={() => setMobileMenuOpen(false)}>
-                                    {t.edgeCapitalCSR}
                                 </Link>
                                 <Link to="/ambassadeur-nyck-de-vries" className="block text-white/70 font-mono text-base py-2.5 pl-4 mb-2" onClick={() => setMobileMenuOpen(false)}>
                                     {t.ambassadeur}

@@ -15,6 +15,7 @@ import EdgeHorizon from "./pages/EdgeHorizon";
 import EdgeCare from "./pages/EdgeCare";
 import ScrollToTop from "./common/ScrollToTop";
 import ParticipateForm from "./pages/ParticipateForm/ParticipateForm";
+import ParticipateFormCAF from "./pages/ParticipateFormCAF/ParticipateFormCAF";
 import RequestInfo from "./pages/RequestInfo";
 import { ChangeLanguageProvider } from "./context/ChangeLanguage";
 import { useEffect, useState } from "react";
@@ -100,7 +101,8 @@ function App(): JSX.Element {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/edge-foundation" element={<EdgeHorizon />} />
         <Route path="/edge-cares" element={<EdgeCare />} />
-        <Route path="/participate" element={<ParticipateForm />} />
+        <Route path="/participate-edgefund" element={<ParticipateForm />} />
+        <Route path="/participate-correlation-arbitrage-fund" element={<ParticipateFormCAF />} />
         <Route path="/requestinfo" element={<RequestInfo />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/beleggersfair" element={<Beleggersfair />} />

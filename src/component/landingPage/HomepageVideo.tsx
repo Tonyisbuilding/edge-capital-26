@@ -109,7 +109,7 @@ const HomepageVideo = () => {
     nl: {
       title: "Edge Capital in de media",
       subtitle:
-        "Neem contact met ons op en schrijf u in voor onze nieuwsbrief voor vragen, ondersteuning of feedback. We staan klaar om u bij elke stap te helpen.",
+        "Ontdek hoe Edge Capital in het nieuws komt — bekijk mediaberichtgeving en evenementen die onze innovatie, strategie en mensen belichten.",
       next: "Volgende",
       previous: "Vorige",
     },

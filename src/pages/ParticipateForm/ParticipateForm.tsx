@@ -17,7 +17,7 @@ function ParticipateForm() {
           width: "100%",
         }}
       >
-        <ParticipantForm />
+        <ParticipantForm formSlug="participate-edgefund" />
         <Contact />
         <Footer />
       </div>

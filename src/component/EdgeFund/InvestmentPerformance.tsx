@@ -34,7 +34,7 @@ const InvestmentPerformance = () => {
       returns: "Returns",
       participationFrom: "participation from",
       metrics: {
-        netReturn2024: "Net return 2024:",
+        netReturn2024: "Net return 2025",
         netReturnSinceInception: "Net return since inception (2021):",
         averageAnnualReturn: "Average annual return since inception:"
       },
@@ -51,7 +51,7 @@ const InvestmentPerformance = () => {
       returns: "Rendementen",
       participationFrom: "participatie vanaf",
       metrics: {
-        netReturn2024: "Nettorendement 2024:",
+        netReturn2024: "Netto rendement 2025:",
         netReturnSinceInception: "Nettorendement sinds oprichting (2021):",
         averageAnnualReturn: "Gemiddeld jaarlijks rendement sinds oprichting:"
       },
@@ -203,18 +203,15 @@ const InvestmentPerformance = () => {
         className="mb-12 text-center flex flex-col items-center"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#00222C] relative inline-block z-10">
-          EdgeFund <span className="relative inline-block">
-            Performance
+          <span className="relative inline-block">
+            {t.returns}
             <img
               src={images.landingPage.Brush}
               alt=""
               className="absolute bottom-[-6px] left-0 w-full h-[8px] -z-10 bg-contain bg-no-repeat"
             />
-          </span> Overview
+          </span>
         </h2>
-        <p className="mt-6 text-[#3A494D] max-w-3xl mx-auto text-center leading-relaxed text-base md:text-lg">
-          {t.performanceSubheader}
-        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -265,15 +262,15 @@ const InvestmentPerformance = () => {
                   {card.metrics.map((metric, i) => {
                     const isNegative = metric.value.includes("-");
                     return (
-                    <li key={i} className="ip-report-row">
-                      <span className="ip-col-label">
-                        {metric.label}
-                      </span>
-                      <span className="ip-col-sep">:</span>
-                      <span className={`ip-col-value before:mr-1 ${isNegative ? "before:content-['↓']" : "before:content-['↑']"}`}>
-                        {metric.value}
-                      </span>
-                    </li>
+                      <li key={i} className="ip-report-row">
+                        <span className="ip-col-label">
+                          {metric.label}
+                        </span>
+                        <span className="ip-col-sep">:</span>
+                        <span className={`ip-col-value before:mr-1 ${isNegative ? "before:content-['↓']" : "before:content-['↑']"}`}>
+                          {metric.value}
+                        </span>
+                      </li>
                     );
                   })}
                 </ul>

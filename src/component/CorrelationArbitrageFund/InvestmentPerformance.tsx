@@ -34,7 +34,7 @@ const InvestmentPerformance = () => {
       returns: "Returns",
       participationFrom: "participation from",
       metrics: {
-        netReturn2024: "Net return 2024:",
+        netReturn2024: "Net return 2025",
         netReturnSinceInception: "Net return since inception :",
         averageAnnualReturn: "Average annual return since inception:"
       },
@@ -51,7 +51,7 @@ const InvestmentPerformance = () => {
       returns: "Rendementen",
       participationFrom: "participatie vanaf",
       metrics: {
-        netReturn2024: "Nettorendement 2024:",
+        netReturn2024: "Netto rendement 2025",
         netReturnSinceInception: "Nettorendement sinds start  strategie:",
         averageAnnualReturn: "Gemiddeld jaarlijks rendement sinds oprichting:"
       },
@@ -197,18 +197,15 @@ const InvestmentPerformance = () => {
         className="mb-12 text-center flex flex-col items-center"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#00222C] relative inline-block z-10">
-          Correlation Arbitrage Fund <span className="relative inline-block">
-            Performance
+          <span className="relative inline-block">
+            {t.returns}
             <img
               src={images.landingPage.Brush}
               alt=""
               className="absolute bottom-[-6px] left-0 w-full h-[8px] -z-10 bg-contain bg-no-repeat"
             />
-          </span> Overview
+          </span>
         </h2>
-        <p className="mt-6 text-[#3A494D] max-w-3xl mx-auto text-center leading-relaxed text-base md:text-lg">
-          {t.performanceSubheader}
-        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">

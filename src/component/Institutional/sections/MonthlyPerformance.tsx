@@ -130,6 +130,7 @@ export function MonthlyPerformance() {
 
     return (
         <section
+            id="institutional-monthly-performance"
             className="relative w-full flex flex-col"
             style={{
                 backgroundColor: "#050A0C",

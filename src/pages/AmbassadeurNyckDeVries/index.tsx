@@ -15,13 +15,11 @@ const translations = {
         heroLine1: "Endurance. Discipline.",
         heroLine2: "Long-term performance.",
         heroDescription:
-            "As part of Edge Capital's further development, we have partnered with Nyck de Vries, active in Formula E and endurance racing. This collaboration is based on shared principles: sustainable technology, strategic discipline, and long-term performance.",
+            "As part of Edge Capital's further development, we have partnered with Nyck de Vries, active in Formula E and endurance racing, who as ambassador of our company represents our shared principles of sustainable technology, strategic discipline, and long-term performance.",
         keepScrolling: "Keep scrolling",
 
         // Principles section
         principlesTitle: "Built on the Same Principles",
-        principlesDescription:
-            "We partner with those who share our mindset: discipline, consistency, and performing when it matters most.",
         cards: [
             {
                 num: "1/3",
@@ -58,13 +56,11 @@ const translations = {
         heroLine1: "Uithoudingsvermogen. Discipline.",
         heroLine2: "Langetermijnprestaties.",
         heroDescription:
-            "Als onderdeel van de verdere ontwikkeling van Edge Capital zijn wij een samenwerking aangegaan met Nyck de Vries, actief in de Formule E en endurance racing. Deze samenwerking is gebaseerd op gedeelde principes: duurzame technologie, strategische discipline en langetermijnprestaties.",
+            "Als onderdeel van de verdere ontwikkeling van Edge Capital zijn wij een samenwerking aangegaan met Nyck de Vries, actief in de Formule E en endurance racing, die als ambassadeur van onze onderneming onze gedeelde principes van duurzame technologie, strategische discipline en langetermijnprestaties vertegenwoordigt.",
         keepScrolling: "Blijf scrollen",
 
         // Principles section
         principlesTitle: "Gebouwd op dezelfde principes",
-        principlesDescription:
-            "Wij werken samen met wie onze mentaliteit deelt: discipline, consistentie en presteren wanneer het ertoe doet.",
         cards: [
             {
                 num: "1/3",
@@ -104,17 +100,6 @@ const AmbassadeurNyckDeVries: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const { language } = useChangeLanguageContext();
     const t = translations[language] || translations.en;
-
-    const scroll = (direction: "left" | "right") => {
-        if (!scrollRef.current) return;
-        const cardWidth = scrollRef.current.firstElementChild?.getBoundingClientRect().width ?? 400;
-        const gap = parseFloat(getComputedStyle(scrollRef.current).gap) || 0;
-        const scrollAmount = cardWidth + gap;
-        scrollRef.current.scrollBy({
-            left: direction === "left" ? -scrollAmount : scrollAmount,
-            behavior: "smooth",
-        });
-    };
 
     return (
         <>
@@ -180,53 +165,23 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                         >
                             {t.principlesTitle}
                         </h2>
-                        <p
-                            className="text-white/70 leading-relaxed max-w-lg md:pt-1"
-                            style={{ fontSize: "clamp(0.85rem, 1.1vw, 1.125rem)" }}
-                        >
-                            {t.principlesDescription}
-                        </p>
                     </div>
 
-                    {/* Arrow navigation */}
-                    <div className="flex items-center gap-3 mt-6" style={{ marginTop: "clamp(1.25rem, 2.5vw, 2rem)" }}>
-                        <button
-                            onClick={() => scroll("left")}
-                            className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        <button
-                            onClick={() => scroll("right")}
-                            className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
                 </div>
 
-                {/* Scrollable cards */}
+                {/* Cards Grid */}
                 <div
                     ref={scrollRef}
-                    className="flex gap-[clamp(1rem,1.5vw,1.5rem)] mt-8 overflow-x-auto snap-x snap-mandatory"
+                    className="w-[98%] max-w-[1700px] mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-[clamp(1rem,1.5vw,1.5rem)] mt-8"
                     style={{
-                        paddingLeft: "max((100% - 1700px) / 2 + 1rem, 1% + 1rem)",
-                        paddingRight: "clamp(1rem, 3vw, 2rem)",
                         marginTop: "clamp(1.5rem, 3vw, 2.5rem)",
-                        scrollbarWidth: "none",
-                        msOverflowStyle: "none",
                     }}
                 >
                     {t.cards.map((card, i) => (
                         <div
                             key={i}
-                            className="flex-shrink-0 snap-start rounded-2xl overflow-hidden flex flex-col"
+                            className="rounded-2xl overflow-hidden flex flex-col w-full"
                             style={{
-                                width: "clamp(340px, 42vw, 580px)",
                                 height: "clamp(420px, 48vw, 700px)",
                                 backgroundColor: "#C7EBF3",
                             }}
@@ -243,7 +198,7 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                                     {card.num}
                                 </span>
                                 <h3
-                                    className="text-[#1A2B30] font-bold leading-snug whitespace-nowrap"
+                                    className="text-[#1A2B30] font-bold leading-snug"
                                     style={{
                                         fontSize: "clamp(0.95rem, 1.8vw, 1.75rem)",
                                         marginTop: "clamp(0.5rem, 1vw, 0.75rem)",

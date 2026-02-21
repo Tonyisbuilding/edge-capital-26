@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useChangeLanguageContext } from "@/context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const EdgeFundHero = () => {
     const { language } = useChangeLanguageContext();
@@ -16,13 +17,20 @@ const EdgeFundHero = () => {
             scroll: "Scroll to learn more",
         },
         nl: {
-            text: "EdgeFund levert marktneutraal rendement via een ‘dual–engine’ strategie op de S&P 500. Wij combineren volatiliteitspremies en rente–arbitrage om consistent rendement te genereren in elke marktrichting.",
+            text: "EdgeFund levert marktneutraal rendement via een 'dual–engine' strategie op de S&P 500. Wij combineren volatiliteitspremies en rente–arbitrage om consistent rendement te genereren in elke marktrichting.",
             participate: "Deelnemen",
             scroll: "Scroll to learn more",
         },
     };
 
     const t = translations[language] || translations.en;
+
+    const handleScrollDown = () => {
+        window.scrollBy({
+            top: 600,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <section className="relative w-full min-h-screen flex flex-col overflow-hidden">
@@ -68,12 +76,12 @@ const EdgeFundHero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <button className="bg-[#EEFDFF] text-[#004352] px-8 md:px-12 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white transition-all w-full md:w-auto">
+                        <Link to="/participate-edgefund" className="bg-[#EEFDFF] text-[#004352] px-8 md:px-12 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white transition-all w-full md:w-auto">
                             {t.participate}
                             <FontAwesomeIcon icon={faChevronRight} className="text-[12px]" />
-                        </button>
+                        </Link>
 
-                        <button className="bg-white/20 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white/30 backdrop-blur-md transition-all border border-white/30 w-full md:w-auto">
+                        <button onClick={handleScrollDown} className="bg-white/20 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:bg-white/30 backdrop-blur-md transition-all border border-white/30 w-full md:w-auto">
                             {t.scroll}
                             <FontAwesomeIcon icon={faArrowDown} className="text-[14px]" />
                         </button>

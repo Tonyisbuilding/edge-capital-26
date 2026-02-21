@@ -80,10 +80,10 @@ const AmbassadorSection: React.FC = () => {
                             </h3>
                             <p className="ambassador-description">
                                 {language === 'nl'
-                                    ? 'Wij combineren diepgaande handelskennis met geavanceerde analyses en technologie om kritieke liquiditeit te leveren en de wereldwijde markten van morgen vorm te geven.'
-                                    : 'We combine deep trading expertise with advanced analytics and technology to deliver critical liquidity and shape the global markets of tomorrow.'}
+                                    ? 'Als ambassadeur van Edge Capital staat Nyck de Vries, actief in Formula E, symbool voor onze gedeelde principes: duurzame technologie, strategische discipline en prestaties op de lange termijn.'
+                                    : 'As ambassador of Edge Capital, Nyck de Vries, active in Formula E, represents our shared principles: sustainable technology, strategic discipline, and long-term performance.'}
                             </p>
-                            <a href="/ambassador" className="ambassador-cta">
+                            <a href="/ambassadeur-nyck-de-vries" className="ambassador-cta">
                                 {language === 'nl' ? 'Lees meer' : 'Read more'}
                                 <span className="cta-arrow">→</span>
                             </a>

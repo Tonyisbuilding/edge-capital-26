@@ -101,8 +101,8 @@ const WhatSetsUsApart = () => {
 
   const content = {
     en: {
-      sectionTitle: "Risk & Mitigation",
-      sectionDesc: "Below is a detailed breakdown of specific market and operational risks, alongside the safeguards and hedging strategies we use to minimise exposure.",
+      sectionTitle: "Risk",
+      sectionDesc: "",
       riskItems: [
         {
           title: "Correlation breakdown",
@@ -137,8 +137,8 @@ const WhatSetsUsApart = () => {
       ]
     },
     nl: {
-      sectionTitle: "Risk & Mitigation",
-      sectionDesc: "Hieronder vindt u een gedetailleerde uitsplitsing van specifieke markt- en operationele risico's, samen met de waarborgen en hedgingstrategie\u00EBn die we gebruiken om de blootstelling te minimaliseren.",
+      sectionTitle: "Risico",
+      sectionDesc: "",
       riskItems: [
         {
           title: "Correlatiebreuk",

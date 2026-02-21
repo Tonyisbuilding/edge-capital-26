@@ -292,7 +292,7 @@ export const advisoryBoard: teamMemberCardstDataType[] = [
     name: "Henk van der Heijden",
     position: "Advisor and chairman of the trust bonds foundation Edge Capital",
     bio: `Henk van der Heijden has 30+ years of (project) management experience, including 14 at ASML. He holds a BSc in Computer Science and an Executive MBA in Strategic Change Management. Active in crypto and startups, he’s been an investor since 2017, Chairman of the Trust Bonds Foundation since August 2022, and advisor since March 2023.`,
-    linkedin: "https://www.linkedin.com/in/mvandrunen/",
+    linkedin: "https://www.linkedin.com/in/henk-van-der-heijden/",
     image: images.landingPage.Henk,
   },
   {
@@ -311,7 +311,7 @@ export const advisoryBoardDutch: teamMemberCardstDataType[] = [
     name: "Henk van der Heijden",
     position: "Adviseur en voorzitter van de trust bonds stichting Edge Capital",
     bio: `Henk van der Heijden heeft meer dan 30 jaar (project)managementervaring, waaronder 14 jaar bij ASML. Hij heeft een BSc in Computerwetenschappen en een Executive MBA in Strategisch Verandermanagement. Actief in crypto en startups sinds 2017, voorzitter van de Trust Bonds Stichting sinds augustus 2022 en adviseur sinds maart 2023.`,
-    linkedin: "https://www.linkedin.com/in/mvandrunen/",
+    linkedin: "https://www.linkedin.com/in/henk-van-der-heijden/",
     image: images.landingPage.Henk,
   },
   {
