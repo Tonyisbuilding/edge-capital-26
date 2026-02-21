@@ -185,9 +185,7 @@ export function Hero() {
                             <Button
                                 className="bg-white text-black hover:bg-white/90 font-mono text-xs md:text-sm h-10 md:h-12 px-4 md:px-6 flex items-center gap-2 whitespace-nowrap"
                                 onClick={() =>
-                                    document
-                                        .getElementById("institutional-contact")
-                                        ?.scrollIntoView({ behavior: "smooth" })
+                                    window.open("https://calendar.notion.so/meet/aronbroeken/mrsnj4pep", "_blank")
                                 }
                             >
                                 {t.requestCall}

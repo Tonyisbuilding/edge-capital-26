@@ -58,7 +58,7 @@ import rob from "../../src/assets/images/landingPage/robb.png";
 
 
 import money_briefcase from "../../src/assets/images/landingPage/money-briefcase.png";
-import herosectionforabout from "../../src/assets/images/about/herosectionforabout.png";
+import herosectionforabout from "../../src/assets/images/about/team-photo.jpg";
 import edgehero from "../../src/assets/images/edgefund/edgehero.png";
 import edgehorizon from "../../src/assets/images/edgefund/edgehorizon.png";
 import edgecare from "../../src/assets/images/edgefund/edgecare.png";

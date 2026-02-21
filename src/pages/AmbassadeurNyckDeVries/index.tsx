@@ -113,12 +113,14 @@ const AmbassadeurNyckDeVries: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
-                {/* Gradient overlay */}
+                {/* Gradient overlay — dark around bottom-left text area */}
                 <div
                     className="absolute inset-0"
                     style={{
-                        background:
-                            "linear-gradient(to top right, rgba(10, 15, 18, 0.95) 0%, rgba(10, 15, 18, 0.85) 30%, rgba(10, 15, 18, 0.5) 55%, rgba(10, 15, 18, 0.15) 75%, transparent 100%)",
+                        background: [
+                            "linear-gradient(to top, rgba(10, 15, 18, 1) 0%, rgba(10, 15, 18, 0.6) 25%, rgba(10, 15, 18, 0.35) 55%, transparent 80%)",
+                            "radial-gradient(ellipse at 0% 100%, rgba(10, 15, 18, 1) 0%, rgba(10, 15, 18, 0.8) 60%, transparent 70%)",
+                        ].join(", "),
                     }}
                 />
 

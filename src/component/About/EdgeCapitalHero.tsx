@@ -20,7 +20,7 @@ const EdgeCapitalHero = () => {
       altText: "Edge Capital Team"
     },
     nl: {
-      heading: "Onze naam is meer dan slechts een knipoog naar ‘hedge funds’. ‘Edge’ staat voor het voordeel dat we onze cliënten bieden—vooroplopen met strategieën gebaseerd op marktfeiten in plaats van voorspellingen.",
+      heading: "Onze naam is meer dan slechts een knipoog naar ‘hedge funds’. ‘Edge’ staat voor het voordeel dat we onze cliënten bieden. Vooroplopen met strategieën gebaseerd op marktfeiten in plaats van voorspellingen.",
       subheading: "Onze strategieën zijn gebaseerd op arbitragemethoden en marktonafhankelijke beleggingen, wat ons een voordeel geeft ten opzichte van traditionele vermogensbeheerproducten.",
       getInTouch: "Neem Contact op",
       altText: "Edge Capital Team"
@@ -89,7 +89,7 @@ const EdgeCapitalHero = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="space-y-6"
           >
-            <h1 className="text-[clamp(1.25rem,5vw,2.25rem)] font-bold text-gray-900 leading-tight">
+            <h1 className="text-[clamp(1.1rem,2vw,2.25rem)] font-bold text-gray-900 leading-tight">
               {t("heading")}
             </h1>
 

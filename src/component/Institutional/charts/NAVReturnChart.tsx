@@ -128,7 +128,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
                                 className="text-[12px] font-semibold tabular-nums"
                                 style={{ color: entry.color }}
                             >
-                                {entry.value.toFixed(1)}%
+                                {(() => {
+                                    const pct = entry.value - 100;
+                                    return `${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%`;
+                                })()}
                             </span>
                         </div>
                     ))}
@@ -237,19 +240,6 @@ function ChartStatsHeader({ data }: { data: NAVDataPoint[] }) {
                     ))}
                 </div>
 
-                <div className="flex items-center gap-1 text-[10px] font-mono tracking-wider">
-                    {PERIOD_TABS.map((tab, i) => (
-                        <button
-                            key={tab}
-                            className={`px-3 py-1 rounded transition-colors ${i === 0
-                                ? "bg-white/8 text-white/90"
-                                : "text-white/35 hover:text-white/60"
-                                }`}
-                        >
-                            {tab}
-                        </button>
-                    ))}
-                </div>
             </div>
         </div>
     );
@@ -258,19 +248,23 @@ function ChartStatsHeader({ data }: { data: NAVDataPoint[] }) {
 // ------------------------------------------------------------------
 // Custom Y-axis tick with %
 // ------------------------------------------------------------------
-const YAxisTick = ({ x, y, payload }: any) => (
-    <text
-        x={x}
-        y={y}
-        dy={4}
-        textAnchor="end"
-        fill="#555"
-        fontSize={11}
-        fontFamily="monospace"
-    >
-        {payload.value}%
-    </text>
-);
+const YAxisTick = ({ x, y, payload }: any) => {
+    const pct = payload.value - 100;
+    const label = pct === 0 ? "0%" : `${pct > 0 ? "+" : ""}${pct}%`;
+    return (
+        <text
+            x={x}
+            y={y}
+            dy={4}
+            textAnchor="end"
+            fill="#555"
+            fontSize={11}
+            fontFamily="monospace"
+        >
+            {label}
+        </text>
+    );
+};
 
 // ------------------------------------------------------------------
 // Chart Component
@@ -332,8 +326,8 @@ export function NAVReturnChart() {
                             tick={<YAxisTick />}
                             tickLine={false}
                             axisLine={false}
-                            domain={[50, 350]}
-                            ticks={[50, 100, 150, 200, 250, 300, 350]}
+                            domain={[50, 400]}
+                            ticks={[50, 100, 150, 200, 250, 300, 350, 400]}
                             dx={-4}
                         />
                         <Tooltip
@@ -401,7 +395,7 @@ export function NAVReturnChart() {
 
             {/* Footer note */}
             <p className="mt-4 text-[11px] text-institutional-slate/40 font-mono leading-relaxed tracking-wide">
-                Chart rebased to 100 and plotted since inception. Benchmark: MSCI World (URTH ETF price proxy).
+                Chart shows cumulative return (%) since inception. Benchmark: MSCI World (URTH ETF price proxy).
             </p>
         </div>
     );

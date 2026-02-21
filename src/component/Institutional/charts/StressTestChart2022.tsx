@@ -41,7 +41,7 @@ for (let w = 0; w < 52; w++) {
     weekLabels.push(`${month} ${day}`);
 }
 
-// Vol Prem (formerly Edge Capital): overall +24.6% with sharp dips and recoveries
+// Vol Prem (formerly Edge Capital): overall +28.35% with sharp dips and recoveries
 const volPremWeekly: number[] = [100];
 const volPremDrift = 0.0045; // slight upward bias per week
 for (let i = 1; i < 52; i++) {
@@ -65,7 +65,7 @@ for (let i = 1; i < 52; i++) {
 }
 // Normalize so final value = 124.6, but start stays 100
 const volPremFinalRaw = volPremWeekly[51];
-const volPremTarget = 124.6;
+const volPremTarget = 128.35;
 const volPremValues = volPremWeekly.map(v => {
     const scale = (volPremTarget - 100) / (volPremFinalRaw - 100);
     return +(100 + (v - 100) * scale).toFixed(2);
