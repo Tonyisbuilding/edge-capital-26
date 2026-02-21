@@ -179,11 +179,11 @@ export function Hero() {
 
                         {/* Button container — two buttons side by side */}
                         <div
-                            className="px-[clamp(16px,3vw,24px)] py-4 flex flex-wrap items-center gap-3"
+                            className="px-[clamp(16px,3vw,24px)] py-4 flex flex-nowrap items-center gap-3"
                             style={{ backgroundColor: "#091114" }}
                         >
                             <Button
-                                className="bg-white text-black hover:bg-white/90 font-mono text-sm h-12 px-6 flex items-center gap-2"
+                                className="bg-white text-black hover:bg-white/90 font-mono text-xs md:text-sm h-10 md:h-12 px-4 md:px-6 flex items-center gap-2 whitespace-nowrap"
                                 onClick={() =>
                                     document
                                         .getElementById("institutional-contact")
@@ -194,7 +194,7 @@ export function Hero() {
                                 <ChevronRight className="w-4 h-4" />
                             </Button>
                             <Button
-                                className="bg-white text-black hover:bg-white/90 font-mono text-sm h-12 px-6 flex items-center gap-2"
+                                className="bg-white text-black hover:bg-white/90 font-mono text-xs md:text-sm h-10 md:h-12 px-4 md:px-6 flex items-center gap-2 whitespace-nowrap"
                                 onClick={() => setShowModal(true)}
                             >
                                 {t.enterDataRoom}
@@ -221,7 +221,7 @@ export function Hero() {
 
                     {/* Modal Card */}
                     <div
-                        className="relative z-10 w-[95%] max-w-lg bg-[#E1EFF2] rounded-2xl shadow-xl p-6 md:p-8"
+                        className="relative z-10 w-[95%] max-w-2xl bg-[#E1EFF2] rounded-2xl shadow-xl p-8 md:p-10"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close button */}

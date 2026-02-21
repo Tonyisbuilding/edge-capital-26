@@ -11,6 +11,7 @@ import {
     ResponsiveContainer,
     ReferenceArea,
     ReferenceLine,
+    LabelList,
 } from "recharts";
 import { fetchNAVPerformance, type NAVDataPoint } from "@/Api/googleSheetsClient";
 
@@ -342,7 +343,25 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                 stroke: "#050A0C",
                                 strokeWidth: 1.5,
                             }}
-                        />
+                        >
+                            <LabelList
+                                dataKey="msci"
+                                position="right"
+                                content={({ x, y, index }: any) => {
+                                    if (index !== displayData.length - 1) return null;
+                                    return (
+                                        <g>
+                                            <text x={x + 10} y={y - 8} fill="#ACACAC" fontSize="10" fontFamily="monospace" opacity={0.7}>
+                                                Global benchmark (URTH)
+                                            </text>
+                                            <text x={x + 10} y={y + 8} fill="#ACACAC" fontSize="13" fontWeight="600" fontFamily="monospace">
+                                                −19.27%
+                                            </text>
+                                        </g>
+                                    );
+                                }}
+                            />
+                        </Line>
 
                         {/* Corr Arb — solid light cyan, steady growth */}
                         <Line
@@ -358,9 +377,27 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                                 stroke: "#050A0C",
                                 strokeWidth: 1.5,
                             }}
-                        />
+                        >
+                            <LabelList
+                                dataKey="corr"
+                                position="right"
+                                content={({ x, y, index }: any) => {
+                                    if (index !== displayData.length - 1) return null;
+                                    return (
+                                        <g>
+                                            <text x={x + 10} y={y + 6} fill="#C4EBF1" fontSize="10" fontFamily="monospace" opacity={0.7}>
+                                                FX Correlation Arb Engine
+                                            </text>
+                                            <text x={x + 10} y={y + 22} fill="#C4EBF1" fontSize="13" fontWeight="600" fontFamily="monospace">
+                                                +18.60%
+                                            </text>
+                                        </g>
+                                    );
+                                }}
+                            />
+                        </Line>
 
-                        {/* Vol Prem (formerly Edge Capital) — solid teal/slate, rising, with glow */}
+                        {/* Vol Prem — solid teal/slate, rising, with glow */}
                         <Line
                             type="linear"
                             dataKey="volPrem"
@@ -377,27 +414,27 @@ export function StressTestChart2022({ data }: { data?: typeof chartData }) {
                             style={{
                                 filter: "drop-shadow(0 0 6px rgba(66, 128, 149, 0.4))",
                             }}
-                        />
+                        >
+                            <LabelList
+                                dataKey="volPrem"
+                                position="right"
+                                content={({ x, y, index }: any) => {
+                                    if (index !== displayData.length - 1) return null;
+                                    return (
+                                        <g>
+                                            <text x={x + 10} y={y - 38} fill="#5EEAD4" fontSize="10" fontFamily="monospace" opacity={0.7}>
+                                                Volatility Engine
+                                            </text>
+                                            <text x={x + 10} y={y - 22} fill="#5EEAD4" fontSize="13" fontWeight="600" fontFamily="monospace">
+                                                +28.35%
+                                            </text>
+                                        </g>
+                                    );
+                                }}
+                            />
+                        </Line>
                     </LineChart>
                 </ResponsiveContainer>
-            </div>
-
-            {/* Legend */}
-            <div className="flex justify-center gap-8 mt-3 font-mono tracking-wide" style={{ fontSize: 'clamp(11px, 1em, 14px)' }}>
-                <span className="flex items-center gap-2.5">
-                    <span className="inline-block w-5 h-[1.5px]" style={{ backgroundColor: "#428095" }} />
-                    <span style={{ color: "#428095" }} className="opacity-70">Vol Prem</span>
-                </span>
-                <span className="flex items-center gap-2.5">
-                    <span className="inline-block w-5 h-[1.5px]" style={{ backgroundColor: "#C4EBF1" }} />
-                    <span style={{ color: "#C4EBF1" }} className="opacity-70">Corr Arb</span>
-                </span>
-                <span className="flex items-center gap-2.5">
-                    <svg width="20" height="2" className="opacity-70">
-                        <line x1="0" y1="1" x2="20" y2="1" stroke="#ACACAC" strokeWidth="1.2" strokeDasharray="3 2" />
-                    </svg>
-                    <span style={{ color: "#ACACAC" }} className="opacity-70">MSCI World</span>
-                </span>
             </div>
         </div>
     );

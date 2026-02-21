@@ -3,6 +3,7 @@ import { Hero } from "@/component/Institutional/sections/Hero";
 import { HistoricalStatistics } from "@/component/Institutional/sections/HistoricalStatistics";
 import { EngineTimeline } from "@/component/Institutional/sections/EngineTimeline";
 import { NAVPerformance } from "@/component/Institutional/sections/NAVPerformance";
+import { LiquidResilience } from "@/component/Institutional/sections/LiquidResilience";
 import { StressTest2022 } from "@/component/Institutional/sections/StressTest2022";
 import { Governance } from "@/component/Institutional/sections/Governance";
 import { InvestmentFramework } from "@/component/Institutional/sections/InvestmentFramework";
@@ -21,6 +22,7 @@ const Institutional = () => {
       <Hero />
       <HistoricalStatistics />
       <NAVPerformance />
+      <LiquidResilience />
       <StressTest2022 />
       <EngineTimeline />
 

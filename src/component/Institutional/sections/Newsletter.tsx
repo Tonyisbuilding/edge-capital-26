@@ -7,9 +7,9 @@ import NewsletterImg from "@/assets/images/landingPage/newsletter-img.png";
 
 const translations = {
     en: {
-        heading: "Subscribe to our newsletter",
+        heading: "Subscribe to our investor updates",
         description:
-            "Subscribe to receive periodic performance updates, detailed portfolio insights, and commentary on market developments, including how our strategies respond to changing conditions.",
+            "Receive periodic performance reporting, portfolio and risk insights, and concise commentary on market developments, including how our systematic strategies adapt across changing regimes.",
         placeholder: "Enter your email address",
         subscribe: "Subscribe",
         submitting: "Sending...",
@@ -17,9 +17,9 @@ const translations = {
         error: "Something went wrong. Please try again.",
     },
     nl: {
-        heading: "Schrijf u in voor onze nieuwsbrief",
+        heading: "Schrijf u in voor onze beleggersupdates",
         description:
-            "Schrijf u in om periodieke prestatie-updates te ontvangen, gedetailleerde portfolio-inzichten en commentaar op marktontwikkelingen, inclusief hoe onze strategieën reageren op veranderende omstandigheden.",
+            "Ontvang periodieke prestatierapportages, portefeuille- en risico-inzichten, en beknopt commentaar op marktontwikkelingen, inclusief hoe onze systematische strategieën zich aanpassen aan veranderende regimes.",
         placeholder: "Vul uw e-mailadres in",
         subscribe: "Inschrijven",
         submitting: "Verzenden...",
@@ -33,23 +33,26 @@ export function Newsletter() {
     const t = translations[language] || translations.en;
     const [email, setEmail] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email || isSubmitting) return;
 
         setIsSubmitting(true);
+        setSubmitStatus(null);
         try {
             await submitToGoogleSheet({
                 formSlug: "News letter",
                 payload: { email },
             });
-            toast.success(t.success);
+            setSubmitStatus("success");
             setEmail("");
         } catch {
-            toast.error(t.error);
+            setSubmitStatus("error");
         } finally {
             setIsSubmitting(false);
+            setTimeout(() => setSubmitStatus(null), 5000);
         }
     };
 
@@ -116,6 +119,18 @@ export function Newsletter() {
                         />
                     </div>
                 </div>
+
+                {/* Confirmation message below card */}
+                {submitStatus && (
+                    <p
+                        className={`mt-4 text-sm font-mono px-2 ${submitStatus === "success"
+                            ? "text-[#1A6B7A]"
+                            : "text-red-600"
+                            }`}
+                    >
+                        {submitStatus === "success" ? t.success : t.error}
+                    </p>
+                )}
             </div>
         </section>
     );

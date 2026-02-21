@@ -21,7 +21,7 @@ function getItems(language: string): Item[] {
             {
                 tab: "Motor één",
                 step: "01",
-                title: "Marktneutraal\nVolatiliteitspremie",
+                title: "Marktneutrale\nVolatiliteitspremie Risico",
                 description:
                     "Wij oogsten systematisch de structurele spread tussen Implied Volatility (marktangst) en Realized Volatility (werkelijke beweging). Door dure convexiteit te verkopen terwijl we Delta dynamisch hedgen, genereren we consistent rendement dat wiskundig onafhankelijk is van de marktrichting.",
                 imgSrc: "/Market Neutral Volatility Premium.png",
@@ -29,9 +29,9 @@ function getItems(language: string): Item[] {
             {
                 tab: "Motor twee",
                 step: "02",
-                title: "Correlatie / Relatieve\nWaarde-Dislocatie",
+                title: "Correlatie\nArbitrage",
                 description:
-                    "We handelen niet alleen in activa; we handelen in de relaties ertussen. Onze motoren exploiteren statistische dislocaties over G10 FX en wereldwijde aandelenindices, en vangen alpha wanneer correlaties afbreken of mean-reverten tijdens periodes van macrostress.",
+                    "Wij oogsten correlatieverstoringen in liquide G10 FX door relatieve-waarde mandjes te verhandelen wanneer cross-rate relaties afwijken van hun statistisch verwachte gedrag. Door bèta-gehedgede long/short portefeuilles samen te stellen en blootstelling te beheersen met regime-bewuste correlatie/volatiliteitslimieten, worden rendementen gedreven door correlatienormalisatie en spreadcompressie, niet door de richting van een enkele valuta of brede FX-markten.",
                 imgSrc: "/Relative- Value Dislocation.png",
             },
             {
@@ -49,7 +49,7 @@ function getItems(language: string): Item[] {
         {
             tab: "Engine one",
             step: "01",
-            title: "Market Neutral\nVolatility Premium",
+            title: "Market Neutral Volatility\nPremium Risk",
             description:
                 "We systematically harvest the structural spread between Implied Volatility (market fear) and Realized Volatility (actual movement). By selling expensive convexity while dynamically hedging Delta, we generate consistent yield that is mathematically independent of market direction.",
             imgSrc: "/Market Neutral Volatility Premium.png",
@@ -57,9 +57,9 @@ function getItems(language: string): Item[] {
         {
             tab: "Engine two",
             step: "02",
-            title: "Correlation / Relative-\nValue Dislocation",
+            title: "Correlation\nArbitrage",
             description:
-                "We do not just trade assets; we trade the relationships between them. Our engines exploit statistical dislocations across G10 FX and global equity indices, capturing alpha when correlations break down or mean-revert during periods of macro stress.",
+                "We harvest correlation dislocations in liquid G10 FX by trading relative-value baskets when cross-rate relationships diverge from their statistically expected behavior. By constructing beta-hedged long/short portfolios and governing exposure with regime-aware correlation/volatility limits, returns are driven by correlation normalization and spread compression, not by the direction of any single currency or broad FX markets.",
             imgSrc: "/Relative- Value Dislocation.png",
         },
         {

@@ -11,13 +11,15 @@ const translations = {
         crisisAlpha: "Crisis Alpha",
         the2022: "The 2022",
         stressTest: "Stress Test.",
-        paragraph: "In 2022, the 60/40 portfolio faced its worst year in decades as stocks and bonds fell together. In that same window, Edge Capital\u2019s volatility engines didn\u2019t just survive\u2014they",
-        monetizedTheChaos: "monetized the chaos",
-        delivering: "delivering",
-        netReturns: "net returns",
-        whileBenchmarkFell: "while the global benchmark fell",
-        performanceSpread: "Performance Spread",
-        correlationToBenchmark: "Correlation to Benchmark",
+        paragraph: "In 2022, the traditional 60/40 framework suffered as inflation and rate repricing forced stocks and bonds to fall together. In that same window, Edge Capital\u2019s institutional engines didn\u2019t just survive, they monetized the chaos and delivered a",
+        volReturn: "+28.35% net return",
+        whileBenchmark: "while the global benchmark fell \u221219.27% (MSCI World).",
+        enginesLabel: "ENGINES (2022, net)",
+        volEngine: "Volatility Engine",
+        corrArbEngine: "FX Corr Arb Engine",
+        globalBenchmark: "Global benchmark (URTH)",
+        performanceSpread: "PERFORMANCE SPREAD (vs benchmark)",
+        correlationToBenchmark: "CORRELATION TO BENCHMARK (equity-curve, 2022)",
     },
     nl: {
         duringMarketCrises: "Tijdens marktcrises,",
@@ -25,13 +27,15 @@ const translations = {
         crisisAlpha: "Crisis Alpha",
         the2022: "De 2022",
         stressTest: "Stresstest.",
-        paragraph: "In 2022 kende de 60/40-portefeuille het slechtste jaar in decennia doordat aandelen en obligaties gelijktijdig daalden. In diezelfde periode hebben de volatiliteitsmotoren van Edge Capital niet alleen overleefd\u2014ze hebben",
-        monetizedTheChaos: "de chaos gemonetariseerd",
-        delivering: "en leverden",
-        netReturns: "nettorendement",
-        whileBenchmarkFell: "terwijl de wereldwijde benchmark daalde met",
-        performanceSpread: "Prestatiespreiding",
-        correlationToBenchmark: "Correlatie met Benchmark",
+        paragraph: "In 2022 leed het traditionele 60/40-raamwerk doordat inflatie en renteherprijzing aandelen en obligaties gelijktijdig deden dalen. In diezelfde periode hebben de institutionele engines van Edge Capital niet alleen overleefd, ze monetariseerden de chaos en leverden een",
+        volReturn: "+28,35% nettorendement",
+        whileBenchmark: "terwijl de wereldwijde benchmark \u221219,27% daalde (MSCI World).",
+        enginesLabel: "ENGINES (2022, netto)",
+        volEngine: "Volatility Engine",
+        corrArbEngine: "FX Corr Arb Engine",
+        globalBenchmark: "Wereldwijde benchmark (URTH)",
+        performanceSpread: "PRESTATIESPREIDING (vs benchmark)",
+        correlationToBenchmark: "CORRELATIE MET BENCHMARK (equity-curve, 2022)",
     },
 };
 
@@ -83,9 +87,10 @@ export function StressTest2022() {
         return () => { cancelled = true; };
     }, []);
 
-    // Calculate spread (Vol Prem - MSCI)
-    const spread = (parseFloat(returns.volPrem) - parseFloat(returns.msci)).toFixed(1);
-    const spreadFormatted = parseFloat(spread) >= 0 ? `+${spread}` : spread;
+    // Hardcoded performance values
+    const volPrem = "+28.35";
+    const corrArb = "+18.60";
+    const msci = "−19.27";
 
     // Track scroll progress within the tall scroll-spacer (0 → 1)
     const { scrollYProgress } = useScroll({
@@ -160,12 +165,8 @@ export function StressTest2022() {
                         </h2>
                     </div>
 
-                    {/* Text content */}
                     <div className="max-w-xl">
-                        <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#5EEAD4]/50 mb-5">
-                            {t.crisisAlpha}
-                        </p>
-                        <h3 className="text-2xl font-mono font-light text-white leading-[1.15] mb-6">
+                        <h3 className="text-2xl font-mono font-light text-white leading-[1.15] mb-3">
                             {t.the2022}{" "}
                             <span
                                 className="font-normal"
@@ -178,42 +179,47 @@ export function StressTest2022() {
                                 {t.stressTest}
                             </span>
                         </h3>
-                        <p className="text-[14px] text-white/45 leading-[1.85] font-mono font-light">
+                        <p className="text-[14px] text-white/65 leading-[1.85] font-mono font-light">
                             {t.paragraph}{" "}
-                            <span className="text-white/70 font-normal">{t.monetizedTheChaos}</span>,
-                            {" "}{t.delivering}{" "}
                             <span className="font-medium" style={{ color: "#5EEAD4" }}>
-                                {returns.volPrem}% {t.netReturns}
+                                {t.volReturn}
                             </span>{" "}
-                            {t.whileBenchmarkFell}{" "}
-                            <span className="font-medium text-white/60">{returns.msci}%</span>.
+                            {t.whileBenchmark}
                         </p>
 
-                        {/* Key stat callout */}
-                        <div className="mt-10 flex items-center gap-6 border-t border-white/[0.06] pt-6">
+                        {/* Key stat callout — 2 blocks */}
+                        <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/[0.06] pt-6">
+                            {/* Performance Spread */}
                             <div>
-                                <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
+                                <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/50 mb-3 max-w-[180px]">
                                     {t.performanceSpread}
                                 </p>
-                                <p
-                                    className="text-2xl font-mono font-light tabular-nums"
-                                    style={{
-                                        background: "linear-gradient(135deg, #5EEAD4, #268197)",
-                                        WebkitBackgroundClip: "text",
-                                        WebkitTextFillColor: "transparent",
-                                    }}
-                                >
-                                    {spreadFormatted}%
-                                </p>
+                                <div className="space-y-4">
+                                    <div>
+                                        <p className="text-[11px] font-mono text-white/50 mb-1">{t.volEngine}</p>
+                                        <p className="text-xl font-mono font-medium" style={{ color: "#5EEAD4" }}>+47.62%</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[11px] font-mono text-white/50 mb-1">{t.corrArbEngine}</p>
+                                        <p className="text-xl font-mono font-medium" style={{ color: "#5EEAD4" }}>+37.87%</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="w-[1px] h-10 bg-white/[0.06]" />
+                            {/* Correlation */}
                             <div>
-                                <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
+                                <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/50 mb-3 max-w-[180px]">
                                     {t.correlationToBenchmark}
                                 </p>
-                                <p className="text-2xl font-mono font-light tabular-nums text-white/70">
-                                    −0.82
-                                </p>
+                                <div className="space-y-4">
+                                    <div>
+                                        <p className="text-[11px] font-mono text-white/50 mb-1">{t.volEngine}</p>
+                                        <p className="text-xl font-mono font-medium text-white/90">−0.80</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[11px] font-mono text-white/50 mb-1">{t.corrArbEngine}</p>
+                                        <p className="text-xl font-mono font-medium text-white/90">−0.59</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -274,13 +280,8 @@ export function StressTest2022() {
                                     y: "-50%",
                                 }}
                             >
-                                {/* Eyebrow */}
-                                <p className="text-[10px] md:text-[11px] font-mono tracking-[0.25em] uppercase text-[#5EEAD4]/50 mb-5">
-                                    {t.crisisAlpha}
-                                </p>
-
                                 {/* Headline */}
-                                <h2 className="text-3xl md:text-4xl lg:text-[42px] font-mono font-light text-white leading-[1.15] mb-8">
+                                <h2 className="text-3xl md:text-4xl lg:text-[42px] font-mono font-light text-white leading-[1.15] mb-4">
                                     {t.the2022}{" "}
                                     <span
                                         className="font-normal"
@@ -295,49 +296,50 @@ export function StressTest2022() {
                                 </h2>
 
                                 {/* Body */}
-                                <p className="text-[15px] md:text-base text-white/45 leading-[1.85] font-mono font-light">
+                                <p className="text-[15px] md:text-base text-white/65 leading-[1.85] font-mono font-light">
                                     {t.paragraph}{" "}
-                                    <span className="text-white/70 font-normal">{t.monetizedTheChaos}</span>,
-                                    {" "}{t.delivering}{" "}
-                                    <span
-                                        className="font-medium"
-                                        style={{ color: "#5EEAD4" }}
-                                    >
-                                        {returns.volPrem}% {t.netReturns}
+                                    <span className="font-medium" style={{ color: "#5EEAD4" }}>
+                                        {t.volReturn}
                                     </span>{" "}
-                                    {t.whileBenchmarkFell}{" "}
-                                    <span className="font-medium text-white/60">
-                                        {returns.msci}%
-                                    </span>.
+                                    {t.whileBenchmark}
                                 </p>
 
-                                {/* Key stat callout */}
-                                <div className="mt-16 md:mt-20 flex items-center gap-6 border-t border-white/[0.06] pt-8">
+                                {/* Key stat callout — 2 blocks */}
+                                <div className="mt-10 grid grid-cols-2 gap-6 border-t border-white/[0.06] pt-8">
+                                    {/* Performance Spread */}
                                     <div>
-                                        <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
+                                        <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/50 mb-3 max-w-[180px]">
                                             {t.performanceSpread}
                                         </p>
-                                        <p
-                                            className="text-3xl md:text-4xl font-mono font-light tabular-nums"
-                                            style={{
-                                                background: "linear-gradient(135deg, #5EEAD4, #268197)",
-                                                WebkitBackgroundClip: "text",
-                                                WebkitTextFillColor: "transparent",
-                                            }}
-                                        >
-                                            {spreadFormatted}%
-                                        </p>
+                                        <div className="space-y-4">
+                                            <div>
+                                                <p className="text-[11px] font-mono text-white/50 mb-1">{t.volEngine}</p>
+                                                <p className="text-2xl font-mono font-medium" style={{ color: "#5EEAD4" }}>+47.62%</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-[11px] font-mono text-white/50 mb-1">{t.corrArbEngine}</p>
+                                                <p className="text-2xl font-mono font-medium" style={{ color: "#5EEAD4" }}>+37.87%</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="w-[1px] h-12 bg-white/[0.06]" />
+                                    {/* Correlation */}
                                     <div>
-                                        <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/25 mb-1">
+                                        <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/50 mb-3 max-w-[180px]">
                                             {t.correlationToBenchmark}
                                         </p>
-                                        <p className="text-3xl md:text-4xl font-mono font-light tabular-nums text-white/70">
-                                            −0.82
-                                        </p>
+                                        <div className="space-y-4">
+                                            <div>
+                                                <p className="text-[11px] font-mono text-white/50 mb-1">{t.volEngine}</p>
+                                                <p className="text-2xl font-mono font-medium text-white/90">−0.80</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-[11px] font-mono text-white/50 mb-1">{t.corrArbEngine}</p>
+                                                <p className="text-2xl font-mono font-medium text-white/90">−0.59</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </motion.div>
 
                             {/* Right: Chart — container resizes, ResponsiveContainer redraws */}
